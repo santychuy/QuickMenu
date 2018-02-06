@@ -1,0 +1,6 @@
+framework module Pods_QuickMenu {
+  umbrella header "Pods-QuickMenu-umbrella.h"
+
+  export *
+  module * { export * }
+}
