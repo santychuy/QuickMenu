@@ -12,6 +12,8 @@ import SVProgressHUD
 
 class PlatilloSeleccionadoTVC: UITableViewController {
 
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageViewPlatillos: UIImageView!
     @IBOutlet weak var labelNombrePlatillo: UILabel!
     @IBOutlet weak var labelDescripcionPlatillo: UILabel!
@@ -29,6 +31,7 @@ class PlatilloSeleccionadoTVC: UITableViewController {
         
         configNavBar()
         queryDetallesPlatillo()
+        configImageSettings()
     }
 
  
@@ -82,7 +85,56 @@ class PlatilloSeleccionadoTVC: UITableViewController {
         
         navigationItem.title = platilloSeleccionado
         
+        let compartirBtn:UIButton = UIButton.init(type: .custom)
+        compartirBtn.setImage(#imageLiteral(resourceName: "Compartit"), for: .normal)
+        compartirBtn.addTarget(self, action: #selector(compartirFunc), for: .touchUpInside)
+        compartirBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let compartirBtnBar = UIBarButtonItem(customView: compartirBtn)
+        
+        self.navigationItem.setRightBarButton(compartirBtnBar, animated: false)
     }
+    
+    @objc func compartirFunc(){
+        
+        let activityItems:[Any] = [imageViewPlatillos.image!,
+                                   labelNombrePlatillo.text!,
+                                   labelDescripcionPlatillo.text!]
+        
+        let avc = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        
+        self.present(avc, animated: true, completion: nil)
+        
+    }
+    
+    
+  
+    func configImageSettings() {
+        
+        UIView.animate(withDuration: 1.5, delay: 0, options: .transitionCrossDissolve, animations: {
+            self.imageViewPlatillos.alpha = 1
+        }, completion: nil)
+        
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 5.0
+        
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        
+        scrollView.bounces = true
+        scrollView.bouncesZoom = true
+        
+    }
+    
+    
+    
+    override func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageViewPlatillos
+    }
+    
+    
+    
+    
+    
     
 
 }

@@ -131,13 +131,17 @@ extension SeccionSeleccionadaVC: UITableViewDelegate, UITableViewDataSource {
             
         }
         
+        let backgroundColor = UIView()
+        backgroundColor.backgroundColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+        cell.selectedBackgroundView = backgroundColor
+        
         return cell
         
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 325
+        return 343
     }
     
     

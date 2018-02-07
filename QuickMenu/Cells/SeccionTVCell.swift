@@ -15,6 +15,10 @@ class SeccionTVCell: UITableViewCell {
     
     func setSeccion(seccion: cellDatos) {
         
+        imageSeccion.layer.cornerRadius = imageSeccion.frame.height / 11
+        imageSeccion.layer.borderColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
+        imageSeccion.layer.borderWidth = 3
+        
         labelNombreSeccion.text = seccion.textoSeccion
         imageSeccion.image = seccion.imagenSeccion
         

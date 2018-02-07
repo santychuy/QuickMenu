@@ -36,6 +36,9 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 22)!,
+                                                                        NSAttributedStringKey.foregroundColor:UIColor.white]
+        
         labelRefrescar.alpha = 0
         viewComponentes.alpha = 0
         btnRefrescar.alpha = 0
@@ -46,7 +49,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
         textFieldRestaurante.inputView = pickerView
         createToolBar()
         
-        pickerView.backgroundColor = #colorLiteral(red: 0.5704585314, green: 0.5704723597, blue: 0.5704649091, alpha: 1)
+        pickerView.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
         
         empezarConfigLocalizacion()
         
@@ -98,8 +101,19 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func btnIrMenu(_ sender: Any)
     {
-        Database.database().reference().removeAllObservers()
-        performSegue(withIdentifier: "segueSeleccionarRestaurante-Menu", sender: nil)
+        
+        if textFieldRestaurante.text != "" {
+            
+            Database.database().reference().removeAllObservers()
+            performSegue(withIdentifier: "segueSeleccionarRestaurante-Menu", sender: nil)
+            
+        }else{
+            
+            SVProgressHUD.showInfo(withStatus: "Seleccionar un restaurante")
+            
+        }
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
