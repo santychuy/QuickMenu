@@ -13,6 +13,7 @@ target 'QuickMenu' do
 	pod 'Firebase/Storage'
 	pod 'IQKeyboardManagerSwift'
 	pod 'SVProgressHUD'
-	pod 'PickerView'
+	pod 'moa', '~> 9.0'
+	pod 'Auk', '~> 8.0'
 
 end

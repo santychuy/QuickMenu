@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double PickerViewVersionNumber;
-FOUNDATION_EXPORT const unsigned char PickerViewVersionString[];
+FOUNDATION_EXPORT double moaVersionNumber;
+FOUNDATION_EXPORT const unsigned char moaVersionString[];
 

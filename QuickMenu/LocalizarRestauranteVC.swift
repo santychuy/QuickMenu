@@ -36,7 +36,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 22)!,
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 21)!,
                                                                         NSAttributedStringKey.foregroundColor:UIColor.white]
         
         labelRefrescar.alpha = 0
@@ -49,7 +49,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
         textFieldRestaurante.inputView = pickerView
         createToolBar()
         
-        pickerView.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
+        pickerView.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         
         empezarConfigLocalizacion()
         
@@ -75,9 +75,9 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
         toolBar.sizeToFit()
         
         toolBar.isTranslucent = false
-        toolBar.barTintColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
+        toolBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
-        let doneBtn = UIBarButtonItem(title: "Okey", style: .done, target: self, action: #selector(LocalizarRestauranteVC.okeyBtn))
+        let doneBtn = UIBarButtonItem(title: "Ok", style: .done, target: self, action: #selector(LocalizarRestauranteVC.okeyBtn))
         doneBtn.tintColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
         
         toolBar.setItems([doneBtn], animated: true)
@@ -303,6 +303,32 @@ extension LocalizarRestauranteVC: UIPickerViewDelegate, UIPickerViewDataSource {
         textFieldRestaurante.text = restaurantesAMostrar[row]
         
     }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        var label:UILabel
+        
+        if let view = view as? UILabel {
+            label = view
+        }else{
+            label = UILabel()
+        }
+        
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        label.textAlignment =  .center
+        label.font = UIFont(name: "Avenir-Medium", size: 24)
+        
+        label.text = restaurantesAMostrar[row]
+        
+        return label
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 50
+    }
+    
+    
     
     
 }

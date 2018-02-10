@@ -10,10 +10,15 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
+
+private let headerHeight:CGFloat = 265
+private let headerCut: CGFloat = 50
+
+
 class PlatilloSeleccionadoTVC: UITableViewController {
 
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var imageViewPlatillos: UIImageView!
     @IBOutlet weak var labelNombrePlatillo: UILabel!
     @IBOutlet weak var labelDescripcionPlatillo: UILabel!
@@ -23,6 +28,12 @@ class PlatilloSeleccionadoTVC: UITableViewController {
     var restauranteSeleccionado:String?
     var seccionSeleccionada:String?
     
+    var zoomImageView = UIImageView()
+    //let startingFrame = CGRect(x: 0, y: 0, width: 200, height: 100)
+    
+
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +43,7 @@ class PlatilloSeleccionadoTVC: UITableViewController {
         configNavBar()
         queryDetallesPlatillo()
         configImageSettings()
+        configImageZoom()
     }
 
  
@@ -114,14 +126,7 @@ class PlatilloSeleccionadoTVC: UITableViewController {
             self.imageViewPlatillos.alpha = 1
         }, completion: nil)
         
-        scrollView.minimumZoomScale = 1.0
-        scrollView.maximumZoomScale = 5.0
         
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
-        
-        scrollView.bounces = true
-        scrollView.bouncesZoom = true
         
     }
     
@@ -133,7 +138,114 @@ class PlatilloSeleccionadoTVC: UITableViewController {
     
     
     
+    func configImageZoom(){
+        
+        
+        imageViewPlatillos.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateZoomImage)))
+        
+    }
     
+    @objc func animateZoomImage(){
+        
+        print("Se a presionado la imagen")
+        
+        
+        
+    }
+    
+    
+    //MARK: - Config. Imagen que se haga grande al bajar en la tabe
+    
+    
+    
+    
+    
+    //
+    
+    
+    /*override func scrollViewDidScroll(_ scrollView: UIScrollView) { //Ojo
+        
+        let y = 265 - (scrollView.contentOffset.y - 265)
+        print(y)
+        let h = max(0, y)
+        
+        let react = CGRect(x: 0, y: 0, width: view.bounds.width, height: h)
+        
+        imageViewPlatillos.frame = react
+        
+    }*/
+    
+    
+    
+    /*func configZoom(){
+        
+        zoomImageView.isUserInteractionEnabled = true
+        zoomImageView = imageViewPlatillos
+        
+        
+        zoomImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PlatilloSeleccionadoTVC.animateZoom)))
+        zoomImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateZoomOut)))
+        
+        view.addSubview(zoomImageView)
+        
+        
+    }
+    
+    
+    let blackBackgroundView = UIView()
+    
+    @objc func animateZoom(){
+        
+        print("Hola tocaste en el cuadro")
+        
+        if let startingFrame = self.imageViewPlatillos.superview?.convert(self.imageViewPlatillos.frame, to: nil) {
+            
+            imageViewPlatillos.alpha = 0
+            
+            blackBackgroundView.frame = self.view.frame
+            blackBackgroundView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            blackBackgroundView.alpha = 0
+            view.addSubview(blackBackgroundView)
+            
+            self.zoomImageView.frame = startingFrame
+            
+            UIView.animate(withDuration: 0.75) {
+                
+                let height = (self.view.frame.width / startingFrame.width) * startingFrame.height
+                
+                let y = self.view.frame.height / 2 - height / 2
+                
+                self.zoomImageView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: height)
+                
+                self.blackBackgroundView.alpha = 1
+            }
+            
+        }
+        
+        
+        
+    }
+    
+    @objc func animateZoomOut() {
+        
+        if let startingFrame = self.imageViewPlatillos.superview?.convert(self.imageViewPlatillos.frame, to: nil) {
+            
+            UIView.animate(withDuration: 0.75, animations: {
+                
+                self.zoomImageView.frame = startingFrame
+                
+                self.blackBackgroundView.alpha = 0
+                
+            }, completion: { (didComplete) in
+                self.zoomImageView.removeFromSuperview()
+                self.blackBackgroundView.removeFromSuperview()
+                self.imageViewPlatillos.alpha = 1
+            })
+            
+            
+        }
+        
+    }*/
     
     
 
