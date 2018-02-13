@@ -207,17 +207,103 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         print("Boton FB presionado")
         
+        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("facebookURL").observeSingleEvent(of: .value) { (snapshot) in
+            
+            if let url = snapshot.value as? String {
+               
+                if url != "" {
+                    
+                    print(url)
+                    
+                    SVProgressHUD.show()
+                    
+                    let urlFacebook = URL(string: url)
+                    
+                    UIApplication.shared.open(urlFacebook!, options: [:], completionHandler: nil)
+                    
+                }else{
+                    
+                    SVProgressHUD.showError(withStatus: "El restaurante no tiene pagina de Facebook, intenta con otra red social")
+                    
+                }
+                
+                
+            }
+            
+            
+        }
+        
+        SVProgressHUD.dismiss(withDelay: 1.0)
+        
+        
+        
     }
     
     @IBAction func btnTripAction(_ sender: UIButton) {
         
         print("Boton Trip presionado")
         
+        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("tripAdvisorURL").observeSingleEvent(of: .value) { (snapshot) in
+            
+            if let url = snapshot.value as? String {
+                
+                if url != "" {
+                    
+                    print(url)
+                    
+                    SVProgressHUD.show()
+                    
+                    let urlTripAdvisor = URL(string: url)
+                    
+                    UIApplication.shared.open(urlTripAdvisor!, options: [:], completionHandler: nil)
+                    
+                }else{
+                    
+                    SVProgressHUD.showError(withStatus: "El restaurante no tiene pagina de TripAdvisor, intenta con otra red social")
+                    
+                }
+                
+                
+            }
+            
+            
+        }
+        
+        SVProgressHUD.dismiss(withDelay: 1.0)
+        
     }
     
     @IBAction func btnTwitterAction(_ sender: UIButton) {
         
-        print("Boton Twitter presionado")
+        print("Boton Instagram presionado")
+        
+        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("instagramURL").observeSingleEvent(of: .value) { (snapshot) in
+            
+            if let url = snapshot.value as? String {
+                
+                if url != "" {
+                    
+                    print(url)
+                    
+                    SVProgressHUD.show()
+                    
+                    let urlInstagram = URL(string: url)
+                    
+                    UIApplication.shared.open(urlInstagram!, options: [:], completionHandler: nil)
+                    
+                }else{
+                    
+                    SVProgressHUD.showError(withStatus: "El restaurante no tiene pagina de Instagram, intenta con otra red social")
+                    
+                }
+                
+                
+            }
+            
+            
+        }
+        
+        SVProgressHUD.dismiss(withDelay: 1.0)
         
     }
     
@@ -237,19 +323,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     }
     
     
-    //MARK: - Config. HeaderView
     
-    /*func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y = 400 - (scrollView.contentOffset.y + 200)
-        let h = max(0, y)
-        print(y)
-        let rect = CGRect(x: 0, y: 0, width: view.bounds.width, height: h)
-        imageRestauranteFondo.frame = rect
-        effectView.frame = rect
-        
-    }*/
-    
-    //
     
     
 

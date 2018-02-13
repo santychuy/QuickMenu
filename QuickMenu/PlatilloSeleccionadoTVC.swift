@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+import Auk
 
 
 private let headerHeight:CGFloat = 265
@@ -18,11 +19,13 @@ private let headerCut: CGFloat = 50
 class PlatilloSeleccionadoTVC: UITableViewController {
 
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var imageViewPlatillos: UIImageView!
     @IBOutlet weak var labelNombrePlatillo: UILabel!
     @IBOutlet weak var labelDescripcionPlatillo: UILabel!
     @IBOutlet weak var labelPrecio: UILabel!
+    @IBOutlet weak var imageLogoEmpty1: UIImageView!
+    @IBOutlet weak var imageLogoEmpty2: UIImageView!
     
     var platilloSeleccionado:String?
     var restauranteSeleccionado:String?
@@ -41,9 +44,11 @@ class PlatilloSeleccionadoTVC: UITableViewController {
         // Do any additional setup after loading the view.
         
         configNavBar()
+        descargarImagenesADesplegar()
         queryDetallesPlatillo()
         configImageSettings()
         configImageZoom()
+        
     }
 
  
@@ -67,6 +72,16 @@ class PlatilloSeleccionadoTVC: UITableViewController {
         
 
         
+        
+    }
+    
+    
+    func descargarImagenesADesplegar(){
+        
+        scrollView.auk.settings.contentMode = .scaleAspectFill
+        scrollView.auk.startAutoScroll(delaySeconds: 3.0)
+        
+        
         let referenceImage = Storage.storage().reference().child("\(restauranteSeleccionado!)/menu/\(seccionSeleccionada!)/\(platilloSeleccionado!)/\(platilloSeleccionado!).jpg")
         
         referenceImage.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
@@ -83,11 +98,50 @@ class PlatilloSeleccionadoTVC: UITableViewController {
                 
                 let imagen = UIImage(data: data!)
                 
-                self.imageViewPlatillos.image = imagen
+                self.scrollView.auk.show(image: imagen!)
                 
             }
             
         }
+        
+        
+        let referenceImage1 = Storage.storage().reference().child("\(restauranteSeleccionado!)/menu/\(seccionSeleccionada!)/\(platilloSeleccionado!)/1.jpg")
+        
+        referenceImage1.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return ()
+                
+            } else { //Hubo exito
+                
+                let imagen = UIImage(data: data!)
+                
+                self.scrollView.auk.show(image: imagen!)
+                
+            }
+            
+        }
+        
+        
+        let referenceImage2 = Storage.storage().reference().child("\(restauranteSeleccionado!)/menu/\(seccionSeleccionada!)/\(platilloSeleccionado!)/2.jpg")
+        
+        referenceImage2.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return ()
+                
+            } else { //Hubo exito
+                
+                let imagen = UIImage(data: data!)
+                
+                self.scrollView.auk.show(image: imagen!)
+                
+            }
+            
+        }
+        
         
         
     }
@@ -108,8 +162,9 @@ class PlatilloSeleccionadoTVC: UITableViewController {
     
     @objc func compartirFunc(){
         
-        let activityItems:[Any] = [imageViewPlatillos.image!,
-                                   labelNombrePlatillo.text!,
+        let imageFotoActual = scrollView.auk.images //Luego definir para agregar una foto del array de fotos que creamos
+        
+        let activityItems:[Any] = [labelNombrePlatillo.text!,
                                    labelDescripcionPlatillo.text!]
         
         let avc = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
@@ -123,17 +178,20 @@ class PlatilloSeleccionadoTVC: UITableViewController {
     func configImageSettings() {
         
         UIView.animate(withDuration: 1.5, delay: 0, options: .transitionCrossDissolve, animations: {
-            self.imageViewPlatillos.alpha = 1
+            self.scrollView.alpha = 1
         }, completion: nil)
         
-        
+        UIView.animate(withDuration: 1, delay: 1, options: .curveLinear, animations: {
+            self.imageLogoEmpty1.alpha = 0.4
+            self.imageLogoEmpty2.alpha = 0.4
+        }, completion: nil)
         
     }
     
     
     
     override func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageViewPlatillos
+        return scrollView
     }
     
     
@@ -141,7 +199,7 @@ class PlatilloSeleccionadoTVC: UITableViewController {
     func configImageZoom(){
         
         
-        imageViewPlatillos.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateZoomImage)))
+        scrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateZoomImage)))
         
     }
     
