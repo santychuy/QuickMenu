@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import Auk
+import SwiftHEXColors
 
 
 class SeccionesVC: UIViewController, UIScrollViewDelegate {
@@ -199,6 +200,25 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     func configNavBar() {
         
         navigationItem.title = "Menú"
+        
+        //Dependiendo del restaurante, sacar de la base de datos, el color correspondiente
+        
+        //navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        
+        /*Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("colorNavBar").observeSingleEvent(of: .value) { (snapshot) in
+            
+                if let color = snapshot.value as? String {
+            
+                    print("El color sacado de la base de datos es: \(color)")
+                    
+                    
+            
+                }else{
+                    print("No se sacó ningun color de la base de datos")
+                }
+            
+        }*/
+        
         
     }
     

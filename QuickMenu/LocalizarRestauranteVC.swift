@@ -59,12 +59,16 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         textFieldRestaurante.text = ""
         navigationController?.navigationBar.prefersLargeTitles = false
         
         aparecerComponentes()
         
+        
     }
+    
+    
     
     
     //MARK: - Funciones y config. del Toolbar

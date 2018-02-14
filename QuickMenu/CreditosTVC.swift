@@ -12,16 +12,16 @@ import MessageUI
 
 class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
 
-    @IBOutlet weak var imageSanty: UIImageView!
-    @IBOutlet weak var labelSanty: UILabel!
+
+    @IBOutlet weak var viewSanty: UIView!
     @IBOutlet weak var btnFBSanty: UIButton!
     @IBOutlet weak var btnTwitterSanty: UIButton!
     @IBOutlet weak var btnInstagramSanty: UIButton!
     @IBOutlet weak var btnEmailSanty: UIButton!
     
     
-    @IBOutlet weak var imageFergie: UIImageView!
-    @IBOutlet weak var labelFergie: UILabel!
+
+    @IBOutlet weak var viewFergie: UIImageView!
     @IBOutlet weak var btnFBFergie: UIButton!
     @IBOutlet weak var btnTwitterFergie: UIButton!
     @IBOutlet weak var btnInstagramFergie: UIButton!
@@ -31,8 +31,13 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewSanty.alpha = 0
+        viewFergie.alpha = 0
+        
         configNavBar()
         configAnimaciones()
+        
+        
         
     }
     
@@ -190,13 +195,11 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
     func configAnimaciones() {
         
         UIView.animate(withDuration: 2, delay: 0, options: .transitionCurlDown, animations: {
-            self.imageSanty.alpha = 1
-            self.labelSanty.alpha = 1
+            self.viewSanty.alpha = 1
         }, completion: nil)
         
         UIView.animate(withDuration: 2, delay: 1, options: .transitionCurlDown, animations: {
-            self.imageFergie.alpha = 1
-            self.labelFergie.alpha = 1
+            self.viewFergie.alpha = 1
         }, completion: nil)
         
     }
