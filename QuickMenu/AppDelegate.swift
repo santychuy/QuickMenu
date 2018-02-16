@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Config. SVProgressHUD
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.setInfoImage(#imageLiteral(resourceName: "Idea"))
+        SVProgressHUD.setErrorImage(#imageLiteral(resourceName: "Error"))
         
         //Configurar la barra de navegación
         UINavigationBar.appearance().tintColor = UIColor.white

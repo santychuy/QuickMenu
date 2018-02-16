@@ -35,10 +35,6 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 21)!,
-                                                                        NSAttributedStringKey.foregroundColor:UIColor.white]
-        
         labelRefrescar.alpha = 0
         viewComponentes.alpha = 0
         btnRefrescar.alpha = 0
@@ -59,12 +55,13 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        textFieldRestaurante.text = ""
-        navigationController?.navigationBar.prefersLargeTitles = false
+        configNavBar()
         
         aparecerComponentes()
         
+        textFieldRestaurante.text = ""
         
     }
     
@@ -280,7 +277,17 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
     //----------------------------------------------------------------------
     
     
-    
+    func configNavBar(){
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 21)!,
+                                                                        NSAttributedStringKey.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        UIView.animate(withDuration: 0.5) {
+            self.navigationController?.navigationBar.barTintColor = UIColor(named: "NavBar Default")
+        }
+        
+    }
     
     
 }

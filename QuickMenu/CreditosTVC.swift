@@ -37,7 +37,7 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         configNavBar()
         configAnimaciones()
         
-        
+        tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "Fondo credito"))
         
     }
     

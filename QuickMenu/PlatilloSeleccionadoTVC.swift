@@ -16,7 +16,7 @@ private let headerHeight:CGFloat = 265
 private let headerCut: CGFloat = 50
 
 
-class PlatilloSeleccionadoTVC: UITableViewController {
+class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegate {
 
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -31,8 +31,7 @@ class PlatilloSeleccionadoTVC: UITableViewController {
     var restauranteSeleccionado:String?
     var seccionSeleccionada:String?
     
-    var zoomImageView = UIImageView()
-    //let startingFrame = CGRect(x: 0, y: 0, width: 200, height: 100)
+    
     
 
     
@@ -162,9 +161,11 @@ class PlatilloSeleccionadoTVC: UITableViewController {
     
     @objc func compartirFunc(){
         
-        let imageFotoActual = scrollView.auk.images //Luego definir para agregar una foto del array de fotos que creamos
+        let indexFotoActual = scrollView.auk.currentPageIndex
+        let imageFotoActual = scrollView.auk.images[indexFotoActual!]
         
-        let activityItems:[Any] = [labelNombrePlatillo.text!,
+        let activityItems:[Any] = [imageFotoActual,
+                                   labelNombrePlatillo.text!,
                                    labelDescripcionPlatillo.text!]
         
         let avc = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
@@ -190,9 +191,10 @@ class PlatilloSeleccionadoTVC: UITableViewController {
     
     
     
-    override func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return scrollView
-    }
+    
+    
+    
+    //MARK: - Config. tocar imagen para hacer zoom
     
     
     
@@ -203,12 +205,229 @@ class PlatilloSeleccionadoTVC: UITableViewController {
         
     }
     
+    var startingFrame: CGRect?
+    var blackBg: UIView?
+    var scrollViewZoom: UIScrollView = UIScrollView()
+    var zoomingImageView: UIImageView?
+    var newFrame:CGRect?
+    
     @objc func animateZoomImage(){
         
         print("Se a presionado la imagen")
         
+        self.scrollView.alpha = 0
+        
+        let indexImage = scrollView.auk.currentPageIndex
+        print(indexImage!)
+        let imageMostrar = scrollView.auk.images[indexImage!]
+        print(imageMostrar)
+        //let imageViewMostrar = UIImageView(image: imageMostrar)
+        
+        //Sacar las medidas que tiene el scrollView de las imagenes
+        startingFrame = scrollView.superview?.convert(scrollView.frame, to: nil)
+        print(startingFrame!)
         
         
+        
+        //La vista que hará que tendrá la foto
+        zoomingImageView = UIImageView(frame: startingFrame!)
+        zoomingImageView?.backgroundColor = UIColor.red
+        zoomingImageView?.image = imageMostrar
+        zoomingImageView?.contentMode = .scaleAspectFill
+        zoomingImageView?.clipsToBounds = true
+        zoomingImageView?.isUserInteractionEnabled = true
+        zoomingImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateZoomImageOut)))
+        zoomingImageView?.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(zoomImagePinch)))
+        //zoomingImageView?.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(moverImagen)))
+        
+        
+        
+        if let keyWindow = UIApplication.shared.keyWindow {
+            
+            //Crear el fondo negro que tendrá a la hora de picarle para el zoom
+            blackBg = UIView(frame: keyWindow.frame)
+            blackBg?.backgroundColor = UIColor.black
+            blackBg?.alpha = 0
+            keyWindow.addSubview(blackBg!)
+            keyWindow.addSubview(zoomingImageView!)
+            
+            //Hará la animacion que hará el "zoom" y le daremos las nuevas medidas que tomará para el zoom
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                
+                self.blackBg?.alpha = 0.9
+                
+                let height = self.startingFrame!.height / self.startingFrame!.width * keyWindow.frame.width
+                
+                self.zoomingImageView?.frame = CGRect(x: 0, y: 0, width: keyWindow.frame.width, height: height)
+                
+                self.newFrame = self.zoomingImageView?.frame
+                
+                
+                self.zoomingImageView?.center = keyWindow.center
+                
+            
+            })
+            
+            
+            
+        }
+        
+        
+    }
+    
+    
+    @objc func animateZoomImageOut(tapGesture: UITapGestureRecognizer){
+        
+        if let zoomOutImageView = tapGesture.view{
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                
+                zoomOutImageView.frame = self.startingFrame!
+                
+                self.blackBg?.alpha = 0
+                
+            }, completion: { (completed) in
+                zoomOutImageView.removeFromSuperview()
+                self.scrollView.alpha = 1
+            })
+            
+            
+            
+        }
+        
+        
+    }
+    
+    
+    func configScrollViewZoom(){
+        
+        scrollViewZoom.delegate = self
+        scrollViewZoom.minimumZoomScale = 1.0
+        scrollViewZoom.maximumZoomScale = 6.0
+        //scrollViewZoom?.frame = startingFrame!
+        scrollViewZoom.alwaysBounceVertical = false
+        scrollViewZoom.alwaysBounceHorizontal = false
+        scrollViewZoom.showsHorizontalScrollIndicator = false
+        scrollViewZoom.showsVerticalScrollIndicator = false
+        scrollViewZoom.flashScrollIndicators()
+        
+        
+    }
+    
+    override func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        print("Se quiere hacer zoom")
+        return zoomingImageView
+    }
+    
+    @objc func zoomImagePinch(sender: UIPinchGestureRecognizer) {
+        
+        sender.delegate = self
+        
+        print("Haciendo zoommmmmm")
+        
+        if sender.state == .began || sender.state == .changed {
+            
+            /*let currentScale = CGFloat((self.zoomingImageView?.frame.size.width)!) / CGFloat((self.zoomingImageView?.bounds.size.width)!)
+            var newScale = currentScale*sender.scale
+            
+            if newScale < 1 {
+                newScale = 1
+            }
+            if newScale > 6 {
+                newScale = 6
+            }
+            
+            let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+            
+            self.zoomingImageView?.transform = transform
+            sender.scale = 1*/
+            
+            guard let view = sender.view else {return}
+            let pinchCenter = CGPoint(x: sender.location(in: view).x - view.bounds.midX,
+                                      y: sender.location(in: view).y - view.bounds.midY)
+            
+            let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+                .scaledBy(x: sender.scale, y: sender.scale)
+                .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
+            
+            let currentScale = CGFloat((self.zoomingImageView?.frame.size.width)!) / CGFloat((self.zoomingImageView?.bounds.size.width)!)
+            var newScale = currentScale*sender.scale
+            
+            if newScale < 1 {
+                newScale = 1
+                let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+                self.zoomingImageView?.transform = transform
+                sender.scale = 1
+            }else {
+                view.transform = transform
+                sender.scale = 1
+            }
+            
+        }
+        
+        if sender.state == .ended {
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.zoomingImageView?.transform = CGAffineTransform.identity
+            }, completion: { (completed) in
+                
+            })
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
+    @objc func moverImagen(sender: UIPanGestureRecognizer){
+        
+        sender.delegate = self
+        
+        print("Se está moviendo la imagen")
+        
+        var initialCenter = CGPoint()
+        
+        if sender.state == .began {
+            
+            initialCenter = (zoomingImageView?.center)!
+            print(initialCenter)
+            
+        }
+        
+        if sender.state == .changed {
+            
+            let translation = sender.translation(in: self.zoomingImageView)
+            let changex = (zoomingImageView?.center.x)! + translation.x
+            let changey = (zoomingImageView?.center.y)! + translation.y
+            
+            sender.view?.center = CGPoint(x: changex, y: changey)
+            sender.setTranslation(CGPoint.zero, in: sender.view)
+            
+        }
+        
+        if sender.state == .ended {
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.zoomingImageView?.center = initialCenter
+            })
+            
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    //-----------------------------------------------------------------------------------
+    
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     

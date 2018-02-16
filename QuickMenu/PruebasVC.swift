@@ -7,34 +7,26 @@
 //
 
 import UIKit
-import Auk
+import UIColor_Hex_Swift
+
 
 class PruebasVC: UIViewController {
     
     
-    @IBOutlet weak var scrollView: UIScrollView!
+ 
+    @IBOutlet weak var viewPruebas: UIView!
     
 
-    let imageArray = [#imageLiteral(resourceName: "Hamburguesa"), #imageLiteral(resourceName: "Pescadito Perisur")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     
+        let color = UIColor(hex6: 943274)
         
-        
-        for i in 0..<imageArray.count{
-            
-            let image = imageArray[i]
-            
-            scrollView.auk.show(image: image)
-            
-        }
-        
-        scrollView.auk.startAutoScroll(delaySeconds: 5.0)
-        scrollView.auk.settings.contentMode = .scaleAspectFit
-        
+        viewPruebas.tintColor = color
+       
         
     }
 

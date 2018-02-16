@@ -10,8 +10,8 @@
 #endif
 #endif
 
-#import "SwiftHEXColors.h"
+#import "HEXColor.h"
 
-FOUNDATION_EXPORT double SwiftHEXColorsVersionNumber;
-FOUNDATION_EXPORT const unsigned char SwiftHEXColorsVersionString[];
+FOUNDATION_EXPORT double UIColor_Hex_SwiftVersionNumber;
+FOUNDATION_EXPORT const unsigned char UIColor_Hex_SwiftVersionString[];
 

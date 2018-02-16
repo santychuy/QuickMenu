@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import Auk
-import SwiftHEXColors
 
 
 class SeccionesVC: UIViewController, UIScrollViewDelegate {
@@ -26,6 +25,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var btnTrip: UIButton!
     @IBOutlet weak var btnTwitter: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var imageLogoRestaurante: UIImageView!
     
     var restauranteSeleccionado:String?
     
@@ -40,7 +40,9 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        configNavBar()
+        
         // Do any additional setup after loading the view.
         if datosSeccion.arrayCellData.count == 0 {
             
@@ -55,10 +57,15 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         configImagenesBienvenida()
         queryDatosSeccion()
         
-        configNavBar()
-        
         
     }
+    
+    /*override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }*/
+    
     
     func queryDatosSeccion() {
         
@@ -189,6 +196,27 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
             
         }
         
+        let referenceImage4 = Storage.storage().reference().child("\(restauranteSeleccionado!)/LogoBienvenida.png")
+        
+        referenceImage4.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+            
+            if let error = error {
+                // Uh-oh, an error occurred!
+                print("ERROR AQUI: \(error.localizedDescription)")
+                
+                return ()
+                
+            } else { //Hubo exito
+                print("Hubo exito al bajar la imagen 1")
+                
+                let imagen = UIImage(data: data!)
+                
+                self.imageLogoRestaurante.image = imagen
+                
+            }
+            
+        }
+        
     }
     
     //------------------------------------------------------------------------------------------
@@ -205,17 +233,40 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         //navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         
-        /*Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("colorNavBar").observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("colorNavBar").observeSingleEvent(of: .value) { (snapshot) in
             
                 if let color = snapshot.value as? String {
             
                     print("El color sacado de la base de datos es: \(color)")
                     
+                    let colorAplicar = UIColor(named: color)
                     
+                    UIView.animate(withDuration: 2, animations: {
+                        self.navigationController?.navigationBar.barTintColor = colorAplicar
+                    })
             
                 }else{
                     print("No se sacó ningun color de la base de datos")
                 }
+            
+        }
+        
+        
+        /*Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("colorBackground").observeSingleEvent(of: .value) { (snapshot) in
+            
+            if let colorBackground = snapshot.value as? String {
+                
+                print("El color de fondo sacado de la base de datos es: \(colorBackground)")
+                
+                let aplicarColor = UIColor(named: colorBackground)
+                
+                self.tableViewSecciones.backgroundColor = aplicarColor
+                
+            }else {
+                
+                print("No se sacó ningun color de la base de datos")
+                
+            }
             
         }*/
         
@@ -339,6 +390,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         btnFB.alpha = 0
         btnTrip.alpha = 0
         btnTwitter.alpha = 0
+        imageLogoRestaurante.alpha = 0
         
     }
     
@@ -392,6 +444,7 @@ extension SeccionesVC: UITableViewDelegate, UITableViewDataSource{
             UIView.animate(withDuration: 1, delay: 1, options: .transitionCrossDissolve, animations: {
                 self.scrollView.alpha = 1
                 self.labelCompartir.alpha = 1
+                self.imageLogoRestaurante.alpha = 1
             }, completion: nil)
             
             
