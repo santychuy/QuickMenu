@@ -34,9 +34,36 @@ class UnirteAQuickMenuPageVC: UIPageViewController {
             
         }
         
+        setInfoBtn()
+        
     }
 
     
+    
+    func setInfoBtn(){
+        
+        let infoBtn = UIButton(type: .custom)
+        infoBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        infoBtn.setTitle("Creditos", for: .normal)
+        infoBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        infoBtn.addTarget(self, action: #selector(irACreditos), for: .touchUpInside)
+        
+        let infoBtnNavBar:UIBarButtonItem = UIBarButtonItem(customView: infoBtn)
+        self.navigationItem.setRightBarButton(infoBtnNavBar, animated: false)
+        
+    }
+    
+    @objc func irACreditos(){
+        
+        /*let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let introRestauranteVC = storyBoard.instantiateViewController(withIdentifier: "CreditosVC")
+        self.present(introRestauranteVC, animated: true, completion: nil)*/
+        
+        performSegue(withIdentifier: "segueCreditos", sender: nil)
+        
+    }
+    
+    @IBAction func prepareIntroRestaurante (segue:UIStoryboardSegue){}
 
 
 }

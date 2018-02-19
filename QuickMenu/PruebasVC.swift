@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import UIColor_Hex_Swift
 
 
 class PruebasVC: UIViewController {
@@ -23,9 +22,7 @@ class PruebasVC: UIViewController {
 
         // Do any additional setup after loading the view.
     
-        let color = UIColor(hex6: 943274)
         
-        viewPruebas.tintColor = color
        
         
     }

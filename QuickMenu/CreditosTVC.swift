@@ -182,7 +182,13 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
     
     func configNavBar() {
         
+        /*let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
+        self.view.addSubview(navBar);
+        navBar.barStyle = .blackTranslucent*/
+        //navBar.prefersLargeTitles = true
         navigationItem.title = "Créditos"
+        
+        //setAtrasBtn()
         
     }
     
@@ -205,6 +211,30 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
     }
     
     //-------------------------------------------------------------------------------------------
+    
+    func setAtrasBtn(){
+        
+        let atrasBtn = UIButton(type: .custom)
+        atrasBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        atrasBtn.setTitle("<Atras", for: .normal)
+        atrasBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        atrasBtn.addTarget(self, action: #selector(irAIntroRestaurante), for: .touchUpInside)
+        
+        let infoBtnNavBar:UIBarButtonItem = UIBarButtonItem(customView: atrasBtn)
+        self.navigationItem.setRightBarButton(infoBtnNavBar, animated: false)
+        
+    }
+    
+    
+    
+    @objc func irAIntroRestaurante(){
+        
+        performSegue(withIdentifier: "unwindCreditos-IntroRestaurante", sender: self)
+        
+    }
+    
+    
+    
     
     
 }

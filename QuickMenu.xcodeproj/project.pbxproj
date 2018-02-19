@@ -20,6 +20,9 @@
 		C46F97742036B03700F83D22 /* UnirteAQuickMenuPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F97732036B03700F83D22 /* UnirteAQuickMenuPageVC.swift */; };
 		C476C934202948B00003074C /* SeccionSeleccionadaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476C933202948B00003074C /* SeccionSeleccionadaVC.swift */; };
 		C476C93620294FC50003074C /* SeccionSeleccionadaTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476C93520294FC50003074C /* SeccionSeleccionadaTVCell.swift */; };
+		C47A98F7203771000028A90C /* Pagina1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A98F6203771000028A90C /* Pagina1VC.swift */; };
+		C47A98F92037710A0028A90C /* Pagina2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A98F82037710A0028A90C /* Pagina2VC.swift */; };
+		C47A98FB203771190028A90C /* Pagina3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A98FA203771190028A90C /* Pagina3VC.swift */; };
 		C47EB96620295F1A00BF9B2D /* DetallesPlatillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB96520295F1A00BF9B2D /* DetallesPlatillo.swift */; };
 		C47EB9682029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */; };
 		C4AB28D420239A7D00F0CCCB /* DatosSeccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */; };
@@ -49,6 +52,9 @@
 		C46F97732036B03700F83D22 /* UnirteAQuickMenuPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnirteAQuickMenuPageVC.swift; sourceTree = "<group>"; };
 		C476C933202948B00003074C /* SeccionSeleccionadaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeccionSeleccionadaVC.swift; sourceTree = "<group>"; };
 		C476C93520294FC50003074C /* SeccionSeleccionadaTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeccionSeleccionadaTVCell.swift; sourceTree = "<group>"; };
+		C47A98F6203771000028A90C /* Pagina1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina1VC.swift; sourceTree = "<group>"; };
+		C47A98F82037710A0028A90C /* Pagina2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina2VC.swift; sourceTree = "<group>"; };
+		C47A98FA203771190028A90C /* Pagina3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina3VC.swift; sourceTree = "<group>"; };
 		C47EB96520295F1A00BF9B2D /* DetallesPlatillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallesPlatillo.swift; sourceTree = "<group>"; };
 		C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatilloSeleccionadoTVC.swift; sourceTree = "<group>"; };
 		C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosSeccion.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 				C420E1D1203267DB00914AF5 /* CreditosTVC.swift */,
 				C45E342B202D0B2000263FA1 /* PruebasVC.swift */,
 				C46F97732036B03700F83D22 /* UnirteAQuickMenuPageVC.swift */,
+				C47A98F5203770D70028A90C /* InfoRestaurantes */,
 				C4EE0E5C201A5EDB009CDB7C /* ModeloDatos */,
 				C4EE0E59201A5CE3009CDB7C /* Cells */,
 				C45E342D202D0DF400263FA1 /* XIB Files */,
@@ -137,6 +144,16 @@
 			children = (
 			);
 			path = "XIB Files";
+			sourceTree = "<group>";
+		};
+		C47A98F5203770D70028A90C /* InfoRestaurantes */ = {
+			isa = PBXGroup;
+			children = (
+				C47A98F6203771000028A90C /* Pagina1VC.swift */,
+				C47A98F82037710A0028A90C /* Pagina2VC.swift */,
+				C47A98FA203771190028A90C /* Pagina3VC.swift */,
+			);
+			path = InfoRestaurantes;
 			sourceTree = "<group>";
 		};
 		C4EE0E59201A5CE3009CDB7C /* Cells */ = {
@@ -246,7 +263,6 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/moa/moa.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -259,7 +275,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -312,8 +327,10 @@
 				C4F62F35201E785200900C78 /* LocalizarRestaurantes.swift in Sources */,
 				C4EED4E42020F22700E53139 /* SeccionesVC.swift in Sources */,
 				C476C934202948B00003074C /* SeccionSeleccionadaVC.swift in Sources */,
+				C47A98F92037710A0028A90C /* Pagina2VC.swift in Sources */,
 				C47EB96620295F1A00BF9B2D /* DetallesPlatillo.swift in Sources */,
 				C457D37F20154BDE000D8C1F /* ViewController.swift in Sources */,
+				C47A98FB203771190028A90C /* Pagina3VC.swift in Sources */,
 				C4EE0E60201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift in Sources */,
 				C4EED4E72020F2A500E53139 /* SeccionTVCell.swift in Sources */,
 				C46F97742036B03700F83D22 /* UnirteAQuickMenuPageVC.swift in Sources */,
@@ -324,6 +341,7 @@
 				C47EB9682029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift in Sources */,
 				C457D37D20154BDE000D8C1F /* AppDelegate.swift in Sources */,
 				C4AB28D420239A7D00F0CCCB /* DatosSeccion.swift in Sources */,
+				C47A98F7203771000028A90C /* Pagina1VC.swift in Sources */,
 				C43F319620158ECF000E9924 /* LocalizarRestauranteVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

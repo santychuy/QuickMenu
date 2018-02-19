@@ -15,6 +15,5 @@ target 'QuickMenu' do
 	pod 'SVProgressHUD'
 	pod 'moa', '~> 9.0'
 	pod 'Auk', '~> 8.0'
-	pod 'UIColor_Hex_Swift', '~> 4.0.1'
 
 end
