@@ -23,6 +23,8 @@ class UnirteAQuickMenuPageVC: UIPageViewController {
     }()
     
     
+    var pageController = UIPageControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +37,8 @@ class UnirteAQuickMenuPageVC: UIPageViewController {
         }
         
         setInfoBtn()
+        
+        
         
     }
 
@@ -52,6 +56,7 @@ class UnirteAQuickMenuPageVC: UIPageViewController {
         self.navigationItem.setRightBarButton(infoBtnNavBar, animated: false)
         
     }
+    
     
     @objc func irACreditos(){
         
@@ -105,6 +110,8 @@ extension UnirteAQuickMenuPageVC: UIPageViewControllerDataSource {
     
     
 }
+
+
 
 
 

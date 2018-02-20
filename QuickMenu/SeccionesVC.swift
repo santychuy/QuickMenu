@@ -27,6 +27,12 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageLogoRestaurante: UIImageView!
     
+    @IBOutlet var viewPromocionRestaurante: UIView!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet weak var scrollviewPromos: UIScrollView!
+    
+    let funcionesUtiles = Funciones()
+    
     var restauranteSeleccionado:String?
     
     var datosSeccion = DatosSeccion()
@@ -37,11 +43,20 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     
     var urlImagen:String?
     
+    var effect:UIVisualEffect!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configNavBar()
+        
+        //Config. PromoView
+        effect = visualEffectView.effect
+        visualEffectView.effect = nil
+        viewPromocionRestaurante.layer.cornerRadius = 5
+        
+        //-------------------------------------------
         
         // Do any additional setup after loading the view.
         if datosSeccion.arrayCellData.count == 0 {
@@ -57,14 +72,12 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         configImagenesBienvenida()
         queryDatosSeccion()
         
+        //Delay para la aparicion de las promociones
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+            self.setupAnimacionPromocion()
+        })
         
     }
-    
-    /*override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }*/
     
     
     func queryDatosSeccion() {
@@ -89,9 +102,10 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                     if let error = error {
                         // Uh-oh, an error occurred!
                         print("ERROR AQUI: \(error.localizedDescription)")
-                        SVProgressHUD.showError(withStatus: "No se pudieron cargar las imagenes, intentar más tarde este menú")
+        
                         //Segue para la eleccion del menu
                         self.performSegue(withIdentifier: "unwindSegueBuscarRestaurante", sender: self)
+                        SVProgressHUD.showError(withStatus: "No se pudo cargar el menú completo, intentar más tarde este menú")
                         return ()
                         
                     } else { //Hubo exito
@@ -394,9 +408,75 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
     }
     
+    //Config. Animaciones de la vista de promociones
+    
+    func setupAnimacionPromocion(){
+        
+        let diaActual = funcionesUtiles.tenerDiaDeLaSemana()
+        scrollviewPromos.auk.settings.contentMode = .scaleAspectFill
+        scrollviewPromos.auk.settings.pageControl.visible = false
+        scrollviewPromos.isUserInteractionEnabled = false //AQUI DESACTIVAR LUEGO
+        scrollviewPromos.auk.settings.placeholderImage = #imageLiteral(resourceName: "Logo Empty")
+        let referenceImagePromo1 = Storage.storage().reference().child("\(restauranteSeleccionado!)/Promociones/\(diaActual!)/1.jpg")
+        
+        referenceImagePromo1.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+            
+            if let error = error {
+                // Uh-oh, an error occurred!
+                print("ERROR AQUI: \(error.localizedDescription)")
+                
+                return()
+                
+            } else { //Hubo exito
+                print("Hubo exito al bajar la imagen 1")
+                
+                let imagen = UIImage(data: data!)
+                
+                self.scrollviewPromos.auk.show(image: imagen!)
+                
+                self.view.addSubview(self.viewPromocionRestaurante)
+                //viewPromocionRestaurante.center = self.view.center
+                self.viewPromocionRestaurante.center = CGPoint(x: 188, y: 280) //Tener en cuenta que estas medidas no serán igual en todos los iphones, tener en cuenta
+                self.viewPromocionRestaurante.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+                self.viewPromocionRestaurante.alpha = 0
+                
+                UIView.animate(withDuration: 0.4) {
+                    
+                    self.visualEffectView.isHidden = false
+                    self.visualEffectView.effect = self.effect
+                    self.viewPromocionRestaurante.alpha = 1
+                    self.viewPromocionRestaurante.transform = CGAffineTransform.identity
+                    
+                }
+                
+            }
+            
+        }
+    
+        
+    }
     
     
+    func setupAnimacionPromocionOut(){
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.viewPromocionRestaurante.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.viewPromocionRestaurante.alpha = 0
+            self.visualEffectView.effect = nil
+        }) { (success) in
+            self.viewPromocionRestaurante.removeFromSuperview()
+            self.visualEffectView.isHidden = true
+        }
+        
+    }
     
+    @IBAction func btnQuitarVistaPromo(_ sender: Any) {
+        
+        setupAnimacionPromocionOut()
+        
+    }
+    
+    //-----------------------------------------------------------------------------------------------------------
     
 
 }
@@ -424,14 +504,15 @@ extension SeccionesVC: UITableViewDelegate, UITableViewDataSource{
         
         SVProgressHUD.dismiss()
         
-        
         if datosSeccion.arrayCellData.count > 0 {
-            
+           
             UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
                 self.viewTVCVacio.alpha = 0
                 self.labelRestauranteFondo.alpha = 1
                 self.labelOpinion.alpha = 1
-            }, completion: nil)
+            }, completion: { (success) in
+                
+            })
             
             UIView.animate(withDuration: 1, delay: 0.5, options: .transitionCrossDissolve, animations: {
                 
@@ -454,6 +535,7 @@ extension SeccionesVC: UITableViewDelegate, UITableViewDataSource{
         let backgroundColor = UIView()
         backgroundColor.backgroundColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
         cell.selectedBackgroundView = backgroundColor
+        
         
         
         return cell

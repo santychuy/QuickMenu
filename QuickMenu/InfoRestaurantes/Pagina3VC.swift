@@ -71,6 +71,15 @@ class Pagina3VC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func btnFBAction(_ sender: Any) {
+        
+        SVProgressHUD.show()
+        
+        let url = URL(string:"https://www.facebook.com/QuickMenuApp/")
+        
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        
+        SVProgressHUD.dismiss(withDelay: 1.0)
+        
     }
     
     

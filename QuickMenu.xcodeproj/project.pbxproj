@@ -23,7 +23,7 @@
 		C47A98F7203771000028A90C /* Pagina1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A98F6203771000028A90C /* Pagina1VC.swift */; };
 		C47A98F92037710A0028A90C /* Pagina2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A98F82037710A0028A90C /* Pagina2VC.swift */; };
 		C47A98FB203771190028A90C /* Pagina3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A98FA203771190028A90C /* Pagina3VC.swift */; };
-		C47EB96620295F1A00BF9B2D /* DetallesPlatillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB96520295F1A00BF9B2D /* DetallesPlatillo.swift */; };
+		C47EB96620295F1A00BF9B2D /* Funciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB96520295F1A00BF9B2D /* Funciones.swift */; };
 		C47EB9682029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */; };
 		C4AB28D420239A7D00F0CCCB /* DatosSeccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */; };
 		C4C8C59320223E7D00496404 /* VideoIntro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C4C8C59220223E7D00496404 /* VideoIntro.mp4 */; };
@@ -55,7 +55,7 @@
 		C47A98F6203771000028A90C /* Pagina1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina1VC.swift; sourceTree = "<group>"; };
 		C47A98F82037710A0028A90C /* Pagina2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina2VC.swift; sourceTree = "<group>"; };
 		C47A98FA203771190028A90C /* Pagina3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina3VC.swift; sourceTree = "<group>"; };
-		C47EB96520295F1A00BF9B2D /* DetallesPlatillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallesPlatillo.swift; sourceTree = "<group>"; };
+		C47EB96520295F1A00BF9B2D /* Funciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funciones.swift; sourceTree = "<group>"; };
 		C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatilloSeleccionadoTVC.swift; sourceTree = "<group>"; };
 		C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosSeccion.swift; sourceTree = "<group>"; };
 		C4C8C59220223E7D00496404 /* VideoIntro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = VideoIntro.mp4; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */,
-				C47EB96520295F1A00BF9B2D /* DetallesPlatillo.swift */,
+				C47EB96520295F1A00BF9B2D /* Funciones.swift */,
 				C4EE0E5D201A81B0009CDB7C /* DBReference.swift */,
 				C4EE0E5F201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift */,
 				C4F62F34201E785200900C78 /* LocalizarRestaurantes.swift */,
@@ -328,7 +328,7 @@
 				C4EED4E42020F22700E53139 /* SeccionesVC.swift in Sources */,
 				C476C934202948B00003074C /* SeccionSeleccionadaVC.swift in Sources */,
 				C47A98F92037710A0028A90C /* Pagina2VC.swift in Sources */,
-				C47EB96620295F1A00BF9B2D /* DetallesPlatillo.swift in Sources */,
+				C47EB96620295F1A00BF9B2D /* Funciones.swift in Sources */,
 				C457D37F20154BDE000D8C1F /* ViewController.swift in Sources */,
 				C47A98FB203771190028A90C /* Pagina3VC.swift in Sources */,
 				C4EE0E60201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift in Sources */,

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,20 +24,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoLaunch" translatesAutoresizingMaskIntoConstraints="NO" id="lfX-Ud-jld">
                                 <rect key="frame" x="62" y="120" width="250" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="lfX-Ud-jld" secondAttribute="height" multiplier="1:1" id="Lb6-fJ-ZZX"/>
+                                    <constraint firstAttribute="width" constant="250" id="0Al-sv-lKg"/>
+                                    <constraint firstAttribute="height" constant="250" id="70M-Rc-9o3"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PGn-Rd-pwT" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="3HN-PQ-Mva"/>
-                            <constraint firstItem="lfX-Ud-jld" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Du3-oQ-Azy"/>
-                            <constraint firstItem="PGn-Rd-pwT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Mz2-QY-Rhf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lfX-Ud-jld" secondAttribute="trailing" constant="63" id="R2r-71-nSj"/>
-                            <constraint firstItem="PGn-Rd-pwT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XGb-M1-qAN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lfX-Ud-jld" secondAttribute="bottom" constant="297" id="aQ2-7A-Rkz"/>
-                            <constraint firstItem="PGn-Rd-pwT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fas-qj-1Yj"/>
-                            <constraint firstItem="lfX-Ud-jld" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="ura-CD-9ZN"/>
+                            <constraint firstItem="PGn-Rd-pwT" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="92X-Gn-e5r"/>
+                            <constraint firstItem="PGn-Rd-pwT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="9r4-7f-NQs"/>
+                            <constraint firstItem="lfX-Ud-jld" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AUN-XZ-nqM"/>
+                            <constraint firstItem="PGn-Rd-pwT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FvI-7h-3k7"/>
+                            <constraint firstItem="PGn-Rd-pwT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LYe-zb-GDP"/>
+                            <constraint firstItem="lfX-Ud-jld" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="QrD-el-TVJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

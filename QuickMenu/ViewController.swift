@@ -27,6 +27,14 @@ class ViewController: UIViewController {
         
         UIApplication.shared.statusBarStyle = .lightContent
         
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback, with: [.mixWithOthers])
+            try audioSession.setActive(true)
+        }catch{
+            print(error.localizedDescription)
+        }
+        
         let videoURL = Bundle.main.url(forResource: "VideoIntro", withExtension: "mp4")
         
         player = AVPlayer.init(url: videoURL!)

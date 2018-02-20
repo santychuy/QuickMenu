@@ -15,6 +15,7 @@ class PruebasVC: UIViewController {
  
     @IBOutlet weak var viewPruebas: UIView!
     
+    let funciones = Funciones()
 
     
     override func viewDidLoad() {
@@ -22,7 +23,7 @@ class PruebasVC: UIViewController {
 
         // Do any additional setup after loading the view.
     
-        
+        print("HOY ES: \(funciones.tenerDiaDeLaSemana()!)")
        
         
     }
