@@ -208,7 +208,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
                     
                     let locationRestaurante = CLLocation(latitude: latitud!, longitude: longitud!)
                     
-                    //Arreglar que se pase los datos del usuario de su localizacion
+                    /*//Arreglar que se pase los datos del usuario de su localizacion
                     let location2DUser = self.userLocation
                     print(self.userLocation?.latitude as Any, self.userLocation?.longitude as Any)
                     let lat = location2DUser?.latitude
@@ -222,7 +222,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
                     
                     //if distancia < 1 { //1 metro
                         
-                        //Aparecer los restaurantes y agregarlos al Array
+                        //Aparecer los restaurantes y agregarlos al Array*/
                         print("Se entró al if si esta cerca un restaurante, se agregará el restaurante \(key)")
                         self.restaurantesAMostrar.append(key)
                         print(self.restaurantesAMostrar)

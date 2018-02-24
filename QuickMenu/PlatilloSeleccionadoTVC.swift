@@ -151,9 +151,9 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
         navigationItem.title = platilloSeleccionado
         
         let compartirBtn:UIButton = UIButton.init(type: .custom)
-        compartirBtn.setImage(#imageLiteral(resourceName: "Compartit"), for: .normal)
+        compartirBtn.setImage(#imageLiteral(resourceName: "Share"), for: .normal)
         compartirBtn.addTarget(self, action: #selector(compartirFunc), for: .touchUpInside)
-        compartirBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        compartirBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         let compartirBtnBar = UIBarButtonItem(customView: compartirBtn)
         
         self.navigationItem.setRightBarButton(compartirBtnBar, animated: false)

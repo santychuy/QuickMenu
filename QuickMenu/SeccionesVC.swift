@@ -30,6 +30,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet var viewPromocionRestaurante: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var scrollviewPromos: UIScrollView!
+    @IBOutlet weak var imagenFondoPromo: UIImageView!
     
     let funcionesUtiles = Funciones()
     
@@ -55,6 +56,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         viewPromocionRestaurante.layer.cornerRadius = 5
+        imagenFondoPromo.layer.cornerRadius = 5
         
         //-------------------------------------------
         
@@ -243,6 +245,14 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         navigationItem.title = "Menú"
         
+        let compartirBtn:UIButton = UIButton.init(type: .custom)
+        compartirBtn.setImage(#imageLiteral(resourceName: "Mapa"), for: .normal)
+        compartirBtn.addTarget(self, action: #selector(irAMapa), for: .touchUpInside)
+        compartirBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 24)
+        let compartirBtnBar = UIBarButtonItem(customView: compartirBtn)
+        
+        self.navigationItem.setRightBarButton(compartirBtnBar, animated: false)
+        
         //Dependiendo del restaurante, sacar de la base de datos, el color correspondiente
         
         //navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
@@ -284,6 +294,12 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
             
         }*/
         
+        
+    }
+    
+    @objc func irAMapa(){
+        
+        performSegue(withIdentifier: "segue-direccionRestaurante", sender: nil)
         
     }
     
@@ -435,8 +451,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                 self.scrollviewPromos.auk.show(image: imagen!)
                 
                 self.view.addSubview(self.viewPromocionRestaurante)
-                //viewPromocionRestaurante.center = self.view.center
-                self.viewPromocionRestaurante.center = CGPoint(x: 188, y: 280) //Tener en cuenta que estas medidas no serán igual en todos los iphones, tener en cuenta
+                self.viewPromocionRestaurante.center = self.visualEffectView.center
                 self.viewPromocionRestaurante.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
                 self.viewPromocionRestaurante.alpha = 0
                 

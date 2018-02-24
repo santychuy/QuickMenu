@@ -17,6 +17,7 @@
 		C457D38420154BDE000D8C1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C457D38320154BDE000D8C1F /* Assets.xcassets */; };
 		C457D38720154BDE000D8C1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C457D38520154BDE000D8C1F /* LaunchScreen.storyboard */; };
 		C45E342C202D0B2000263FA1 /* PruebasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45E342B202D0B2000263FA1 /* PruebasVC.swift */; };
+		C46B0CFD2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B0CFC2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift */; };
 		C46F97742036B03700F83D22 /* UnirteAQuickMenuPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F97732036B03700F83D22 /* UnirteAQuickMenuPageVC.swift */; };
 		C476C934202948B00003074C /* SeccionSeleccionadaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476C933202948B00003074C /* SeccionSeleccionadaVC.swift */; };
 		C476C93620294FC50003074C /* SeccionSeleccionadaTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476C93520294FC50003074C /* SeccionSeleccionadaTVCell.swift */; };
@@ -49,6 +50,7 @@
 		C457D38620154BDE000D8C1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C457D38820154BDE000D8C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C45E342B202D0B2000263FA1 /* PruebasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebasVC.swift; sourceTree = "<group>"; };
+		C46B0CFC2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaDireccionRestauranteVC.swift; sourceTree = "<group>"; };
 		C46F97732036B03700F83D22 /* UnirteAQuickMenuPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnirteAQuickMenuPageVC.swift; sourceTree = "<group>"; };
 		C476C933202948B00003074C /* SeccionSeleccionadaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeccionSeleccionadaVC.swift; sourceTree = "<group>"; };
 		C476C93520294FC50003074C /* SeccionSeleccionadaTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeccionSeleccionadaTVCell.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				C457D37C20154BDE000D8C1F /* AppDelegate.swift */,
 				C457D37E20154BDE000D8C1F /* ViewController.swift */,
 				C43F319520158ECF000E9924 /* LocalizarRestauranteVC.swift */,
+				C46B0CFC2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift */,
 				C4EED4E32020F22700E53139 /* SeccionesVC.swift */,
 				C476C933202948B00003074C /* SeccionSeleccionadaVC.swift */,
 				C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */,
@@ -330,6 +333,7 @@
 				C47A98F92037710A0028A90C /* Pagina2VC.swift in Sources */,
 				C47EB96620295F1A00BF9B2D /* Funciones.swift in Sources */,
 				C457D37F20154BDE000D8C1F /* ViewController.swift in Sources */,
+				C46B0CFD2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift in Sources */,
 				C47A98FB203771190028A90C /* Pagina3VC.swift in Sources */,
 				C4EE0E60201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift in Sources */,
 				C4EED4E72020F2A500E53139 /* SeccionTVCell.swift in Sources */,
