@@ -12,7 +12,7 @@ import SVProgressHUD
 import CoreLocation
 import Firebase
 
-class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
+class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
 
     
     @IBOutlet weak var imageLogo: UIImageView!
@@ -38,18 +38,19 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
         labelRefrescar.alpha = 0
         viewComponentes.alpha = 0
         btnRefrescar.alpha = 0
+    
         
-        pickerView.delegate = self
+        /*pickerView.delegate = self
         pickerView.dataSource = self
         
         textFieldRestaurante.inputView = pickerView
         createToolBar()
         
-        pickerView.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
+        pickerView.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)*/
         
         empezarConfigLocalizacion()
         
-        validarRestaurantes()
+        //validarRestaurantes()
         
         
     }
@@ -60,8 +61,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
         configNavBar()
         
         aparecerComponentes()
-        
-        textFieldRestaurante.text = ""
+    
         
     }
     
@@ -105,7 +105,6 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
         
         if textFieldRestaurante.text != "" {
             
-            Database.database().reference().removeAllObservers()
             performSegue(withIdentifier: "segueSeleccionarRestaurante-Menu", sender: nil)
             
         }else{
@@ -130,19 +129,17 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func btnRefrescar(_ sender: Any) {
         
-        SVProgressHUD.show(withStatus: "Actualizando restaurantes cercanos...")
+        SVProgressHUD.show(withStatus: "Actualizando restaurantes...")
         
         //
-        
-        Database.database().reference().removeAllObservers()
         
         restaurantesAMostrar.removeAll()
         
         textFieldRestaurante.text = ""
         
-        validarRestaurantes()
+        //validarRestaurantes()
         
-        pickerView.reloadAllComponents()
+        //pickerView.reloadAllComponents()
         
         //
         
@@ -288,6 +285,9 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate {
         }
         
     }
+    
+    
+    
     
     
 }

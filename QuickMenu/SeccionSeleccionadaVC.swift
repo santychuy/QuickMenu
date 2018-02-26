@@ -90,7 +90,7 @@ class SeccionSeleccionadaVC: UIViewController {
             
         }
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("menu").child(seccionSeleccionada!).removeAllObservers()
+        
         
     }
     
@@ -127,6 +127,7 @@ extension SeccionSeleccionadaVC: UITableViewDelegate, UITableViewDataSource {
             
             UIView.animate(withDuration: 1.3, animations: {
                 self.viewEmpty.alpha = 0
+                Database.database().reference().child("restaurantes").child(self.restauranteSeleccionado!).child("menu").child(self.seccionSeleccionada!).removeAllObservers()
             })
             
         }

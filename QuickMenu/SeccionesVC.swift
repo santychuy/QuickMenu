@@ -104,7 +104,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                     if let error = error {
                         // Uh-oh, an error occurred!
                         print("ERROR AQUI: \(error.localizedDescription)")
-        
+                        
                         //Segue para la eleccion del menu
                         self.performSegue(withIdentifier: "unwindSegueBuscarRestaurante", sender: self)
                         SVProgressHUD.showError(withStatus: "No se pudo cargar el menú completo, intentar más tarde este menú")
@@ -133,11 +133,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                 
             }
             
-            
         }
-        
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("menu").removeAllObservers()
-     
         
     }
     
@@ -259,40 +255,23 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("colorNavBar").observeSingleEvent(of: .value) { (snapshot) in
             
-                if let color = snapshot.value as? String {
-            
-                    print("El color sacado de la base de datos es: \(color)")
-                    
-                    let colorAplicar = UIColor(named: color)
-                    
-                    UIView.animate(withDuration: 2, animations: {
-                        self.navigationController?.navigationBar.barTintColor = colorAplicar
-                    })
-            
-                }else{
-                    print("No se sacó ningun color de la base de datos")
-                }
+            if let color = snapshot.value as? String {
+                
+                print("El color sacado de la base de datos es: \(color)")
+                
+                let colorAplicar = UIColor(named: color)
+                
+                UIView.animate(withDuration: 2, animations: {
+                    self.navigationController?.navigationBar.barTintColor = colorAplicar
+                })
+                
+            }else{
+                print("No se sacó ningun color de la base de datos")
+            }
             
         }
         
-        
-        /*Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("colorBackground").observeSingleEvent(of: .value) { (snapshot) in
-            
-            if let colorBackground = snapshot.value as? String {
-                
-                print("El color de fondo sacado de la base de datos es: \(colorBackground)")
-                
-                let aplicarColor = UIColor(named: colorBackground)
-                
-                self.tableViewSecciones.backgroundColor = aplicarColor
-                
-            }else {
-                
-                print("No se sacó ningun color de la base de datos")
-                
-            }
-            
-        }*/
+       
         
         
     }
@@ -523,6 +502,8 @@ extension SeccionesVC: UITableViewDelegate, UITableViewDataSource{
            
             UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
                 self.viewTVCVacio.alpha = 0
+
+                Database.database().reference().child("restaurantes").child(self.restauranteSeleccionado!).child("menu").removeAllObservers()
                 self.labelRestauranteFondo.alpha = 1
                 self.labelOpinion.alpha = 1
             }, completion: { (success) in
