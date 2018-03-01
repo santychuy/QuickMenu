@@ -20,11 +20,6 @@ class MenusTVCell: UITableViewCell {
     func setCell(menu: cellDatosMenu){
         
         
-        imageLogoRestaurante.layer.cornerRadius = imageLogoRestaurante.frame.size.width/2
-        imageLogoRestaurante.clipsToBounds = true
-        imageLogoRestaurante.contentMode = .scaleAspectFill
-        imageLogoRestaurante.layer.borderWidth = 1
-        imageLogoRestaurante.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         imageFondoRestaurante.contentMode = .scaleAspectFill
         imageFondoRestaurante.clipsToBounds = true

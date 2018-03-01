@@ -31,10 +31,6 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
     var restauranteSeleccionado:String?
     var seccionSeleccionada:String?
     
-    
-    
-
-    
 
     
     override func viewDidLoad() {
@@ -95,9 +91,13 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
                 
             } else { //Hubo exito
                 
-                let imagen = UIImage(data: data!)
+                DispatchQueue.main.async {
+                    
+                    let imagen = UIImage(data: data!)
+                    
+                    self.scrollView.auk.show(image: imagen!)
+                }
                 
-                self.scrollView.auk.show(image: imagen!)
                 
             }
             
@@ -114,9 +114,12 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
                 
             } else { //Hubo exito
                 
-                let imagen = UIImage(data: data!)
-                
-                self.scrollView.auk.show(image: imagen!)
+                DispatchQueue.main.async {
+                    
+                    let imagen = UIImage(data: data!)
+                    
+                    self.scrollView.auk.show(image: imagen!)
+                }
                 
             }
             
@@ -133,9 +136,12 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
                 
             } else { //Hubo exito
                 
-                let imagen = UIImage(data: data!)
-                
-                self.scrollView.auk.show(image: imagen!)
+                DispatchQueue.main.async {
+                    
+                    let imagen = UIImage(data: data!)
+                    
+                    self.scrollView.auk.show(image: imagen!)
+                }
                 
             }
             
@@ -148,7 +154,9 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
 
     func configNavBar() {
         
-        navigationItem.title = platilloSeleccionado
+        let platillo = platilloSeleccionado
+        navigationItem.title = platillo
+        
         
         let compartirBtn:UIButton = UIButton.init(type: .custom)
         compartirBtn.setImage(#imageLiteral(resourceName: "Share"), for: .normal)
@@ -161,15 +169,15 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
     
     @objc func compartirFunc(){
         
+        
         let indexFotoActual = scrollView.auk.currentPageIndex
         let imageFotoActual = scrollView.auk.images[indexFotoActual!]
         
         let activityItems:[Any] = [imageFotoActual,
-                                   labelNombrePlatillo.text!,
-                                   labelDescripcionPlatillo.text!]
+                                   "¡Checa desde QuickMenu el \(platilloSeleccionado!) del Restaurante \(restauranteSeleccionado!), descarga la app para ver platillos más detallados."]
         
         let avc = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-        
+   
         self.present(avc, animated: true, completion: nil)
         
     }

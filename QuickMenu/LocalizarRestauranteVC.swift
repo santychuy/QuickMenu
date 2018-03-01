@@ -10,14 +10,13 @@ import UIKit
 import TextFieldEffects
 import SVProgressHUD
 import CoreLocation
-import Firebase
+import FirebaseStorage
+import FirebaseDatabase
 
 class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
 
     
     @IBOutlet weak var imageLogo: UIImageView!
-    @IBOutlet weak var labelRefrescar: UILabel!
-    @IBOutlet weak var btnRefrescar: UIButton!
     @IBOutlet weak var viewComponentes: UIView!
     @IBOutlet weak var textFieldRestaurante: IsaoTextField!
     
@@ -35,18 +34,10 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        labelRefrescar.alpha = 0
         viewComponentes.alpha = 0
-        btnRefrescar.alpha = 0
-    
+        UIApplication.shared.isStatusBarHidden = false
+        UIApplication.shared.statusBarStyle = .lightContent
         
-        /*pickerView.delegate = self
-        pickerView.dataSource = self
-        
-        textFieldRestaurante.inputView = pickerView
-        createToolBar()
-        
-        pickerView.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)*/
         
         empezarConfigLocalizacion()
         
@@ -126,26 +117,6 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         
     }
     
-    
-    @IBAction func btnRefrescar(_ sender: Any) {
-        
-        SVProgressHUD.show(withStatus: "Actualizando restaurantes...")
-        
-        //
-        
-        restaurantesAMostrar.removeAll()
-        
-        textFieldRestaurante.text = ""
-        
-        //validarRestaurantes()
-        
-        //pickerView.reloadAllComponents()
-        
-        //
-        
-        SVProgressHUD.dismiss(withDelay: 2, completion: nil)
-        
-    }
     
     
     //---------------------------------------------------------------------------------
@@ -249,27 +220,11 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         
         UIView.animate(withDuration: 1) {
             self.viewComponentes.alpha = 1
-            self.aparecerLabel()
         }
         
     }
     
-    func aparecerLabel() {
-        
-        UIView.animate(withDuration: 1) {
-            self.labelRefrescar.alpha = 1
-            self.aparecerBtnRefrescar()
-        }
-        
-    }
     
-    func aparecerBtnRefrescar() {
-        
-        UIView.animate(withDuration: 1) {
-            self.btnRefrescar.alpha = 1
-        }
-        
-    }
     
     //----------------------------------------------------------------------
     
@@ -278,7 +233,14 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 21)!,
                                                                         NSAttributedStringKey.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.prefersLargeTitles = false
+        /*navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "STHeitiSC-Medium", size: 38)!,
+                                                                        NSAttributedStringKey.foregroundColor:UIColor.white]*/
+        
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationItem.largeTitleDisplayMode = .never
+        }
+    
         
         UIView.animate(withDuration: 0.5) {
             self.navigationController?.navigationBar.barTintColor = UIColor(named: "NavBar Default")
@@ -293,7 +255,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
 }
 
 
-
+//Para PickerView ejemplo
 extension LocalizarRestauranteVC: UIPickerViewDelegate, UIPickerViewDataSource {
    
     

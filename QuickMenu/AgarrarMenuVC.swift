@@ -29,7 +29,9 @@ class AgarrarMenuVC: UIViewController {
             
         }
         
+        configNavBar()
         agarrarRestaurantes()
+        
     }
 
     
@@ -74,14 +76,18 @@ class AgarrarMenuVC: UIViewController {
                         } else { //Hubo exito
                             print("Hubo exito al bajar la imagen 2")
                             
-                            imagenFondo = UIImage(data: data!)
+                            DispatchQueue.main.async {
+                                imagenFondo = UIImage(data: data!)
+                                
+                                let datosMenu = cellDatosMenu(imagenFondo: imagenFondo!, textoRest: restaurante, imagenLogo: imagenLogo!)
+                                
+                                self.restaurantesMenu.append(datosMenu)
+                                print(self.restaurantesMenu.count)
+                                
+                                self.tableViewMenu.reloadData()
+                            }
                             
-                            let datosMenu = cellDatosMenu(imagenFondo: imagenFondo!, textoRest: restaurante, imagenLogo: imagenLogo!)
                             
-                            self.restaurantesMenu.append(datosMenu)
-                            print(self.restaurantesMenu.count)
-                            
-                            self.tableViewMenu.reloadData()
                             
                         }
                         
@@ -95,7 +101,49 @@ class AgarrarMenuVC: UIViewController {
         
     }
     
+    func configNavBar(){
+        
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = "Restaurantes"
+        
+        configSearchBar()
+        configBtnRefrescar()
+        
+    }
     
+    @objc func refrescarMenu(){
+    
+        UIView.animate(withDuration: 0.5, delay: 0, options: .transitionCurlUp, animations: {
+            self.viewCargandoContenido.alpha = 1
+        }) { (finish) in
+            self.restaurantesMenu.removeAll()
+        }
+        
+        agarrarRestaurantes()
+        
+    }
+    
+    func configBtnRefrescar(){
+        
+        let compartirBtn:UIButton = UIButton.init(type: .custom)
+        compartirBtn.setImage(#imageLiteral(resourceName: "Refrescar"), for: .normal)
+        compartirBtn.addTarget(self, action: #selector(refrescarMenu), for: .touchUpInside)
+        compartirBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let compartirBtnBar = UIBarButtonItem(customView: compartirBtn)
+        
+        self.navigationItem.setRightBarButton(compartirBtnBar, animated: false)
+        
+    }
+    
+    func configSearchBar(){
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "Buscar Restaurante"
+        searchController.searchBar.tintColor = UIColor.white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        navigationItem.searchController = searchController
+        
+    }
     
 
 }
@@ -116,6 +164,7 @@ extension AgarrarMenuVC: UITableViewDelegate, UITableViewDataSource {
             
             UIView.animate(withDuration: 1, delay: 0, options: .transitionCurlUp, animations: {
                 self.viewCargandoContenido.alpha = 0
+                Database.database().reference()
             }, completion: nil)
             
         }

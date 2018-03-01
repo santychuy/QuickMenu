@@ -112,19 +112,21 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                         
                     } else { //Hubo exito
                         
-                        let imagen = UIImage(data: data!)
-                        
-                        let seccionn = cellDatos(textoSeccion: key, imagenSeccion: imagen!)
-                        
-                        //self.datosSeccion.arrayCellData.append(seccion)
-                        self.datosSeccion.arrayCellData.append(seccionn)
-                        //self.array?.append(seccionn)
-                        
-                        print(seccionn.textoSeccion!)
-                        print(seccionn.imagenSeccion!)
-                        print(self.datosSeccion.arrayCellData.count)
-                        
-                        self.tableViewSecciones.reloadData()
+                        DispatchQueue.main.async {
+                            let imagen = UIImage(data: data!)
+                            
+                            let seccionn = cellDatos(textoSeccion: key, imagenSeccion: imagen!)
+                            
+                            //self.datosSeccion.arrayCellData.append(seccion)
+                            self.datosSeccion.arrayCellData.append(seccionn)
+                            //self.array?.append(seccionn)
+                            
+                            print(seccionn.textoSeccion!)
+                            print(seccionn.imagenSeccion!)
+                            print(self.datosSeccion.arrayCellData.count)
+                            
+                            self.tableViewSecciones.reloadData()
+                        }
                         
                         
                     }
@@ -240,6 +242,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     func configNavBar() {
         
         navigationItem.title = "Menú"
+        navigationItem.largeTitleDisplayMode = .always
         
         let compartirBtn:UIButton = UIButton.init(type: .custom)
         compartirBtn.setImage(#imageLiteral(resourceName: "Mapa"), for: .normal)
@@ -278,7 +281,9 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     
     @objc func irAMapa(){
         
+        
         performSegue(withIdentifier: "segue-direccionRestaurante", sender: nil)
+        
         
     }
     
@@ -559,6 +564,10 @@ extension SeccionesVC: UITableViewDelegate, UITableViewDataSource{
         if let destination = segue.destination as? SeccionSeleccionadaVC {
             destination.seccionSeleccionada = datosSeccion.arrayCellData[(tableViewSecciones.indexPathForSelectedRow?.row)!].textoSeccion
             destination.restauranteSeleccionado = restauranteSeleccionado
+        }else if let destinationMapa = segue.destination as? MapaDireccionRestauranteVC {
+            
+            destinationMapa.restauranteSeleccionado = restauranteSeleccionado
+            
         }
     }
     

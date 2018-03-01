@@ -27,9 +27,9 @@
 		C47A98FB203771190028A90C /* Pagina3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A98FA203771190028A90C /* Pagina3VC.swift */; };
 		C47EB96620295F1A00BF9B2D /* Funciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB96520295F1A00BF9B2D /* Funciones.swift */; };
 		C47EB9682029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */; };
+		C48BE61220472F6700691463 /* VideoIntro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C48BE61120472F6600691463 /* VideoIntro.mp4 */; };
 		C49969722043641C0057326F /* AgarrarMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49969712043641C0057326F /* AgarrarMenuVC.swift */; };
 		C4AB28D420239A7D00F0CCCB /* DatosSeccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */; };
-		C4C8C59320223E7D00496404 /* VideoIntro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C4C8C59220223E7D00496404 /* VideoIntro.mp4 */; };
 		C4EE0E5E201A81B0009CDB7C /* DBReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EE0E5D201A81B0009CDB7C /* DBReference.swift */; };
 		C4EE0E60201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EE0E5F201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift */; };
 		C4EED4E42020F22700E53139 /* SeccionesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EED4E32020F22700E53139 /* SeccionesVC.swift */; };
@@ -62,9 +62,9 @@
 		C47A98FA203771190028A90C /* Pagina3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina3VC.swift; sourceTree = "<group>"; };
 		C47EB96520295F1A00BF9B2D /* Funciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funciones.swift; sourceTree = "<group>"; };
 		C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatilloSeleccionadoTVC.swift; sourceTree = "<group>"; };
+		C48BE61120472F6600691463 /* VideoIntro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = VideoIntro.mp4; path = "../../../../../Diseños/Diseño QuickDelivery/VideoIntro.mp4"; sourceTree = "<group>"; };
 		C49969712043641C0057326F /* AgarrarMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgarrarMenuVC.swift; sourceTree = "<group>"; };
 		C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosSeccion.swift; sourceTree = "<group>"; };
-		C4C8C59220223E7D00496404 /* VideoIntro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = VideoIntro.mp4; sourceTree = "<group>"; };
 		C4EE0E5D201A81B0009CDB7C /* DBReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBReference.swift; sourceTree = "<group>"; };
 		C4EE0E5F201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosLocalizarRestaurante.swift; sourceTree = "<group>"; };
 		C4EED4E32020F22700E53139 /* SeccionesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeccionesVC.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 				C457D38520154BDE000D8C1F /* LaunchScreen.storyboard */,
 				C43F318B20156DEA000E9924 /* GoogleService-Info.plist */,
 				C457D38820154BDE000D8C1F /* Info.plist */,
-				C4C8C59220223E7D00496404 /* VideoIntro.mp4 */,
+				C48BE61120472F6600691463 /* VideoIntro.mp4 */,
 			);
 			path = QuickMenu;
 			sourceTree = "<group>";
@@ -248,9 +248,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4C8C59320223E7D00496404 /* VideoIntro.mp4 in Resources */,
 				C457D38720154BDE000D8C1F /* LaunchScreen.storyboard in Resources */,
 				C43F318C20156DEA000E9924 /* GoogleService-Info.plist in Resources */,
+				C48BE61220472F6700691463 /* VideoIntro.mp4 in Resources */,
 				C457D38420154BDE000D8C1F /* Assets.xcassets in Resources */,
 				C457D38220154BDE000D8C1F /* Main.storyboard in Resources */,
 			);
@@ -275,6 +275,7 @@
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/moa/moa.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -287,6 +288,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
