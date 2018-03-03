@@ -23,6 +23,7 @@ class AgarrarMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if restaurantesMenu.count == 0{
             
             self.viewCargandoContenido.isHidden = false
@@ -103,7 +104,7 @@ class AgarrarMenuVC: UIViewController {
     
     func configNavBar(){
         
-        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.title = "Restaurantes"
         
         configSearchBar()

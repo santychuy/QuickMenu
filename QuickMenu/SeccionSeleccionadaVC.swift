@@ -101,7 +101,6 @@ class SeccionSeleccionadaVC: UIViewController {
         
         navigationItem.title = seccionSeleccionada
         
-        
     }
 
 

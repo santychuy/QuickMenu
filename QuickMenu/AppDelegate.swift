@@ -20,6 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //Config. Ventana Principal
+        /*window = UIWindow(frame: UIScreen.main.bounds)
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        var initialVC = sb.instantiateViewController(withIdentifier: "OnBoarding")
+        
+        let userDefaults = UserDefaults.standard
+        
+        if userDefaults.bool(forKey: "onBoardingComplete") {
+            
+            initialVC = sb.instantiateViewController(withIdentifier: "QuickMenuApp")
+            
+        }
+        
+        window?.rootViewController = initialVC
+        window?.makeKeyAndVisible()*/
+        
+        
         //Config. Firebase
         FirebaseApp.configure()
         

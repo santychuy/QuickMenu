@@ -242,7 +242,11 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     func configNavBar() {
         
         navigationItem.title = "Menú"
-        navigationItem.largeTitleDisplayMode = .always
+        
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .always
+        }
         
         let compartirBtn:UIButton = UIButton.init(type: .custom)
         compartirBtn.setImage(#imageLiteral(resourceName: "Mapa"), for: .normal)

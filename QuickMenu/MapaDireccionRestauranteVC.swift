@@ -64,6 +64,9 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
         mapaRestaurante.isPitchEnabled = true
         mapaRestaurante.isScrollEnabled = true
         
+        mapaRestaurante.userLocation.title = nil
+        
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -117,31 +120,41 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        let alertView = UIAlertController(title: "¿Cómo llegar al Restaurante?", message: "¿Quieres ver cómo llegar a tu restaurante?", preferredStyle: .actionSheet)
-        
-        let irMapas = UIAlertAction(title: "Ir a Mapas", style: .default) { (action) in
+        if (view.annotation?.title)! != nil {
             
-            let regionDistance:CLLocationDistance = 1000
+            let alertView = UIAlertController(title: "¿Cómo llegar al Restaurante?", message: "¿Quieres ver cómo llegar a tu restaurante?", preferredStyle: .actionSheet)
             
-            let regionSpan = MKCoordinateRegionMakeWithDistance(self.restauranteLocalizacion, regionDistance, regionDistance)
+            let irMapas = UIAlertAction(title: "Ir a Mapas", style: .default) { (action) in
+                
+                let regionDistance:CLLocationDistance = 1000
+                
+                let regionSpan = MKCoordinateRegionMakeWithDistance(self.restauranteLocalizacion, regionDistance, regionDistance)
+                
+                let option = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+                
+                let placemark = MKPlacemark(coordinate: self.restauranteLocalizacion)
+                let mapItem = MKMapItem(placemark: placemark)
+                mapItem.name = self.restauranteSeleccionado
+                mapItem.openInMaps(launchOptions: option)
+                
+            }
             
-            let option = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+            let cancelar = UIAlertAction(title: "Cancelar", style: .cancel) { (action) in
+                alertView.dismiss(animated: true, completion: nil)
+            }
             
-            let placemark = MKPlacemark(coordinate: self.restauranteLocalizacion)
-            let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = self.restauranteSeleccionado
-            mapItem.openInMaps(launchOptions: option)
+            alertView.addAction(irMapas)
+            alertView.addAction(cancelar)
+            
+            present(alertView, animated: true, completion: nil)
+            
+        }else{
+            
+            print("Presionando User's location")
             
         }
         
-        let cancelar = UIAlertAction(title: "Cancelar", style: .cancel) { (action) in
-            alertView.dismiss(animated: true, completion: nil)
-        }
         
-        alertView.addAction(irMapas)
-        alertView.addAction(cancelar)
-        
-        present(alertView, animated: true, completion: nil)
         
     }
     
@@ -161,7 +174,7 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
         
         //Agarrar coodenadas del restaurante, y si son varias franquicias, pues poner un actionsheet para dar a elegir
         
-        let regionRestaurante = MKCoordinateRegion(center: restauranteLocalizacion, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        let regionRestaurante = MKCoordinateRegion(center: restauranteLocalizacion, span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04))
         
         self.mapaRestaurante.setRegion(regionRestaurante, animated: true)
         

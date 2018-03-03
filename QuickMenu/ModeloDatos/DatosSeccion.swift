@@ -55,6 +55,23 @@ class cellDatosMenu{
 }
 
 
+class cellCollectionDatosMenu{
+    
+    
+    var imagenRestauranteFondo:UIImage?
+    var textoRestaurante:String?
+    var imagenLogo:UIImage?
+    
+    init(imagenRestauranteFondo:UIImage, textoRestaurante:String, imagenLogo:UIImage) {
+        self.imagenRestauranteFondo = imagenRestauranteFondo
+        self.textoRestaurante = textoRestaurante
+        self.imagenLogo = imagenLogo
+    }
+    
+    
+}
+
+
 
 
 

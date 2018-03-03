@@ -39,7 +39,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         UIApplication.shared.statusBarStyle = .lightContent
         
         
-        empezarConfigLocalizacion()
+        //empezarConfigLocalizacion()
         
         //validarRestaurantes()
         
@@ -135,7 +135,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
     }
     
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    /*func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let location = self.locationManager.location?.coordinate {
             
@@ -156,7 +156,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Falló al localizar tus coords, \(error.localizedDescription)")
-    }
+    }*/
     
     //------------------------------------------------------------------------------------------------
     
@@ -233,12 +233,13 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 21)!,
                                                                         NSAttributedStringKey.foregroundColor:UIColor.white]
-        /*navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "STHeitiSC-Medium", size: 38)!,
-                                                                        NSAttributedStringKey.foregroundColor:UIColor.white]*/
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Heavy", size: 36)!,
+                                                                        NSAttributedStringKey.foregroundColor:UIColor.white]
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .never
+            navigationController?.navigationBar.isTranslucent = true
         }
     
         

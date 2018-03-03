@@ -44,6 +44,7 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
         configImageSettings()
         configImageZoom()
         
+        
     }
 
  
@@ -157,7 +158,6 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
         let platillo = platilloSeleccionado
         navigationItem.title = platillo
         
-        
         let compartirBtn:UIButton = UIButton.init(type: .custom)
         compartirBtn.setImage(#imageLiteral(resourceName: "Share"), for: .normal)
         compartirBtn.addTarget(self, action: #selector(compartirFunc), for: .touchUpInside)
@@ -174,7 +174,7 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
         let imageFotoActual = scrollView.auk.images[indexFotoActual!]
         
         let activityItems:[Any] = [imageFotoActual,
-                                   "¡Checa desde QuickMenu el \(platilloSeleccionado!) del Restaurante \(restauranteSeleccionado!), descarga la app para ver platillos más detallados."]
+                                   "¡Checa desde QuickMenu el \(platilloSeleccionado!) del Restaurante \(restauranteSeleccionado!), descarga la app para ver el platillo más detallados."]
         
         let avc = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
    
