@@ -21,7 +21,6 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var labelNombrePlatillo: UILabel!
     @IBOutlet weak var labelDescripcionPlatillo: UILabel!
     @IBOutlet weak var labelPrecio: UILabel!
     @IBOutlet weak var imageLogoEmpty1: UIImageView!
@@ -58,7 +57,7 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
         
             if let dicPlatillo = snapshot.value as? [String:Any] {
             
-                self.labelNombrePlatillo.text = dicPlatillo["nombre"] as? String
+                //self.labelNombrePlatillo.text = dicPlatillo["nombre"] as? String
                 self.labelDescripcionPlatillo.text = dicPlatillo["descp"] as? String
                 self.labelPrecio.text = dicPlatillo["precio"] as? String
             

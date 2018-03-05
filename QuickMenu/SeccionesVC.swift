@@ -260,13 +260,13 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         //navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("colorNavBar").observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("mainHexColor").observeSingleEvent(of: .value) { (snapshot) in
             
             if let color = snapshot.value as? String {
                 
                 print("El color sacado de la base de datos es: \(color)")
                 
-                let colorAplicar = UIColor(named: color)
+                let colorAplicar = UIColor().colorFromHex(color)
                 
                 UIView.animate(withDuration: 2, animations: {
                     self.navigationController?.navigationBar.barTintColor = colorAplicar
