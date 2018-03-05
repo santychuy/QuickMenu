@@ -40,6 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Config. Firebase
         FirebaseApp.configure()
         
+        //Config. AdMob
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-7391736686492116~5717081292")
+        
         //Config. Teclado
         IQKeyboardManager.sharedManager().enable = true
         

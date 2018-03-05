@@ -15,6 +15,14 @@ class RestauranteCVCell: UICollectionViewCell {
     @IBOutlet weak var labelRestaurante: UILabel!
     @IBOutlet weak var imageLogo: UIImageView!
     
+    @IBOutlet weak var labelRestauranteDetalles: UILabel!
+    @IBOutlet weak var imageLogoDetalles: UIImageView!
+    @IBOutlet weak var labelDetalles: UILabel!
+    @IBOutlet weak var scrollViewImagenesDetalles: UIScrollView!
+    
+    var pasar = false
+    
+    
     func setCell(menu: cellCollectionDatosMenu){
         
         imageRestauranteFondo.contentMode = .scaleAspectFill
@@ -31,6 +39,11 @@ class RestauranteCVCell: UICollectionViewCell {
         imageLogo.image = menu.imagenLogo
         labelRestaurante.text = menu.textoRestaurante
         
+        //Declarar componentes de detalles
+        labelRestauranteDetalles.text = menu.textoRestaurante
+        imageLogoDetalles.image = menu.imagenLogo
+        labelDetalles.text = menu.descripcionRestaurante
+        
     }
     
     override func layoutSubviews() {
@@ -43,6 +56,47 @@ class RestauranteCVCell: UICollectionViewCell {
         
         self.clipsToBounds = false
     }
+    
+    @IBAction func btnDetalles(_ sender: UIButton) {
+        
+        if pasar == false {
+            
+            UIView.animate(withDuration: 0.3) {
+                self.imageLogo.alpha = 0
+                self.labelRestaurante.alpha = 0
+            }
+            
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+                self.imageLogoDetalles.alpha = 1
+                self.labelDetalles.alpha = 1
+                self.labelRestauranteDetalles.alpha = 1
+                self.scrollViewImagenesDetalles.alpha = 1
+            }, completion: { (completed) in
+                self.pasar = true
+            })
+            
+        }else {
+            
+            UIView.animate(withDuration: 0.3) {
+                self.imageLogoDetalles.alpha = 0
+                self.labelDetalles.alpha = 0
+                self.labelRestauranteDetalles.alpha = 0
+                self.scrollViewImagenesDetalles.alpha = 0
+            }
+            
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+                self.imageLogo.alpha = 1
+                self.labelRestaurante.alpha = 1
+            }, completion: { (completed) in
+                self.pasar = false
+            })
+            
+        }
+        
+        
+        
+    }
+    
     
     
     

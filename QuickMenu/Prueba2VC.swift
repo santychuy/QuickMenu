@@ -35,7 +35,7 @@ class Prueba2VC: UIViewController {
         }
         
         agarrarRestaurantes()
-        //configCollection()
+        configBtnRefrescar()
         
     }
     
@@ -67,11 +67,7 @@ class Prueba2VC: UIViewController {
         
     }
 
-    @IBAction func btnMasInfo(_ sender: Any) {
-        
-        
-        
-    }
+    
     
     func agarrarRestaurantes(){
         
@@ -83,6 +79,12 @@ class Prueba2VC: UIViewController {
             let restaurante = snapshot.key
             var imagenLogo:UIImage?
             var imagenFondo:UIImage?
+            var descpRest:String?
+            
+            let dic = snapshot.value as? [String:Any]
+            
+            descpRest = dic!["descpRestaurante"] as? String
+            
             //Agregar todos los datos necesarios del cellDatosMenu
             
             let referenceImage1 = Storage.storage().reference().child("\(restaurante)/LogoBienvenida.png")
@@ -116,7 +118,7 @@ class Prueba2VC: UIViewController {
                             DispatchQueue.main.async {
                                 imagenFondo = UIImage(data: data!)
                                 
-                                let datosMenu = cellCollectionDatosMenu(imagenRestauranteFondo: imagenFondo!, textoRestaurante: restaurante, imagenLogo: imagenLogo!)
+                                let datosMenu = cellCollectionDatosMenu(imagenRestauranteFondo: imagenFondo!, textoRestaurante: restaurante, imagenLogo: imagenLogo!, descripcionRestaurante: descpRest!)
                                 
                                 self.restaurantesMenu.append(datosMenu)
                                 print(self.restaurantesMenu.count)
@@ -135,6 +137,30 @@ class Prueba2VC: UIViewController {
             }
             
         }
+        
+    }
+    
+    @objc func refrescarMenu(){
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .transitionCurlUp, animations: {
+            self.viewCargando.alpha = 1
+        }) { (finish) in
+            self.restaurantesMenu.removeAll()
+        }
+        
+        agarrarRestaurantes()
+        
+    }
+    
+    func configBtnRefrescar(){
+        
+        let compartirBtn:UIButton = UIButton.init(type: .custom)
+        compartirBtn.setImage(#imageLiteral(resourceName: "Refrescar"), for: .normal)
+        compartirBtn.addTarget(self, action: #selector(refrescarMenu), for: .touchUpInside)
+        compartirBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let compartirBtnBar = UIBarButtonItem(customView: compartirBtn)
+        
+        self.navigationItem.setRightBarButton(compartirBtnBar, animated: false)
         
     }
     

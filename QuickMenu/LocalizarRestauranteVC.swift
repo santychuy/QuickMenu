@@ -12,6 +12,7 @@ import SVProgressHUD
 import CoreLocation
 import FirebaseStorage
 import FirebaseDatabase
+import StoreKit
 
 class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
 
@@ -52,6 +53,8 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         configNavBar()
         
         aparecerComponentes()
+        
+        //SKStoreReviewController.requestReview()
     
         
     }
@@ -156,7 +159,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Falló al localizar tus coords, \(error.localizedDescription)")
-    }*/
+    }
     
     //------------------------------------------------------------------------------------------------
     
@@ -206,7 +209,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         }
     
         
-    }
+    }*/
     
     @IBAction func prepareUnwindLocalizarRestauranteVC (segue:UIStoryboardSegue){
         

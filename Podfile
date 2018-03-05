@@ -16,5 +16,6 @@ target 'QuickMenu' do
 	pod 'moa', '~> 9.0'
 	pod 'Auk', '~> 8.0'
 	pod 'paper-onboarding'
+	pod 'Google-Mobile-Ads-SDK'
 
 end

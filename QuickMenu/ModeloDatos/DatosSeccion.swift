@@ -61,11 +61,13 @@ class cellCollectionDatosMenu{
     var imagenRestauranteFondo:UIImage?
     var textoRestaurante:String?
     var imagenLogo:UIImage?
+    var descripcionRestaurante:String?
     
-    init(imagenRestauranteFondo:UIImage, textoRestaurante:String, imagenLogo:UIImage) {
+    init(imagenRestauranteFondo:UIImage, textoRestaurante:String, imagenLogo:UIImage, descripcionRestaurante:String) {
         self.imagenRestauranteFondo = imagenRestauranteFondo
         self.textoRestaurante = textoRestaurante
         self.imagenLogo = imagenLogo
+        self.descripcionRestaurante = descripcionRestaurante
     }
     
     

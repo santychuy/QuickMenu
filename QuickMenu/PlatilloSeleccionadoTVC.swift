@@ -16,7 +16,7 @@ private let headerHeight:CGFloat = 265
 private let headerCut: CGFloat = 50
 
 
-class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegate {
+class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegate, GADBannerViewDelegate {
 
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -25,6 +25,9 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
     @IBOutlet weak var labelPrecio: UILabel!
     @IBOutlet weak var imageLogoEmpty1: UIImageView!
     @IBOutlet weak var imageLogoEmpty2: UIImageView!
+    
+    @IBOutlet weak var viewAd: GADBannerView!
+    
     
     var platilloSeleccionado:String?
     var restauranteSeleccionado:String?
@@ -38,6 +41,7 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
         // Do any additional setup after loading the view.
         
         configNavBar()
+        cargarAd()
         descargarImagenesADesplegar()
         queryDetallesPlatillo()
         configImageSettings()
@@ -65,10 +69,34 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
         
         }
         
-
+    }
+    
+    func cargarAd(){
+       
+        
+        let request = GADRequest()
+        request.testDevices = ["b0b4b49615fe4f20dec0ed0643b80e67"]
+        
+        viewAd.adUnitID = "ca-app-pub-7391736686492116/1203121218"
+        viewAd.rootViewController = self
+        viewAd.delegate = self
+        
+        viewAd.load(request)
+        
         
         
     }
+    
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        
+        viewAd.alpha = 0
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .transitionFlipFromTop, animations: {
+            self.viewAd.alpha = 1
+        }, completion: nil)
+    }
+    
+    
     
     
     func descargarImagenesADesplegar(){
