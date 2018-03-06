@@ -15,6 +15,8 @@ class Prueba2VC: UIViewController {
     
     var restaurantesMenu = [cellCollectionDatosMenu]()
     
+    let cellScaling: CGFloat = 0.6
+    
     @IBOutlet weak var collectionViewRestaurantes: UICollectionView!
     @IBOutlet weak var viewCargando: UIView!
     
@@ -24,6 +26,8 @@ class Prueba2VC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        configCollection()
         
         collectionViewRestaurantes.delegate = self
         collectionViewRestaurantes.dataSource = self
@@ -39,7 +43,6 @@ class Prueba2VC: UIViewController {
         
     }
     
-    let cellScaling: CGFloat = 0.6
     
     func configCollection(){
         
@@ -47,8 +50,8 @@ class Prueba2VC: UIViewController {
         let cellWidth = floor(scrennSize.width * cellScaling)
         let cellHeight = floor(scrennSize.height * cellScaling)
         
-        let insetX = (view.bounds.width) / 2.0
-        let insetY = (view.bounds.height) / 2.0
+        let insetX = (view.bounds.width - cellWidth) / 2.0
+        let insetY = (view.bounds.height - cellHeight) / 2.0
         
         let layout = collectionViewRestaurantes.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)

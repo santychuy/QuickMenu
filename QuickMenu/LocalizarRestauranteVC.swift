@@ -39,6 +39,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         UIApplication.shared.isStatusBarHidden = false
         UIApplication.shared.statusBarStyle = .lightContent
         
+        aparecerComponentes()
         
         //empezarConfigLocalizacion()
         
@@ -52,8 +53,6 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         
         configNavBar()
         
-        aparecerComponentes()
-        
         //SKStoreReviewController.requestReview()
     
         
@@ -64,7 +63,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
     
     //MARK: - Funciones y config. del Toolbar
     
-    func createToolBar() {
+    /*func createToolBar() {
         
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -86,7 +85,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         
         view.endEditing(true)
         
-    }
+    }*/
     
    //----------------------------------------------------------------------------------------
     
@@ -128,14 +127,14 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
     
     //MARK: - Funciones para localizar
     
-    func empezarConfigLocalizacion() {
+    /*func empezarConfigLocalizacion() {
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
-    }
+    }*/
     
     
     /*func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -260,7 +259,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
 
 
 //Para PickerView ejemplo
-extension LocalizarRestauranteVC: UIPickerViewDelegate, UIPickerViewDataSource {
+/*extension LocalizarRestauranteVC: UIPickerViewDelegate, UIPickerViewDataSource {
    
     
     
@@ -311,7 +310,7 @@ extension LocalizarRestauranteVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
     
     
-}
+}*/
 
 
 

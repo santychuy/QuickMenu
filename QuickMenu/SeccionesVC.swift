@@ -75,7 +75,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         queryDatosSeccion()
         
         //Delay para la aparicion de las promociones
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
             self.setupAnimacionPromocion()
         })
         
@@ -268,7 +268,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                 
                 let colorAplicar = UIColor().colorFromHex(color)
                 
-                UIView.animate(withDuration: 2, animations: {
+                UIView.animate(withDuration: 5, animations: {
                     self.navigationController?.navigationBar.barTintColor = colorAplicar
                 })
                 
@@ -536,12 +536,6 @@ extension SeccionesVC: UITableViewDelegate, UITableViewDataSource{
             
             
         }
-        
-        let backgroundColor = UIView()
-        backgroundColor.backgroundColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
-        cell.selectedBackgroundView = backgroundColor
-        
-        
         
         return cell
         
