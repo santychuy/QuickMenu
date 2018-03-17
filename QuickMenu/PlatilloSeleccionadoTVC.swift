@@ -32,6 +32,7 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
     var platilloSeleccionado:String?
     var restauranteSeleccionado:String?
     var seccionSeleccionada:String?
+    var categoriaSeleccionada:String?
     
 
     
@@ -52,9 +53,20 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
 
  
     func queryDetallesPlatillo() {
-    
-        
-    Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("menu").child(seccionSeleccionada!).child(platilloSeleccionado!).observeSingleEvent(of: .value) { (snapshot) in
+    Database.database().reference().child("restaurantes").child("categorias").child(categoriaSeleccionada!).child(restauranteSeleccionado!).child("menu").child(seccionSeleccionada!).child(platilloSeleccionado!).observeSingleEvent(of: .value) { (snapshot) in
+            
+            print(snapshot)
+            
+            if let dicPlatillo = snapshot.value as? [String:Any] {
+                
+                //self.labelNombrePlatillo.text = dicPlatillo["nombre"] as? String
+                self.labelDescripcionPlatillo.text = dicPlatillo["descp"] as? String
+                self.labelPrecio.text = dicPlatillo["precio"] as? String
+                
+            }
+            
+        }
+    /*Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("menu").child(seccionSeleccionada!).child(platilloSeleccionado!).observeSingleEvent(of: .value) { (snapshot) in
         
         
             print(snapshot)
@@ -67,7 +79,7 @@ class PlatilloSeleccionadoTVC: UITableViewController, UIGestureRecognizerDelegat
             
             }
         
-        }
+        }*/
         
     }
     

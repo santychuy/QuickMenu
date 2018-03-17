@@ -35,6 +35,8 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
     let review = storeKitFunc()
     let hayInternet = checarInternetFunc()
     
+    var categoriaRecibir:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -134,6 +136,7 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         if let destination = segue.destination as? SeccionesVC {
             
             destination.restauranteSeleccionado = textFieldRestaurante.text
+            destination.validarCategoria = categoriaRecibir
             
         }
         

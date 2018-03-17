@@ -25,7 +25,7 @@ class InfoQuickMenuVC: UIViewController, MFMailComposeViewControllerDelegate {
 
         // Do any additional setup after loading the view.
         
-        setInfoBtn()
+        configNavBar()
         viewPaperOnboarding.alpha = 0
         btnEmail.alpha = 0
         btnInstagram.alpha = 0
@@ -39,6 +39,13 @@ class InfoQuickMenuVC: UIViewController, MFMailComposeViewControllerDelegate {
         viewPaperOnboarding.delegate = self
     }
 
+    
+    func configNavBar(){
+        
+        navigationItem.largeTitleDisplayMode = .never
+        setInfoBtn()
+        
+    }
     
     func setInfoBtn(){
         

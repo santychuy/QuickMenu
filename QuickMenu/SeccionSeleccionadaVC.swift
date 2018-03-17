@@ -18,6 +18,7 @@ class SeccionSeleccionadaVC: UIViewController {
     
     var seccionSeleccionada:String?
     var restauranteSeleccionado:String?
+    var categoriaRecibida2:String?
     
     var datosSeccion = DatosSeccion()
     
@@ -42,7 +43,7 @@ class SeccionSeleccionadaVC: UIViewController {
     
     func queryDatosSeccionSeleccionada() {
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("menu").child(seccionSeleccionada!).observe(.childAdded) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(categoriaRecibida2!).child(restauranteSeleccionado!).child("menu").child(seccionSeleccionada!).observe(.childAdded) { (snapshot) in
             
             SVProgressHUD.show()
             
@@ -91,6 +92,55 @@ class SeccionSeleccionadaVC: UIViewController {
             }
             
         }
+        /*Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("menu").child(seccionSeleccionada!).observe(.childAdded) { (snapshot) in
+            
+            SVProgressHUD.show()
+            
+            let seccionSeleccionada2 = [snapshot.key]
+            print("\(seccionSeleccionada2) en queryDatosSeccionSeleccionada")
+            
+            for key in seccionSeleccionada2 {
+                
+                print(seccionSeleccionada2, "En descargar Imagenes")
+                
+                let referenceImage = Storage.storage().reference().child("\(self.restauranteSeleccionado!)/menu/\(self.seccionSeleccionada!)/\(key)/\(key).jpg")
+                
+                referenceImage.getData(maxSize: 1 * 2048 * 2048, completion: { (data, error) in
+                    
+                    if let error = error {
+                        // Uh-oh, an error occurred!
+                        print("ERROR AQUI: \(error.localizedDescription)")
+                        SVProgressHUD.showError(withStatus: "No se pudieron cargar las imagenes, intentar más tarde este menú")
+                        //Segue para la eleccion del menu
+                        self.performSegue(withIdentifier: "unwindSegueBuscarRestaurante", sender: self)
+                        return ()
+                        
+                    } else { //Hubo exito
+                        
+                        DispatchQueue.main.async {
+                            let imagen = UIImage(data: data!)
+                            
+                            let seccionn = cellDatos(textoSeccion: key, imagenSeccion: imagen!)
+                            
+                            //self.datosSeccion.arrayCellData.append(seccion)
+                            self.datosSeccion.arrayCellData.append(seccionn)
+                            //self.array?.append(seccionn)
+                            
+                            print(seccionn.textoSeccion!)
+                            print(seccionn.imagenSeccion!)
+                            print(self.datosSeccion.arrayCellData.count)
+                            
+                            self.tableViewSeccionSeleccionada.reloadData()
+                        }
+                        
+                        
+                    }
+                    
+                })
+                
+            }
+            
+        }*/
         
         
         
@@ -128,7 +178,8 @@ extension SeccionSeleccionadaVC: UITableViewDelegate, UITableViewDataSource {
             
             UIView.animate(withDuration: 1.3, animations: {
                 self.viewEmpty.alpha = 0
-                Database.database().reference().child("restaurantes").child(self.restauranteSeleccionado!).child("menu").child(self.seccionSeleccionada!).removeAllObservers()
+                //Database.database().reference().child("restaurantes").child(self.restauranteSeleccionado!).child("menu").child(self.seccionSeleccionada!).removeAllObservers()
+                Database.database().reference().child("restaurantes").child("categorias").child(self.categoriaRecibida2!).child(self.restauranteSeleccionado!).child("menu").child(self.seccionSeleccionada!).removeAllObservers()
             })
             
         }
@@ -158,6 +209,7 @@ extension SeccionSeleccionadaVC: UITableViewDelegate, UITableViewDataSource {
             destination.platilloSeleccionado = datosSeccion.arrayCellData[(tableViewSeccionSeleccionada.indexPathForSelectedRow?.row)!].textoSeccion
             destination.restauranteSeleccionado = restauranteSeleccionado
             destination.seccionSeleccionada = seccionSeleccionada
+            destination.categoriaSeleccionada = categoriaRecibida2
             
         }
     }

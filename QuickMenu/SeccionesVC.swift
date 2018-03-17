@@ -49,6 +49,8 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     var telefonoRestaurante = String()
     var horarioRestaurante = String()
     
+    var validarCategoria:String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +90,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     
     func queryDatosSeccion() {
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("menu").observe(.childAdded) { (snapshot) in
+    Database.database().reference().child("restaurantes").child("categorias").child(validarCategoria!).child(restauranteSeleccionado!).child("menu").observe(.childAdded) { (snapshot) in
             
             SVProgressHUD.show()
             
@@ -141,11 +143,64 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
             
         }
         
+        /*Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("menu").observe(.childAdded) { (snapshot) in
+            
+            SVProgressHUD.show()
+            
+            let seccion = [snapshot.key]
+            print("\(seccion) en queryDatosSeccion")
+            
+            
+            for key in seccion {
+                
+                print(seccion, "En descargar Imagenes")
+                
+                //Aquí nos enfocaremos para que saque todas las imagenes de las secciones, luego hacer de descargar varias imagenes, y desplegarlas
+                let referenceImage = Storage.storage().reference().child("\(self.restauranteSeleccionado!)/secciones/\(key)/\(key).jpg")
+                
+                referenceImage.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+                    
+                    if let error = error {
+                        // Uh-oh, an error occurred!
+                        print("ERROR AQUI: \(error.localizedDescription)")
+                        
+                        //Segue para la eleccion del menu
+                        self.performSegue(withIdentifier: "unwindSegueBuscarRestaurante", sender: self)
+                        SVProgressHUD.showError(withStatus: "No se pudo cargar el menú completo, intentar más tarde este menú")
+                        return ()
+                        
+                    } else { //Hubo exito
+                        
+                        DispatchQueue.main.async {
+                            let imagen = UIImage(data: data!)
+                            
+                            let seccionn = cellDatos(textoSeccion: key, imagenSeccion: imagen!)
+                            
+                            //self.datosSeccion.arrayCellData.append(seccion)
+                            self.datosSeccion.arrayCellData.append(seccionn)
+                            //self.array?.append(seccionn)
+                            
+                            print(seccionn.textoSeccion!)
+                            print(seccionn.imagenSeccion!)
+                            print(self.datosSeccion.arrayCellData.count)
+                            
+                            self.tableViewSecciones.reloadData()
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }*/
+        
     }
     
     func fetchHorario(){
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("horario").observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(validarCategoria!).child(restauranteSeleccionado!).child("horario").observeSingleEvent(of: .value) { (snapshot) in
             
             if let horario = snapshot.value as? String{
                 
@@ -292,7 +347,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         let fixedSpace2:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
         fixedSpace2.width = 17.0
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("numeroTelefonico").observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(validarCategoria!).child(restauranteSeleccionado!).child("numeroTelefonico").observeSingleEvent(of: .value) { (snapshot) in
             
             if let telefono = snapshot.value as? String {
                 
@@ -314,7 +369,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         //navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("mainHexColor").observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(validarCategoria!).child(restauranteSeleccionado!).child("mainHexColor").observeSingleEvent(of: .value) { (snapshot) in
             
             if let color = snapshot.value as? String {
                 
@@ -378,7 +433,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         print("Boton FB presionado")
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("facebookURL").observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(validarCategoria!).child(restauranteSeleccionado!).child("facebookURL").observeSingleEvent(of: .value) { (snapshot) in
             
             if let url = snapshot.value as? String {
                
@@ -414,7 +469,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         print("Boton Trip presionado")
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("tripAdvisorURL").observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(validarCategoria!).child(restauranteSeleccionado!).child("tripAdvisorURL").observeSingleEvent(of: .value) { (snapshot) in
             
             if let url = snapshot.value as? String {
                 
@@ -448,7 +503,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         print("Boton Instagram presionado")
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("instagramURL").observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(validarCategoria!).child(restauranteSeleccionado!).child("instagramURL").observeSingleEvent(of: .value) { (snapshot) in
             
             if let url = snapshot.value as? String {
                 
@@ -593,8 +648,7 @@ extension SeccionesVC: UITableViewDelegate, UITableViewDataSource{
            
             UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
                 self.viewTVCVacio.alpha = 0
-
-                Database.database().reference().child("restaurantes").child(self.restauranteSeleccionado!).child("menu").removeAllObservers()
+                Database.database().reference().child("restaurantes").child("categorias").child(self.validarCategoria!).child(self.restauranteSeleccionado!).child("menu").removeAllObservers()
                 self.labelRestauranteFondo.alpha = 1
                 self.labelOpinion.alpha = 1
             }, completion: { (success) in
@@ -644,6 +698,7 @@ extension SeccionesVC: UITableViewDelegate, UITableViewDataSource{
         if let destination = segue.destination as? SeccionSeleccionadaVC {
             destination.seccionSeleccionada = datosSeccion.arrayCellData[(tableViewSecciones.indexPathForSelectedRow?.row)!].textoSeccion
             destination.restauranteSeleccionado = restauranteSeleccionado
+            destination.categoriaRecibida2 = validarCategoria
         }else if let destinationMapa = segue.destination as? MapaDireccionRestauranteVC {
             
             destinationMapa.restauranteSeleccionado = restauranteSeleccionado

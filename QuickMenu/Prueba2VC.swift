@@ -14,6 +14,7 @@ class Prueba2VC: UIViewController {
 
     
     var restaurantesMenu = [cellCollectionDatosMenu]()
+    var recibirCategoria:String?
     
     let cellScaling: CGFloat = 0.73
     
@@ -39,8 +40,16 @@ class Prueba2VC: UIViewController {
         }
         
         agarrarRestaurantes()
+        
+        configNavBar()
         configBtnRefrescar()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        configNavBar()
     }
     
     
@@ -64,6 +73,14 @@ class Prueba2VC: UIViewController {
             
             //let cell = sender as! RestauranteCVCell
             destination.textFieldRestaurante.text = restaurantesMenu[(indexPasar?.row)!].textoRestaurante
+            destination.categoriaRecibir = recibirCategoria
+            
+        }
+        
+        if let destination = segue.destination as? SeccionesVC{
+            
+            destination.restauranteSeleccionado = restaurantesMenu[(indexPasar?.row)!].textoRestaurante
+            destination.validarCategoria = recibirCategoria
             
         }
         
@@ -74,7 +91,84 @@ class Prueba2VC: UIViewController {
     
     func agarrarRestaurantes(){
         
-        Database.database().reference().child("restaurantes").observe(.childAdded) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(recibirCategoria!).observe(.childAdded) { (snapshot) in
+            print("Hola dentro de la categoria: \(self.recibirCategoria!) el restaurante: \(snapshot.key)")
+            
+            SVProgressHUD.show()
+            
+            let restaurante = snapshot.key
+            var imagenLogo:UIImage?
+            var imagenFondo:UIImage?
+            var descpRest:String?
+            var pagado:Bool?
+            
+            let dic = snapshot.value as? [String:Any]
+            
+            descpRest = dic!["descpRestaurante"] as? String
+            pagado = dic!["pagado"] as? Bool
+            
+            //Agregar todos los datos necesarios del cellDatosMenu
+            
+            if pagado == true {
+                
+                let referenceImage1 = Storage.storage().reference().child("\(restaurante)/LogoBienvenida.png")
+                
+                referenceImage1.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+                    
+                    if let error = error {
+                        // Uh-oh, an error occurred!
+                        print("ERROR AQUI: \(error.localizedDescription)")
+                        
+                        return ()
+                        
+                    } else { //Hubo exito
+                        print("Hubo exito al bajar la imagen 1")
+                        
+                        imagenLogo = UIImage(data: data!)!
+                        
+                        let referenceImage2 = Storage.storage().reference().child("\(restaurante)/menuFondo.png")
+                        
+                        referenceImage2.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+                            
+                            if let error = error {
+                                // Uh-oh, an error occurred!
+                                print("ERROR AQUI: \(error.localizedDescription)")
+                                
+                                return ()
+                                
+                            } else { //Hubo exito
+                                print("Hubo exito al bajar la imagen 2")
+                                
+                                DispatchQueue.main.async {
+                                    imagenFondo = UIImage(data: data!)
+                                    
+                                    let datosMenu = cellCollectionDatosMenu(imagenRestauranteFondo: imagenFondo!, textoRestaurante: restaurante, imagenLogo: imagenLogo!, descripcionRestaurante: descpRest!)
+                                    
+                                    self.restaurantesMenu.append(datosMenu)
+                                    print(self.restaurantesMenu.count)
+                                    
+                                    self.collectionViewRestaurantes.reloadData()
+                                }
+                                
+                                
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }else{
+                
+                print("El restaurante: \(restaurante) no será mostrado, por no haber pagado")
+                
+            }
+            
+        }
+        
+        /*Database.database().reference().child("restaurantes").observe(.childAdded) { (snapshot) in
             print("Hola \(snapshot.key)")
             
             SVProgressHUD.show()
@@ -149,7 +243,7 @@ class Prueba2VC: UIViewController {
                 print("El restaurante: \(restaurante) no será mostrado, por no haber pagado")
                 
             }
-        }
+        }*/
         
     }
     
@@ -162,6 +256,13 @@ class Prueba2VC: UIViewController {
         }
         
         agarrarRestaurantes()
+        
+    }
+    
+    func configNavBar(){
+        
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        navigationItem.largeTitleDisplayMode = .never
         
     }
     
@@ -246,8 +347,9 @@ extension Prueba2VC: UICollectionViewDelegate, UIScrollViewDelegate {
         cell?.layer.borderWidth = 1
         
         indexPasar = indexPath
-        Database.database().reference().child("restaurantes").removeAllObservers()
-        performSegue(withIdentifier: "unwindSegueRestaurantes-Localizar", sender: nil)
+        //Database.database().reference().child("restaurantes").removeAllObservers()
+    Database.database().reference().child("restaurantes").child("categorias").child(recibirCategoria!).removeAllObservers()
+        performSegue(withIdentifier: "segueRestaurante-Menu", sender: nil)
         
         collectionView.deselectItem(at: indexPath, animated: true)
         

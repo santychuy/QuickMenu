@@ -74,6 +74,19 @@ class cellCollectionDatosMenu{
 }
 
 
+class cellCategoriasDatos{
+    
+    var imagenCategoriaFondo:UIImage?
+    var nombreCategoria:String?
+    
+    init(imagenCategoriaFondo:UIImage, nombreCategoria:String) {
+        self.imagenCategoriaFondo = imagenCategoriaFondo
+        self.nombreCategoria = nombreCategoria
+    }
+    
+}
+
+
 
 
 

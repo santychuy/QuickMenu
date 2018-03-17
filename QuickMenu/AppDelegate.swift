@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if userDefaults.bool(forKey: "onBoardingComplete") {
             
-            initialVC = sb.instantiateViewController(withIdentifier: "QuickMenuApp")
+            initialVC = sb.instantiateViewController(withIdentifier: "QuickMenuInicio")
             
         }
         
