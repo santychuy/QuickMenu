@@ -10,6 +10,7 @@ target 'QuickMenu' do
 	pod 'Firebase/Core'
 	pod 'TextFieldEffects'
 	pod 'Firebase/Database'
+	pod 'Firebase/Messaging'
 	pod 'Firebase/Storage'
 	pod 'IQKeyboardManagerSwift'
 	pod 'SVProgressHUD'

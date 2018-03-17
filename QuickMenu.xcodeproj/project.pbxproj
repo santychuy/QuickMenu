@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C8B2EC22AE16ACA7A8413B6 /* Pods_QuickMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA52FD6711E9949700475C8 /* Pods_QuickMenu.framework */; };
+		C41FBE802057544C00D33F1E /* VideoIntro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C41FBE7F2057544C00D33F1E /* VideoIntro.mp4 */; };
 		C420E1D2203267DB00914AF5 /* CreditosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420E1D1203267DB00914AF5 /* CreditosTVC.swift */; };
 		C4244897204365F70089A31C /* MenusTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4244896204365F70089A31C /* MenusTVCell.swift */; };
 		C427BB922048C6020054EFD8 /* InfoQuickMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C427BB912048C6020054EFD8 /* InfoQuickMenuVC.swift */; };
@@ -27,9 +28,12 @@
 		C47A98FB203771190028A90C /* Pagina3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A98FA203771190028A90C /* Pagina3VC.swift */; };
 		C47EB96620295F1A00BF9B2D /* Funciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB96520295F1A00BF9B2D /* Funciones.swift */; };
 		C47EB9682029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */; };
-		C48BE61220472F6700691463 /* VideoIntro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C48BE61120472F6600691463 /* VideoIntro.mp4 */; };
+		C4877228204F63540039D20A /* CustomFunciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4877227204F63540039D20A /* CustomFunciones.swift */; };
 		C4942379204A0DFD0065A654 /* Prueba2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4942378204A0DFD0065A654 /* Prueba2VC.swift */; };
 		C494237B204A17860065A654 /* RestauranteCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494237A204A17860065A654 /* RestauranteCVCell.swift */; };
+		C494F900205A3A7D00F36920 /* BuscarRestauranteTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494F8FF205A3A7D00F36920 /* BuscarRestauranteTVC.swift */; };
+		C494F903205A427400F36920 /* VistosRecientementeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494F902205A427400F36920 /* VistosRecientementeCVCell.swift */; };
+		C494F905205A428200F36920 /* CategoriasCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494F904205A428200F36920 /* CategoriasCVCell.swift */; };
 		C49969722043641C0057326F /* AgarrarMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49969712043641C0057326F /* AgarrarMenuVC.swift */; };
 		C4AB28D420239A7D00F0CCCB /* DatosSeccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */; };
 		C4DC97C9204D2742007182D4 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC97C8204D2742007182D4 /* UIColorExtension.swift */; };
@@ -44,6 +48,7 @@
 		0AA52FD6711E9949700475C8 /* Pods_QuickMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57EFC24B9684A0413CC94B7E /* Pods-QuickMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu.release.xcconfig"; sourceTree = "<group>"; };
 		A89FB60C5093CED1CF58C4DE /* Pods-QuickMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu.debug.xcconfig"; sourceTree = "<group>"; };
+		C41FBE7F2057544C00D33F1E /* VideoIntro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = VideoIntro.mp4; path = ../../../../../VideoIntro.mp4; sourceTree = "<group>"; };
 		C420E1D1203267DB00914AF5 /* CreditosTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditosTVC.swift; sourceTree = "<group>"; };
 		C4244896204365F70089A31C /* MenusTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusTVCell.swift; sourceTree = "<group>"; };
 		C427BB912048C6020054EFD8 /* InfoQuickMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoQuickMenuVC.swift; sourceTree = "<group>"; };
@@ -65,11 +70,15 @@
 		C47A98FA203771190028A90C /* Pagina3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina3VC.swift; sourceTree = "<group>"; };
 		C47EB96520295F1A00BF9B2D /* Funciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funciones.swift; sourceTree = "<group>"; };
 		C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatilloSeleccionadoTVC.swift; sourceTree = "<group>"; };
-		C48BE61120472F6600691463 /* VideoIntro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = VideoIntro.mp4; path = "../../../../../Diseños/Diseño QuickDelivery/VideoIntro.mp4"; sourceTree = "<group>"; };
+		C4877227204F63540039D20A /* CustomFunciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFunciones.swift; sourceTree = "<group>"; };
 		C4942378204A0DFD0065A654 /* Prueba2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prueba2VC.swift; sourceTree = "<group>"; };
 		C494237A204A17860065A654 /* RestauranteCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestauranteCVCell.swift; sourceTree = "<group>"; };
+		C494F8FF205A3A7D00F36920 /* BuscarRestauranteTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscarRestauranteTVC.swift; sourceTree = "<group>"; };
+		C494F902205A427400F36920 /* VistosRecientementeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistosRecientementeCVCell.swift; sourceTree = "<group>"; };
+		C494F904205A428200F36920 /* CategoriasCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriasCVCell.swift; sourceTree = "<group>"; };
 		C49969712043641C0057326F /* AgarrarMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgarrarMenuVC.swift; sourceTree = "<group>"; };
 		C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosSeccion.swift; sourceTree = "<group>"; };
+		C4ACB82A205C7A12003902DD /* QuickMenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickMenu.entitlements; sourceTree = "<group>"; };
 		C4DC97C8204D2742007182D4 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C4EE0E5D201A81B0009CDB7C /* DBReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBReference.swift; sourceTree = "<group>"; };
 		C4EE0E5F201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosLocalizarRestaurante.swift; sourceTree = "<group>"; };
@@ -128,7 +137,9 @@
 		C457D37B20154BDE000D8C1F /* QuickMenu */ = {
 			isa = PBXGroup;
 			children = (
+				C4ACB82A205C7A12003902DD /* QuickMenu.entitlements */,
 				C457D37C20154BDE000D8C1F /* AppDelegate.swift */,
+				C45E342B202D0B2000263FA1 /* TutorialVC.swift */,
 				C43F319520158ECF000E9924 /* LocalizarRestauranteVC.swift */,
 				C4942378204A0DFD0065A654 /* Prueba2VC.swift */,
 				C46B0CFC2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift */,
@@ -136,10 +147,11 @@
 				C476C933202948B00003074C /* SeccionSeleccionadaVC.swift */,
 				C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */,
 				C420E1D1203267DB00914AF5 /* CreditosTVC.swift */,
-				C45E342B202D0B2000263FA1 /* TutorialVC.swift */,
 				C46F97732036B03700F83D22 /* UnirteAQuickMenuPageVC.swift */,
 				C427BB912048C6020054EFD8 /* InfoQuickMenuVC.swift */,
 				C49969712043641C0057326F /* AgarrarMenuVC.swift */,
+				C494F8FF205A3A7D00F36920 /* BuscarRestauranteTVC.swift */,
+				C4877226204F63310039D20A /* Funciones */,
 				C4DC97C7204D2729007182D4 /* Extension */,
 				C47A98F5203770D70028A90C /* InfoRestaurantes */,
 				C4EE0E5C201A5EDB009CDB7C /* ModeloDatos */,
@@ -150,7 +162,7 @@
 				C457D38520154BDE000D8C1F /* LaunchScreen.storyboard */,
 				C43F318B20156DEA000E9924 /* GoogleService-Info.plist */,
 				C457D38820154BDE000D8C1F /* Info.plist */,
-				C48BE61120472F6600691463 /* VideoIntro.mp4 */,
+				C41FBE7F2057544C00D33F1E /* VideoIntro.mp4 */,
 			);
 			path = QuickMenu;
 			sourceTree = "<group>";
@@ -172,6 +184,23 @@
 			path = InfoRestaurantes;
 			sourceTree = "<group>";
 		};
+		C4877226204F63310039D20A /* Funciones */ = {
+			isa = PBXGroup;
+			children = (
+				C4877227204F63540039D20A /* CustomFunciones.swift */,
+			);
+			path = Funciones;
+			sourceTree = "<group>";
+		};
+		C494F901205A425300F36920 /* BuscarRestauranteCells */ = {
+			isa = PBXGroup;
+			children = (
+				C494F902205A427400F36920 /* VistosRecientementeCVCell.swift */,
+				C494F904205A428200F36920 /* CategoriasCVCell.swift */,
+			);
+			path = BuscarRestauranteCells;
+			sourceTree = "<group>";
+		};
 		C4DC97C7204D2729007182D4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +212,7 @@
 		C4EE0E59201A5CE3009CDB7C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C494F901205A425300F36920 /* BuscarRestauranteCells */,
 				C4244896204365F70089A31C /* MenusTVCell.swift */,
 				C4EED4E52020F2A500E53139 /* SeccionTVCell.swift */,
 				C476C93520294FC50003074C /* SeccionSeleccionadaTVCell.swift */,
@@ -239,6 +269,14 @@
 					C457D37820154BDE000D8C1F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -267,7 +305,7 @@
 			files = (
 				C457D38720154BDE000D8C1F /* LaunchScreen.storyboard in Resources */,
 				C43F318C20156DEA000E9924 /* GoogleService-Info.plist in Resources */,
-				C48BE61220472F6700691463 /* VideoIntro.mp4 in Resources */,
+				C41FBE802057544C00D33F1E /* VideoIntro.mp4 in Resources */,
 				C457D38420154BDE000D8C1F /* Assets.xcassets in Resources */,
 				C457D38220154BDE000D8C1F /* Main.storyboard in Resources */,
 			);
@@ -287,6 +325,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -300,6 +339,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -354,6 +394,7 @@
 			files = (
 				C4F62F35201E785200900C78 /* LocalizarRestaurantes.swift in Sources */,
 				C4EED4E42020F22700E53139 /* SeccionesVC.swift in Sources */,
+				C494F900205A3A7D00F36920 /* BuscarRestauranteTVC.swift in Sources */,
 				C476C934202948B00003074C /* SeccionSeleccionadaVC.swift in Sources */,
 				C47A98F92037710A0028A90C /* Pagina2VC.swift in Sources */,
 				C47EB96620295F1A00BF9B2D /* Funciones.swift in Sources */,
@@ -361,6 +402,8 @@
 				C47A98FB203771190028A90C /* Pagina3VC.swift in Sources */,
 				C4EE0E60201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift in Sources */,
 				C4EED4E72020F2A500E53139 /* SeccionTVCell.swift in Sources */,
+				C494F905205A428200F36920 /* CategoriasCVCell.swift in Sources */,
+				C4877228204F63540039D20A /* CustomFunciones.swift in Sources */,
 				C494237B204A17860065A654 /* RestauranteCVCell.swift in Sources */,
 				C427BB922048C6020054EFD8 /* InfoQuickMenuVC.swift in Sources */,
 				C46F97742036B03700F83D22 /* UnirteAQuickMenuPageVC.swift in Sources */,
@@ -373,6 +416,7 @@
 				C4942379204A0DFD0065A654 /* Prueba2VC.swift in Sources */,
 				C47EB9682029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift in Sources */,
 				C457D37D20154BDE000D8C1F /* AppDelegate.swift in Sources */,
+				C494F903205A427400F36920 /* VistosRecientementeCVCell.swift in Sources */,
 				C4AB28D420239A7D00F0CCCB /* DatosSeccion.swift in Sources */,
 				C47A98F7203771000028A90C /* Pagina1VC.swift in Sources */,
 				C43F319620158ECF000E9924 /* LocalizarRestauranteVC.swift in Sources */,
@@ -514,6 +558,7 @@
 			baseConfigurationReference = A89FB60C5093CED1CF58C4DE /* Pods-QuickMenu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QuickMenu/QuickMenu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZT54WUH3TM;
 				INFOPLIST_FILE = QuickMenu/Info.plist;
@@ -522,7 +567,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Techson.QuickMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -531,6 +576,7 @@
 			baseConfigurationReference = 57EFC24B9684A0413CC94B7E /* Pods-QuickMenu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QuickMenu/QuickMenu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZT54WUH3TM;
 				INFOPLIST_FILE = QuickMenu/Info.plist;
@@ -539,7 +585,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Techson.QuickMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

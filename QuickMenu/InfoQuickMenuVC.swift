@@ -135,7 +135,7 @@ extension InfoQuickMenuVC: PaperOnboardingDataSource, PaperOnboardingDelegate {
         let backGroundTransparent = UIColor(white: 0, alpha: 0)
         let titleFont = UIFont(name: "AvenirNext-DemiBold", size: 37)
         let titleFontInfo = UIFont(name: "AvenirNext-DemiBold", size: 30)
-        let descrpFont = UIFont(name: "Avenir-Roman", size: 25)
+        let descrpFont = UIFont(name: "Avenir-Roman", size: 21)
         
         return [OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "LogoLaunch"),
                                    title: "QuickMenu",
@@ -158,7 +158,7 @@ extension InfoQuickMenuVC: PaperOnboardingDataSource, PaperOnboardingDelegate {
                                    descriptionFont: descrpFont!),
                 
                 OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "LogoLaunch"),
-                                   title: "Para más información:",
+                                   title: "",
                                    description: "",
                                    pageIcon: UIImage(),
                                    color: backGroundTransparent,

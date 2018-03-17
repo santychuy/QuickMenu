@@ -46,6 +46,9 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     
     var effect:UIVisualEffect!
     
+    var telefonoRestaurante = String()
+    var horarioRestaurante = String()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +76,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         configImagenesBienvenida()
         queryDatosSeccion()
+        fetchHorario()
         
         //Delay para la aparicion de las promociones
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
@@ -132,6 +136,20 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                     }
                     
                 }
+                
+            }
+            
+        }
+        
+    }
+    
+    func fetchHorario(){
+        
+        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("horario").observeSingleEvent(of: .value) { (snapshot) in
+            
+            if let horario = snapshot.value as? String{
+                
+                self.horarioRestaurante = horario
                 
             }
             
@@ -225,6 +243,8 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                 
                 let imagen = UIImage(data: data!)
                 
+                self.imageLogoRestaurante.layer.borderWidth = 2
+                self.imageLogoRestaurante.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 self.imageLogoRestaurante.image = imagen
                 
             }
@@ -254,7 +274,41 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         compartirBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 24)
         let compartirBtnBar = UIBarButtonItem(customView: compartirBtn)
         
-        self.navigationItem.setRightBarButton(compartirBtnBar, animated: false)
+        let llamarBtn:UIButton = UIButton.init(type: .custom)
+        llamarBtn.setImage(#imageLiteral(resourceName: "TelefonoChido"), for: .normal)
+        llamarBtn.addTarget(self, action: #selector(llamarRestaurante), for: .touchUpInside)
+        llamarBtn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        let llamarBtnBar = UIBarButtonItem(customView: llamarBtn)
+        
+        let horarioBtn:UIButton = UIButton.init(type: .custom)
+        horarioBtn.setImage(#imageLiteral(resourceName: "Horario"), for: .normal)
+        horarioBtn.addTarget(self, action: #selector(mostrarHorario), for: .touchUpInside)
+        horarioBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let horarioBarBtn = UIBarButtonItem(customView: horarioBtn)
+        
+        let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+        fixedSpace.width = 20.0
+        
+        let fixedSpace2:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+        fixedSpace2.width = 17.0
+        
+        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("numeroTelefonico").observeSingleEvent(of: .value) { (snapshot) in
+            
+            if let telefono = snapshot.value as? String {
+                
+                print("Telefono: \(telefono)")
+                
+                self.navigationItem.setRightBarButtonItems([compartirBtnBar, fixedSpace, llamarBtnBar, fixedSpace2, horarioBarBtn], animated: false)
+                
+                self.telefonoRestaurante = telefono
+                
+            }else{
+                
+                self.navigationItem.setRightBarButtonItems([compartirBtnBar, fixedSpace, horarioBarBtn], animated: false)
+                
+            }
+            
+        }
         
         //Dependiendo del restaurante, sacar de la base de datos, el color correspondiente
         
@@ -268,8 +322,9 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                 
                 let colorAplicar = UIColor().colorFromHex(color)
                 
-                UIView.animate(withDuration: 5, animations: {
+                UIView.animate(withDuration: 2, animations: {
                     self.navigationController?.navigationBar.barTintColor = colorAplicar
+                    self.navigationController?.navigationBar.layoutIfNeeded()
                 })
                 
             }else{
@@ -288,6 +343,33 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         performSegue(withIdentifier: "segue-direccionRestaurante", sender: nil)
         
+        
+    }
+    
+    @objc func llamarRestaurante(){
+        
+        
+        if let urlTel = URL(string: "tel://\(telefonoRestaurante)"){
+            
+            UIApplication.shared.open(urlTel, options: [:], completionHandler: nil)
+            
+            
+        }
+        
+    }
+    
+    @objc func mostrarHorario(){
+        
+        print("Mostrando horario")
+        
+        let alertController = UIAlertController(title: "Horarios de \(restauranteSeleccionado!)", message: horarioRestaurante, preferredStyle: .alert)
+        
+        let okey = UIAlertAction(title: "OK", style: .cancel) { (action) in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        
+        alertController.addAction(okey)
+        self.present(alertController, animated: true, completion: nil)
         
     }
     

@@ -7,6 +7,9 @@ PODS:
   - Firebase/Database (4.9.0):
     - Firebase/Core
     - FirebaseDatabase (= 4.1.4)
+  - Firebase/Messaging (4.9.0):
+    - Firebase/Core
+    - FirebaseMessaging (= 2.1.0)
   - Firebase/Storage (4.9.0):
     - Firebase/Core
     - FirebaseStorage (= 2.1.2)
@@ -23,12 +26,20 @@ PODS:
     - leveldb-library (~> 1.18)
   - FirebaseInstanceID (2.0.9):
     - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.1.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
   - FirebaseStorage (2.1.2):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - Google-Mobile-Ads-SDK (7.29.0)
   - GoogleToolboxForMac/Defines (2.1.3)
+  - GoogleToolboxForMac/Logger (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/NSData+zlib (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - GTMSessionFetcher/Core (1.1.14)
@@ -41,6 +52,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - paper-onboarding (4.0.1)
+  - Protobuf (3.5.0)
   - SVProgressHUD (2.2.5)
   - TextFieldEffects (1.4.0)
 
@@ -48,6 +60,7 @@ DEPENDENCIES:
   - Auk (~> 8.0)
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Messaging
   - Firebase/Storage
   - Google-Mobile-Ads-SDK
   - IQKeyboardManagerSwift
@@ -63,6 +76,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 3bd047463058fa6b5d312c97502c52e45401cdfb
   FirebaseDatabase: de4446507ccd3257fca37d16f40e1540324571fd
   FirebaseInstanceID: d2058a35e9bebda1b6dd42486b84917bde552a9d
+  FirebaseMessaging: 2bafab2d0f3ab3dfd753101c2c32995c2051b5da
   FirebaseStorage: 181bb543d39ee3c53e0558de7ba86b1286a0427f
   Google-Mobile-Ads-SDK: 375bbb821b3df2106c37b74f6b0a97576ddc5f6b
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
@@ -72,9 +86,10 @@ SPEC CHECKSUMS:
   moa: b73dc5e0efa1fad00711c4608e41b197f4d15b12
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   paper-onboarding: ecb43c83e4e4f90137f228b8e9d87ca5aee591ee
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: 6b8b7bd7bec26fc11d8f1751778611257e85db03
+PODFILE CHECKSUM: 34c922fba24f23158c6b7216c15171153feff54f
 
 COCOAPODS: 1.3.1

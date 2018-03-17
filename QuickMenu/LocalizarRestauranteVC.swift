@@ -32,6 +32,9 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
     var restaurantesAMostrar = [String]()
     var userLocation : CLLocationCoordinate2D?
     
+    let review = storeKitFunc()
+    let hayInternet = checarInternetFunc()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +43,8 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         UIApplication.shared.statusBarStyle = .lightContent
         
         aparecerComponentes()
+        
+        //review.showReview()  //Quitarlo despues
         
         //empezarConfigLocalizacion()
         
@@ -53,10 +58,23 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         
         configNavBar()
         
-        //SKStoreReviewController.requestReview()
+        if hayInternet.isConnectedToNetwork() == true {
+            
+            print("Chido, hay internet")
+            
+        }else{
+            
+            let controller = UIAlertController(title: "No hay conexión a Internet", message: "Necesitas Internet para acceder a los menús", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+            
+            controller.addAction(ok)
+            
+            present(controller, animated: true, completion: nil)
+            
+        }
     
-        
     }
+    
     
     
     
@@ -96,14 +114,16 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
     @IBAction func btnIrMenu(_ sender: Any)
     {
         
-        if textFieldRestaurante.text != "" {
+        if textFieldRestaurante.text != "" && hayInternet.isConnectedToNetwork() == true{
             
             performSegue(withIdentifier: "segueSeleccionarRestaurante-Menu", sender: nil)
             
-        }else{
+        }else if hayInternet.isConnectedToNetwork() == false{
             
+            SVProgressHUD.showInfo(withStatus: "Conectarse a Internet para poder acceder")
+            
+        }else {
             SVProgressHUD.showInfo(withStatus: "Seleccionar un restaurante")
-            
         }
         
         
@@ -245,14 +265,12 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         }
     
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 1.0) {
             self.navigationController?.navigationBar.barTintColor = UIColor(named: "NavBar Default")
         }
         
+        
     }
-    
-    
-    
     
     
 }

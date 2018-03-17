@@ -30,8 +30,13 @@ class RestauranteCVCell: UICollectionViewCell {
         
         imageLogo.layer.cornerRadius = imageLogo.frame.size.width/2
         imageLogo.clipsToBounds = true
-        imageLogo.layer.borderWidth = 3.0
+        imageLogo.layer.borderWidth = 1.5
         imageLogo.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        imageLogoDetalles.layer.cornerRadius = imageLogoDetalles.frame.size.width/2
+        imageLogoDetalles.clipsToBounds = true
+        imageLogoDetalles.layer.borderWidth = 1.5
+        imageLogoDetalles.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         
         //Declarar los componentes

@@ -15,7 +15,7 @@ class Prueba2VC: UIViewController {
     
     var restaurantesMenu = [cellCollectionDatosMenu]()
     
-    let cellScaling: CGFloat = 0.6
+    let cellScaling: CGFloat = 0.73
     
     @IBOutlet weak var collectionViewRestaurantes: UICollectionView!
     @IBOutlet weak var viewCargando: UIView!
@@ -74,7 +74,8 @@ class Prueba2VC: UIViewController {
     
     func agarrarRestaurantes(){
         
-        Database.database().reference().child("restaurantes").observeSingleEvent(of: .childAdded) { (snapshot) in
+        Database.database().reference().child("restaurantes").observe(.childAdded) { (snapshot) in
+            print("Hola \(snapshot.key)")
             
             SVProgressHUD.show()
             
@@ -83,53 +84,59 @@ class Prueba2VC: UIViewController {
             var imagenLogo:UIImage?
             var imagenFondo:UIImage?
             var descpRest:String?
+            var pagado:Bool?
             
             let dic = snapshot.value as? [String:Any]
             
             descpRest = dic!["descpRestaurante"] as? String
+            pagado = dic!["pagado"] as? Bool
             
             //Agregar todos los datos necesarios del cellDatosMenu
             
-            let referenceImage1 = Storage.storage().reference().child("\(restaurante)/LogoBienvenida.png")
-            
-            referenceImage1.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+            if pagado == true {
                 
-                if let error = error {
-                    // Uh-oh, an error occurred!
-                    print("ERROR AQUI: \(error.localizedDescription)")
+                let referenceImage1 = Storage.storage().reference().child("\(restaurante)/LogoBienvenida.png")
+                
+                referenceImage1.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
                     
-                    return ()
-                    
-                } else { //Hubo exito
-                    print("Hubo exito al bajar la imagen 1")
-                    
-                    imagenLogo = UIImage(data: data!)!
-                    
-                    let referenceImage2 = Storage.storage().reference().child("\(restaurante)/menuFondo.png")
-                    
-                    referenceImage2.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+                    if let error = error {
+                        // Uh-oh, an error occurred!
+                        print("ERROR AQUI: \(error.localizedDescription)")
                         
-                        if let error = error {
-                            // Uh-oh, an error occurred!
-                            print("ERROR AQUI: \(error.localizedDescription)")
+                        return ()
+                        
+                    } else { //Hubo exito
+                        print("Hubo exito al bajar la imagen 1")
+                        
+                        imagenLogo = UIImage(data: data!)!
+                        
+                        let referenceImage2 = Storage.storage().reference().child("\(restaurante)/menuFondo.png")
+                        
+                        referenceImage2.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
                             
-                            return ()
-                            
-                        } else { //Hubo exito
-                            print("Hubo exito al bajar la imagen 2")
-                            
-                            DispatchQueue.main.async {
-                                imagenFondo = UIImage(data: data!)
+                            if let error = error {
+                                // Uh-oh, an error occurred!
+                                print("ERROR AQUI: \(error.localizedDescription)")
                                 
-                                let datosMenu = cellCollectionDatosMenu(imagenRestauranteFondo: imagenFondo!, textoRestaurante: restaurante, imagenLogo: imagenLogo!, descripcionRestaurante: descpRest!)
+                                return ()
                                 
-                                self.restaurantesMenu.append(datosMenu)
-                                print(self.restaurantesMenu.count)
+                            } else { //Hubo exito
+                                print("Hubo exito al bajar la imagen 2")
                                 
-                                self.collectionViewRestaurantes.reloadData()
+                                DispatchQueue.main.async {
+                                    imagenFondo = UIImage(data: data!)
+                                    
+                                    let datosMenu = cellCollectionDatosMenu(imagenRestauranteFondo: imagenFondo!, textoRestaurante: restaurante, imagenLogo: imagenLogo!, descripcionRestaurante: descpRest!)
+                                    
+                                    self.restaurantesMenu.append(datosMenu)
+                                    print(self.restaurantesMenu.count)
+                                    
+                                    self.collectionViewRestaurantes.reloadData()
+                                }
+                                
+                                
+                                
                             }
-                            
-                            
                             
                         }
                         
@@ -137,8 +144,11 @@ class Prueba2VC: UIViewController {
                     
                 }
                 
+            }else{
+                
+                print("El restaurante: \(restaurante) no será mostrado, por no haber pagado")
+                
             }
-            
         }
         
     }
@@ -236,6 +246,7 @@ extension Prueba2VC: UICollectionViewDelegate, UIScrollViewDelegate {
         cell?.layer.borderWidth = 1
         
         indexPasar = indexPath
+        Database.database().reference().child("restaurantes").removeAllObservers()
         performSegue(withIdentifier: "unwindSegueRestaurantes-Localizar", sender: nil)
         
         collectionView.deselectItem(at: indexPath, animated: true)

@@ -44,10 +44,10 @@ class TutorialVC: UIViewController {
 
     @IBAction func btnEmpezarAction(_ sender: Any) {
         
-        /*let userDefaults = UserDefaults.standard
+        let userDefaults = UserDefaults.standard
         
         userDefaults.set(true, forKey: "onBoardingComplete")
-        userDefaults.synchronize()*/
+        userDefaults.synchronize()
         
     }
     
@@ -101,8 +101,8 @@ extension TutorialVC: PaperOnboardingDelegate, PaperOnboardingDataSource {
         
         //let backgroundColor = #colorLiteral(red: 0.9215744138, green: 0.5188732743, blue: 0.1816014051, alpha: 1)
         let backGroundTransparent = UIColor(white: 0, alpha: 0)
-        let titleFont = UIFont(name: "AvenirNext-DemiBold", size: 29)
-        let descrpFont = UIFont(name: "Avenir-Roman", size: 19)
+        let titleFont = UIFont(name: "AvenirNext-DemiBold", size: 25)
+        let descrpFont = UIFont(name: "Avenir-Roman", size: 17)
         
         return [OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "LogoLaunch"),
                                    title: "¡Bienvenido a QuickMenu!",
@@ -126,7 +126,7 @@ extension TutorialVC: PaperOnboardingDelegate, PaperOnboardingDataSource {
                 
                 OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "LogoLaunch"),
                                    title: "Platillos detallados",
-                                   description: "Ver detalladamente cada platillo que te ofrece el restaurante, ve y busca tu preferido",
+                                   description: "Ver detalladamente cada platillo del restaurante, ve y busca tu preferido",
                                    pageIcon: UIImage(),
                                    color: backGroundTransparent,
                                    titleColor: UIColor.white,
