@@ -15,6 +15,7 @@ class Prueba2VC: UIViewController {
     
     var restaurantesMenu = [cellCollectionDatosMenu]()
     var recibirCategoria:String?
+    var imageViewRecibir:UIImageView?
     
     let cellScaling: CGFloat = 0.73
     
@@ -99,13 +100,30 @@ class Prueba2VC: UIViewController {
             let restaurante = snapshot.key
             var imagenLogo:UIImage?
             var imagenFondo:UIImage?
-            var descpRest:String?
-            var pagado:Bool?
+            //var descpRest:String?
+            //var pagado:Bool?
             
             let dic = snapshot.value as? [String:Any]
+            print("AQUI: \(dic)")
+            if dic == nil{
+                print("No se agarró ningun pago")
+                self.performSegue(withIdentifier: "unwindSegueRestaurante-Buscar", sender: self)
+                SVProgressHUD.showError(withStatus: "Por lo pronto no se cargó el contenido")
+            }
             
-            descpRest = dic!["descpRestaurante"] as? String
-            pagado = dic!["pagado"] as? Bool
+            let descpRest = dic!["descpRestaurante"] as? String
+            if descpRest == nil{
+                print("No se agarró ningun pago")
+                self.performSegue(withIdentifier: "unwindSegueRestaurante-Buscar", sender: self)
+                SVProgressHUD.showError(withStatus: "Por lo pronto no se cargó el contenido")
+            }
+                
+            let pagado = dic!["pagado"] as? Bool
+            if pagado == nil{
+                print("No se agarró ningun pago")
+                self.performSegue(withIdentifier: "unwindSegueRestaurante-Buscar", sender: self)
+                SVProgressHUD.showError(withStatus: "Por lo pronto no se cargó el contenido")
+            }
             
             //Agregar todos los datos necesarios del cellDatosMenu
             
@@ -261,7 +279,7 @@ class Prueba2VC: UIViewController {
     
     func configNavBar(){
         
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.03137254902, alpha: 1)
         navigationItem.largeTitleDisplayMode = .never
         
     }

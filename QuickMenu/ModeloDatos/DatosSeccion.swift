@@ -87,6 +87,21 @@ class cellCategoriasDatos{
 }
 
 
+class datosVistoRecientemente{
+    
+    var categoria:String?
+    var restaurante:String?
+    
+    var arrayVistoRecientes = [datosVistoRecientemente]()
+    
+    init(categoria:String, restaurante:String) {
+        self.categoria = categoria
+        self.restaurante = restaurante
+    }
+    
+}
+
+
 
 
 

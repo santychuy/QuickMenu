@@ -22,6 +22,7 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
     let pinRestaurante = MKPointAnnotation()
     
     var restauranteSeleccionado:String?
+    var categoriaSeleccionada:String?
     var latitudRest:Double?
     var longitudRest:Double?
     
@@ -88,7 +89,7 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
     func configLocalizacionRestaurante(){
         
         
-        Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(categoriaSeleccionada!).child(restauranteSeleccionado!).observeSingleEvent(of: .value) { (snapshot) in
             
             if let dicCoords = snapshot.value as? [String:Any]{
                 

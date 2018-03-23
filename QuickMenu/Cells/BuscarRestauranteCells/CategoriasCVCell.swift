@@ -28,9 +28,11 @@ class CategoriasCVCell: UICollectionViewCell {
         super.layoutSubviews()
         
         self.layer.cornerRadius = 15.0
-        layer.borderWidth = 3
+        layer.borderWidth = 4
         layer.borderColor = #colorLiteral(red: 0.9988920093, green: 0.6318910718, blue: 0.002369876951, alpha: 1)
         
+        
+
     }
     
     

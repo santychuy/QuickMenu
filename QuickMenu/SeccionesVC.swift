@@ -51,6 +51,8 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     
     var validarCategoria:String?
     
+    var vistoRecientes:datosVistoRecientemente?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,21 +78,69 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         labelRestauranteFondo.text = restauranteSeleccionado
         
-        configImagenesBienvenida()
-        queryDatosSeccion()
-        fetchHorario()
+        configImagenesBienvenida(restauranteSeleccionado!)
+        
+        queryDatosSeccion(validarCategoria!, restauranteSeleccionado!)
+        
+        fetchHorario(validarCategoria!, restauranteSeleccionado!)
         
         //Delay para la aparicion de las promociones
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
             self.setupAnimacionPromocion()
         })
         
+        //guardarVistoRecientemente()
+        
+        
+    }
+    
+    func guardarVistoRecientemente(){
+        
+        let restauranteVisto = restauranteSeleccionado
+        let categoriaVisto = validarCategoria
+        
+        let datosVistos = datosVistoRecientemente(categoria: categoriaVisto!, restaurante: restauranteVisto!)
+        
+        var arrayVisto = [datosVistoRecientemente]()
+        arrayVisto.append(datosVistos)
+        
+        
+        if UserDefaults.standard.array(forKey: "vistoReciente") != nil{
+            print("Existe un array de vistoRecientemente")
+            
+            if var arrayVistoReciente2 = UserDefaults.standard.array(forKey: "vistoReciente") as? [datosVistoRecientemente]{
+                print("Se creó el array de vistoRecientemente")
+                
+                let hayRepetido = arrayVistoReciente2.contains(where: { (str) -> Bool in
+                    if str.restaurante == restauranteVisto && str.categoria == categoriaVisto{
+                        return true
+                    }
+                    return false
+                })
+                
+                if hayRepetido == true{
+                    print("----Hay elemento repetido para visto recientes----")
+                }else{
+                    print("Se agregó nuevo elemento de visto Recientemente")
+                    arrayVistoReciente2.append(datosVistos)
+                    UserDefaults.standard.set(arrayVistoReciente2, forKey: "vistoReciente")
+                }
+                
+            }
+            
+        }else{
+            
+            print("Se creó nuevo array de vistoRecientemente")
+            UserDefaults.standard.set(arrayVisto, forKey: "vistoReciente")
+            
+        }
+        
     }
     
     
-    func queryDatosSeccion() {
+    func queryDatosSeccion(_ categoriaSeleccionada:String, _ restauranteSeleccinado:String) {
         
-    Database.database().reference().child("restaurantes").child("categorias").child(validarCategoria!).child(restauranteSeleccionado!).child("menu").observe(.childAdded) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(categoriaSeleccionada).child(restauranteSeleccinado).child("menu").observe(.childAdded) { (snapshot) in
             
             SVProgressHUD.show()
             
@@ -103,7 +153,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                 print(seccion, "En descargar Imagenes")
                 
                 //Aquí nos enfocaremos para que saque todas las imagenes de las secciones, luego hacer de descargar varias imagenes, y desplegarlas
-                let referenceImage = Storage.storage().reference().child("\(self.restauranteSeleccionado!)/secciones/\(key)/\(key).jpg")
+                let referenceImage = Storage.storage().reference().child("\(restauranteSeleccinado)/secciones/\(key)/\(key).jpg")
                 
                 referenceImage.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
                     
@@ -198,9 +248,9 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
     }
     
-    func fetchHorario(){
+    func fetchHorario(_ categoriaSeleccionada:String, _ resSeleccionada:String){
         
-        Database.database().reference().child("restaurantes").child("categorias").child(validarCategoria!).child(restauranteSeleccionado!).child("horario").observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child("restaurantes").child("categorias").child(categoriaSeleccionada).child(resSeleccionada).child("horario").observeSingleEvent(of: .value) { (snapshot) in
             
             if let horario = snapshot.value as? String{
                 
@@ -214,13 +264,13 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     
     //MARK: - Config. Imagenes de fondo en la bienvenida
     
-    func configImagenesBienvenida(){
+    func configImagenesBienvenida(_ resSeleccionado:String){
         
         scrollView.auk.settings.contentMode = .scaleAspectFill
         scrollView.auk.settings.pageControl.visible = false
         scrollView.auk.startAutoScroll(delaySeconds: 6.0)
         
-        let referenceImage = Storage.storage().reference().child("\(restauranteSeleccionado!)/RestauranteFondo/1.jpg")
+        let referenceImage = Storage.storage().reference().child("\(resSeleccionado)/RestauranteFondo/1.jpg")
         
         referenceImage.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
             
@@ -241,7 +291,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
             
         }
         
-        let referenceImage2 = Storage.storage().reference().child("\(restauranteSeleccionado!)/RestauranteFondo/2.jpg")
+        let referenceImage2 = Storage.storage().reference().child("\(resSeleccionado)/RestauranteFondo/2.jpg")
         
         referenceImage2.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
             
@@ -262,7 +312,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
             
         }
         
-        let referenceImage3 = Storage.storage().reference().child("\(restauranteSeleccionado!)/RestauranteFondo/3.jpg")
+        let referenceImage3 = Storage.storage().reference().child("\(resSeleccionado)/RestauranteFondo/3.jpg")
         
         referenceImage3.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
             
@@ -283,7 +333,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
             
         }
         
-        let referenceImage4 = Storage.storage().reference().child("\(restauranteSeleccionado!)/LogoBienvenida.png")
+        let referenceImage4 = Storage.storage().reference().child("\(resSeleccionado)/LogoBienvenida.png")
         
         referenceImage4.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
             
@@ -377,7 +427,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                 
                 let colorAplicar = UIColor().colorFromHex(color)
                 
-                UIView.animate(withDuration: 2, animations: {
+                UIView.animate(withDuration: 1, animations: {
                     self.navigationController?.navigationBar.barTintColor = colorAplicar
                     self.navigationController?.navigationBar.layoutIfNeeded()
                 })
@@ -702,6 +752,7 @@ extension SeccionesVC: UITableViewDelegate, UITableViewDataSource{
         }else if let destinationMapa = segue.destination as? MapaDireccionRestauranteVC {
             
             destinationMapa.restauranteSeleccionado = restauranteSeleccionado
+            destinationMapa.categoriaSeleccionada = validarCategoria
             
         }
     }
