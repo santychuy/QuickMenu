@@ -258,8 +258,12 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 21)!,
                                                                         NSAttributedStringKey.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Heavy", size: 36)!,
-                                                                        NSAttributedStringKey.foregroundColor:UIColor.white]
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Heavy", size: 36)!,
+                                                                            NSAttributedStringKey.foregroundColor:UIColor.white]
+        } else {
+            // Fallback on earlier versions
+        }
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -269,7 +273,11 @@ class LocalizarRestauranteVC: UIViewController, CLLocationManagerDelegate{
     
         
         UIView.animate(withDuration: 1.0) {
-            self.navigationController?.navigationBar.barTintColor = UIColor(named: "NavBar Default")
+            if #available(iOS 11.0, *) {
+                self.navigationController?.navigationBar.barTintColor = UIColor(named: "NavBar Default")
+            } else {
+                // Fallback on earlier versions
+            }
         }
         
         

@@ -95,7 +95,7 @@ class BuscarRestauranteVC: UIViewController, GADBannerViewDelegate {
         
         configSearchBar()
         
-        //review.showReview()  //Quitarlo despues
+        review.showReview()  //Quitarlo despues
         
     }
     
@@ -163,10 +163,15 @@ class BuscarRestauranteVC: UIViewController, GADBannerViewDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.03137254902, alpha: 1)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 21)!,
-                                                                        NSAttributedStringKey.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Heavy", size: 36)!,
-                                                                        NSAttributedStringKey.foregroundColor:UIColor.white]
+        
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Heavy", size: 36)!,
+                                                                            NSAttributedStringKey.foregroundColor:UIColor.white]
+        } else {
+            // Fallback on earlier versions
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 21)!,
+                                                                            NSAttributedStringKey.foregroundColor:UIColor.white]
+        }
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -240,7 +245,11 @@ class BuscarRestauranteVC: UIViewController, GADBannerViewDelegate {
         searchController = UISearchController(searchResultsController: self.resultTableVC)
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = true
-        searchController.obscuresBackgroundDuringPresentation = false
+        if #available(iOS 9.1, *) {
+            searchController.obscuresBackgroundDuringPresentation = false
+        } else {
+            // Fallback on earlier versions
+        }
         searchController.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         //searchController.searchBar.sizeToFit()
@@ -273,7 +282,13 @@ class BuscarRestauranteVC: UIViewController, GADBannerViewDelegate {
             }
         }
         
-        navigationItem.searchController = searchController
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            // Fallback on earlier versions
+            
+            
+        }
         
     }
     

@@ -50,7 +50,11 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         let url = URL(string:"https://www.facebook.com/santiago.carrasco.7")
         
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
        
@@ -62,7 +66,11 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         let url = URL(string:"https://twitter.com/santychuy")
         
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
         
@@ -74,7 +82,11 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         let url = URL(string:"https://www.instagram.com/santychuy/")
         
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
         
@@ -121,7 +133,11 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         let url = URL(string:"https://www.facebook.com/fergieee.ru")
         
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
         
@@ -133,7 +149,11 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         let url = URL(string:"https://twitter.com/ferrodriguezu28")
         
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
         
@@ -145,7 +165,11 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         let url = URL(string:"https://www.instagram.com/fergie.ruphotography/")
         
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
         

@@ -42,7 +42,11 @@ class InfoQuickMenuVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     func configNavBar(){
         
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        } else {
+            // Fallback on earlier versions
+        }
         setInfoBtn()
         
     }
@@ -105,7 +109,11 @@ class InfoQuickMenuVC: UIViewController, MFMailComposeViewControllerDelegate {
         
         let url = URL(string:"https://www.instagram.com/quick.menu/")
         
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
         
@@ -117,7 +125,11 @@ class InfoQuickMenuVC: UIViewController, MFMailComposeViewControllerDelegate {
         
         let url = URL(string:"https://www.facebook.com/QuickMenuApp/")
         
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
         

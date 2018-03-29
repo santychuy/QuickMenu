@@ -133,10 +133,16 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
                 
                 let option = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
                 
-                let placemark = MKPlacemark(coordinate: self.restauranteLocalizacion)
-                let mapItem = MKMapItem(placemark: placemark)
-                mapItem.name = self.restauranteSeleccionado
-                mapItem.openInMaps(launchOptions: option)
+                if #available(iOS 10.0, *) {
+                    let placemark = MKPlacemark(coordinate: self.restauranteLocalizacion)
+                    let mapItem = MKMapItem(placemark: placemark)
+                    mapItem.name = self.restauranteSeleccionado
+                    mapItem.openInMaps(launchOptions: option)
+                } else {
+                    // Fallback on earlier versions
+                }
+                
+                
                 
             }
             

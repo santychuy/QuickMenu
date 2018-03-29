@@ -64,7 +64,11 @@ class Pagina3VC: UIViewController, MFMailComposeViewControllerDelegate {
         
         let url = URL(string:"https://www.instagram.com/quick.menu/")
         
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
         
@@ -76,7 +80,11 @@ class Pagina3VC: UIViewController, MFMailComposeViewControllerDelegate {
         
         let url = URL(string:"https://www.facebook.com/QuickMenuApp/")
         
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
         

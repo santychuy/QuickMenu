@@ -456,7 +456,11 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         if let urlTel = URL(string: "tel://\(telefonoRestaurante)"){
             
-            UIApplication.shared.open(urlTel, options: [:], completionHandler: nil)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(urlTel, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+            }
             
             
         }
@@ -495,7 +499,11 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                     
                     let urlFacebook = URL(string: url)
                     
-                    UIApplication.shared.open(urlFacebook!, options: [:], completionHandler: nil)
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(urlFacebook!, options: [:], completionHandler: nil)
+                    } else {
+                        // Fallback on earlier versions
+                    }
                     
                 }else{
                     
@@ -531,7 +539,11 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                     
                     let urlTripAdvisor = URL(string: url)
                     
-                    UIApplication.shared.open(urlTripAdvisor!, options: [:], completionHandler: nil)
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(urlTripAdvisor!, options: [:], completionHandler: nil)
+                    } else {
+                        // Fallback on earlier versions
+                    }
                     
                 }else{
                     
@@ -565,7 +577,11 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                     
                     let urlInstagram = URL(string: url)
                     
-                    UIApplication.shared.open(urlInstagram!, options: [:], completionHandler: nil)
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(urlInstagram!, options: [:], completionHandler: nil)
+                    } else {
+                        // Fallback on earlier versions
+                    }
                     
                 }else{
                     

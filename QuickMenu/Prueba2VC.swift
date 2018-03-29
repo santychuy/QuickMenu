@@ -92,7 +92,7 @@ class Prueba2VC: UIViewController {
     
     func agarrarRestaurantes(){
         
-        Database.database().reference().child("restaurantes").child("categorias").child(recibirCategoria!).observe(.childAdded) { (snapshot) in
+        /*Database.database().reference().child("restaurantes").child("categorias").child(recibirCategoria!).observe(.childAdded) { (snapshot) in
             print("Hola dentro de la categoria: \(self.recibirCategoria!) el restaurante: \(snapshot.key)")
             
             SVProgressHUD.show()
@@ -104,7 +104,7 @@ class Prueba2VC: UIViewController {
             //var pagado:Bool?
             
             let dic = snapshot.value as? [String:Any]
-            print("AQUI: \(dic)")
+            print("AQUI: \(String(describing: dic))")
             if dic == nil{
                 print("No se agarró ningun pago")
                 self.performSegue(withIdentifier: "unwindSegueRestaurante-Buscar", sender: self)
@@ -184,84 +184,80 @@ class Prueba2VC: UIViewController {
                 
             }
             
-        }
+        }*/
         
-        /*Database.database().reference().child("restaurantes").observe(.childAdded) { (snapshot) in
-            print("Hola \(snapshot.key)")
-            
-            SVProgressHUD.show()
-            
-            print(snapshot.key)
-            let restaurante = snapshot.key
-            var imagenLogo:UIImage?
-            var imagenFondo:UIImage?
-            var descpRest:String?
-            var pagado:Bool?
-            
-            let dic = snapshot.value as? [String:Any]
-            
-            descpRest = dic!["descpRestaurante"] as? String
-            pagado = dic!["pagado"] as? Bool
-            
-            //Agregar todos los datos necesarios del cellDatosMenu
-            
-            if pagado == true {
+        
+    
+    Database.database().reference().child("restaurantes").child("categorias").child(recibirCategoria!).observe(.childAdded) { (snapshot) in
+        
+        SVProgressHUD.show()
+        
+        let restaurante = snapshot.key
+        var imagenLogo:UIImage?
+        var imagenFondo:UIImage?
+        var descpRest:String?
+        var pagado:Bool?
+        
+        let dic = snapshot.value as? [String:Any]
+        
+        
+        let referenceImage1 = Storage.storage().reference().child("\(restaurante)/LogoBienvenida.png")
+        
+        referenceImage1.getData(maxSize: 1 * 2048 * 2048, completion: { (data, error) in
+            if let error = error{
+                print("ERROR AQUI: \(error.localizedDescription)")
+                self.performSegue(withIdentifier: "unwindSegueRestaurante-Buscar", sender: self)
+                SVProgressHUD.showInfo(withStatus: "Restaurantes proximamente")
+                return ()
+            }else{
                 
-                let referenceImage1 = Storage.storage().reference().child("\(restaurante)/LogoBienvenida.png")
+                descpRest = dic!["descpRestaurante"] as? String
+                pagado = dic!["pagado"] as? Bool
                 
-                referenceImage1.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+                if pagado == true{
                     
-                    if let error = error {
-                        // Uh-oh, an error occurred!
-                        print("ERROR AQUI: \(error.localizedDescription)")
+                    print("Hubo exito al bajar la imagen 1")
+                    
+                    imagenLogo = UIImage(data: data!)!
+                    
+                    let referenceImage2 = Storage.storage().reference().child("\(restaurante)/menuFondo.png")
+                    
+                    referenceImage2.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
                         
-                        return ()
-                        
-                    } else { //Hubo exito
-                        print("Hubo exito al bajar la imagen 1")
-                        
-                        imagenLogo = UIImage(data: data!)!
-                        
-                        let referenceImage2 = Storage.storage().reference().child("\(restaurante)/menuFondo.png")
-                        
-                        referenceImage2.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+                        if let error = error {
+                            // Uh-oh, an error occurred!
+                            print("ERROR AQUI: \(error.localizedDescription)")
                             
-                            if let error = error {
-                                // Uh-oh, an error occurred!
-                                print("ERROR AQUI: \(error.localizedDescription)")
+                            return ()
+                            
+                        } else { //Hubo exito
+                            print("Hubo exito al bajar la imagen 2")
+                            
+                            DispatchQueue.main.async {
+                                imagenFondo = UIImage(data: data!)
                                 
-                                return ()
+                                let datosMenu = cellCollectionDatosMenu(imagenRestauranteFondo: imagenFondo!, textoRestaurante: restaurante, imagenLogo: imagenLogo!, descripcionRestaurante: descpRest!)
                                 
-                            } else { //Hubo exito
-                                print("Hubo exito al bajar la imagen 2")
+                                self.restaurantesMenu.append(datosMenu)
+                                print(self.restaurantesMenu.count)
                                 
-                                DispatchQueue.main.async {
-                                    imagenFondo = UIImage(data: data!)
-                                    
-                                    let datosMenu = cellCollectionDatosMenu(imagenRestauranteFondo: imagenFondo!, textoRestaurante: restaurante, imagenLogo: imagenLogo!, descripcionRestaurante: descpRest!)
-                                    
-                                    self.restaurantesMenu.append(datosMenu)
-                                    print(self.restaurantesMenu.count)
-                                    
-                                    self.collectionViewRestaurantes.reloadData()
-                                }
-                                
-                                
-                                
+                                self.collectionViewRestaurantes.reloadData()
                             }
                             
                         }
                         
                     }
                     
+                }else{
+                    print("El restaurante no será mostrado")
                 }
                 
-            }else{
-                
-                print("El restaurante: \(restaurante) no será mostrado, por no haber pagado")
                 
             }
-        }*/
+        })
+            
+        }
+        
         
     }
     
@@ -280,7 +276,11 @@ class Prueba2VC: UIViewController {
     func configNavBar(){
         
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.03137254902, alpha: 1)
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        } else {
+            // Fallback on earlier versions
+        }
         
     }
     

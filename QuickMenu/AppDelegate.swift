@@ -13,7 +13,7 @@ import SVProgressHUD
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
 
     var window: UIWindow?
 
@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //Llevar cuenta para lanzar feedback de la gente
-        /*let funcionReview = storeKitFunc()
-        funcionReview.incrementAppRuns()*/
+        let funcionReview = storeKitFunc()
+        funcionReview.incrementAppRuns()
         
         //Config. Ventana Principal
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -61,13 +61,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         
         //Config. Push Notification
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
+        if #available(iOS 10.0, *) {
             
-            if error == nil{
-                print("Autorizacion exitosa")
+            UNUserNotificationCenter.current().delegate = self
+            Messaging.messaging().delegate = self
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
+                
+                if error == nil{
+                    print("Autorizacion exitosa")
+                }
+                
             }
-            
+        } else {
+            // Fallback on earlier versions
+            let setting : UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(setting)
         }
+        
+        
         application.registerForRemoteNotifications()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notification:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
@@ -100,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        FirebaseHandler()
+        ConnectToFCM()
         
     }
 
@@ -112,21 +124,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @objc func refreshToken(notification: NSNotification){
         
         let refreshToken = InstanceID.instanceID().token()!
+        
         print("refreshToken: \(refreshToken)")
         
-        FirebaseHandler()
+        ConnectToFCM()
         
     }
     
     
-    func FirebaseHandler(){
+    func ConnectToFCM(){
         
         Messaging.messaging().shouldEstablishDirectChannel = true
         
     }
     
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        let token = Messaging.messaging().fcmToken
+        print("FCM token: \(token ?? "")")
+    }
     
-
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    
+    
 
 }
 

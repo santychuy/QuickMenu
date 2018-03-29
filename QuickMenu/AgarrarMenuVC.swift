@@ -104,7 +104,11 @@ class AgarrarMenuVC: UIViewController {
     
     func configNavBar(){
         
-        navigationItem.largeTitleDisplayMode = .automatic
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .automatic
+        } else {
+            // Fallback on earlier versions
+        }
         navigationItem.title = "Restaurantes"
         
         configSearchBar()
@@ -142,7 +146,11 @@ class AgarrarMenuVC: UIViewController {
         searchController.searchBar.placeholder = "Buscar Restaurante"
         searchController.searchBar.tintColor = UIColor.white
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
-        navigationItem.searchController = searchController
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            // Fallback on earlier versions
+        }
         
     }
     
