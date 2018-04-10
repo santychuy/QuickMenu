@@ -193,58 +193,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
             
         }
         
-        /*Database.database().reference().child("restaurantes").child(restauranteSeleccionado!).child("menu").observe(.childAdded) { (snapshot) in
-            
-            SVProgressHUD.show()
-            
-            let seccion = [snapshot.key]
-            print("\(seccion) en queryDatosSeccion")
-            
-            
-            for key in seccion {
-                
-                print(seccion, "En descargar Imagenes")
-                
-                //Aquí nos enfocaremos para que saque todas las imagenes de las secciones, luego hacer de descargar varias imagenes, y desplegarlas
-                let referenceImage = Storage.storage().reference().child("\(self.restauranteSeleccionado!)/secciones/\(key)/\(key).jpg")
-                
-                referenceImage.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
-                    
-                    if let error = error {
-                        // Uh-oh, an error occurred!
-                        print("ERROR AQUI: \(error.localizedDescription)")
-                        
-                        //Segue para la eleccion del menu
-                        self.performSegue(withIdentifier: "unwindSegueBuscarRestaurante", sender: self)
-                        SVProgressHUD.showError(withStatus: "No se pudo cargar el menú completo, intentar más tarde este menú")
-                        return ()
-                        
-                    } else { //Hubo exito
-                        
-                        DispatchQueue.main.async {
-                            let imagen = UIImage(data: data!)
-                            
-                            let seccionn = cellDatos(textoSeccion: key, imagenSeccion: imagen!)
-                            
-                            //self.datosSeccion.arrayCellData.append(seccion)
-                            self.datosSeccion.arrayCellData.append(seccionn)
-                            //self.array?.append(seccionn)
-                            
-                            print(seccionn.textoSeccion!)
-                            print(seccionn.imagenSeccion!)
-                            print(self.datosSeccion.arrayCellData.count)
-                            
-                            self.tableViewSecciones.reloadData()
-                        }
-                        
-                        
-                    }
-                    
-                }
-                
-            }
-            
-        }*/
+        
         
     }
     
@@ -497,12 +446,13 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                     
                     SVProgressHUD.show()
                     
-                    let urlFacebook = URL(string: url)
+                    guard let urlFacebook = URL(string: url) else {return}
                     
                     if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(urlFacebook!, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(urlFacebook, options: [:], completionHandler: nil)
                     } else {
                         // Fallback on earlier versions
+                        UIApplication.shared.openURL(urlFacebook)
                     }
                     
                 }else{
@@ -537,12 +487,13 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                     
                     SVProgressHUD.show()
                     
-                    let urlTripAdvisor = URL(string: url)
+                    guard let urlTripAdvisor = URL(string: url) else {return}
                     
                     if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(urlTripAdvisor!, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(urlTripAdvisor, options: [:], completionHandler: nil)
                     } else {
                         // Fallback on earlier versions
+                        UIApplication.shared.openURL(urlTripAdvisor)
                     }
                     
                 }else{
@@ -575,12 +526,13 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                     
                     SVProgressHUD.show()
                     
-                    let urlInstagram = URL(string: url)
+                    guard let urlInstagram = URL(string: url) else {return}
                     
                     if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(urlInstagram!, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(urlInstagram, options: [:], completionHandler: nil)
                     } else {
                         // Fallback on earlier versions
+                        UIApplication.shared.openURL(urlInstagram)
                     }
                     
                 }else{

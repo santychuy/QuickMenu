@@ -11,6 +11,7 @@ import Firebase
 import IQKeyboardManagerSwift
 import SVProgressHUD
 import UserNotifications
+import Fabric
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
@@ -20,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Fabric.sharedSDK().debug = true
         
         //Llevar cuenta para lanzar feedback de la gente
         let funcionReview = storeKitFunc()
@@ -34,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if userDefaults.bool(forKey: "onBoardingComplete") {
             
-            initialVC = sb.instantiateViewController(withIdentifier: "QuickMenuInicio")
+            initialVC = sb.instantiateViewController(withIdentifier: "InicioQuickMenu")
             
         }
         
@@ -60,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //Configurar la barra de navegación
         UINavigationBar.appearance().tintColor = UIColor.white
         
+        
         //Config. Push Notification
         if #available(iOS 10.0, *) {
             
@@ -75,6 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         } else {
             // Fallback on earlier versions
+            
+            UNUserNotificationCenter.current().delegate = self
+            Messaging.messaging().delegate = self
+            
             let setting : UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(setting)
         }
@@ -84,8 +92,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notification:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
         
-        
         return true
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -96,8 +104,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        
+       
         Messaging.messaging().shouldEstablishDirectChannel = false
+        
         application.applicationIconBadgeNumber = 0
         
     }
@@ -112,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        ConnectToFCM()
+        FirebaseHandler()
         
     }
 
@@ -121,30 +130,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     
-    @objc func refreshToken(notification: NSNotification){
-        
-        let refreshToken = InstanceID.instanceID().token()!
-        
-        print("refreshToken: \(refreshToken)")
-        
-        ConnectToFCM()
-        
+    func FirebaseHandler(){
+        Messaging.messaging().shouldEstablishDirectChannel = true
     }
     
-    
-    func ConnectToFCM(){
+    @objc func refreshToken(notification: NSNotification){
+        let refreshToken = InstanceID.instanceID().token()!
+        print("---- \(refreshToken) ----")
         
-        Messaging.messaging().shouldEstablishDirectChannel = true
-        
+        FirebaseHandler()
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        let token = Messaging.messaging().fcmToken
-        print("FCM token: \(token ?? "")")
-    }
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        Messaging.messaging().apnsToken = deviceToken
+        print("Firebase registration token: \(fcmToken)")
     }
     
     

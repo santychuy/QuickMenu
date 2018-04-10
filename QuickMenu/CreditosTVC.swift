@@ -48,12 +48,13 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         SVProgressHUD.show()
         
-        let url = URL(string:"https://www.facebook.com/santiago.carrasco.7")
+        guard let url = URL(string:"https://www.facebook.com/santiago.carrasco.7") else {return}
         
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             // Fallback on earlier versions
+            UIApplication.shared.openURL(url)
         }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
@@ -64,12 +65,13 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         SVProgressHUD.show()
         
-        let url = URL(string:"https://twitter.com/santychuy")
+        guard let url = URL(string:"https://twitter.com/santychuy") else {return}
         
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             // Fallback on earlier versions
+            UIApplication.shared.openURL(url)
         }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
@@ -80,12 +82,13 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         SVProgressHUD.show()
         
-        let url = URL(string:"https://www.instagram.com/santychuy/")
+        guard let url = URL(string:"https://www.instagram.com/santychuy/") else {return}
         
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             // Fallback on earlier versions
+            UIApplication.shared.openURL(url)
         }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
@@ -131,12 +134,13 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         SVProgressHUD.show()
         
-        let url = URL(string:"https://www.facebook.com/fergieee.ru")
+        guard let url = URL(string:"https://www.facebook.com/fergieee.ru") else {return}
         
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             // Fallback on earlier versions
+            UIApplication.shared.openURL(url)
         }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
@@ -147,12 +151,13 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         SVProgressHUD.show()
         
-        let url = URL(string:"https://twitter.com/ferrodriguezu28")
+        guard let url = URL(string:"https://twitter.com/ferrodriguezu28") else {return}
         
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             // Fallback on earlier versions
+            UIApplication.shared.openURL(url)
         }
         
         SVProgressHUD.dismiss(withDelay: 1.0)
@@ -163,12 +168,13 @@ class CreditosTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         SVProgressHUD.show()
         
-        let url = URL(string:"https://www.instagram.com/fergie.ruphotography/")
+        guard let url = URL(string:"https://www.instagram.com/fergie.ruphotography/") else {return}
         
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             // Fallback on earlier versions
+            UIApplication.shared.openURL(url)
         }
         
         SVProgressHUD.dismiss(withDelay: 1.0)

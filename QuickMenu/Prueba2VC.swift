@@ -70,13 +70,6 @@ class Prueba2VC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let destination = segue.destination as? LocalizarRestauranteVC {
-            
-            //let cell = sender as! RestauranteCVCell
-            destination.textFieldRestaurante.text = restaurantesMenu[(indexPasar?.row)!].textoRestaurante
-            destination.categoriaRecibir = recibirCategoria
-            
-        }
         
         if let destination = segue.destination as? SeccionesVC{
             
@@ -92,102 +85,6 @@ class Prueba2VC: UIViewController {
     
     func agarrarRestaurantes(){
         
-        /*Database.database().reference().child("restaurantes").child("categorias").child(recibirCategoria!).observe(.childAdded) { (snapshot) in
-            print("Hola dentro de la categoria: \(self.recibirCategoria!) el restaurante: \(snapshot.key)")
-            
-            SVProgressHUD.show()
-            
-            let restaurante = snapshot.key
-            var imagenLogo:UIImage?
-            var imagenFondo:UIImage?
-            //var descpRest:String?
-            //var pagado:Bool?
-            
-            let dic = snapshot.value as? [String:Any]
-            print("AQUI: \(String(describing: dic))")
-            if dic == nil{
-                print("No se agarró ningun pago")
-                self.performSegue(withIdentifier: "unwindSegueRestaurante-Buscar", sender: self)
-                SVProgressHUD.showError(withStatus: "Por lo pronto no se cargó el contenido")
-            }
-            
-            let descpRest = dic!["descpRestaurante"] as? String
-            if descpRest == nil{
-                print("No se agarró ningun pago")
-                self.performSegue(withIdentifier: "unwindSegueRestaurante-Buscar", sender: self)
-                SVProgressHUD.showError(withStatus: "Por lo pronto no se cargó el contenido")
-            }
-                
-            let pagado = dic!["pagado"] as? Bool
-            if pagado == nil{
-                print("No se agarró ningun pago")
-                self.performSegue(withIdentifier: "unwindSegueRestaurante-Buscar", sender: self)
-                SVProgressHUD.showError(withStatus: "Por lo pronto no se cargó el contenido")
-            }
-            
-            //Agregar todos los datos necesarios del cellDatosMenu
-            
-            if pagado == true {
-                
-                let referenceImage1 = Storage.storage().reference().child("\(restaurante)/LogoBienvenida.png")
-                
-                referenceImage1.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
-                    
-                    if let error = error {
-                        // Uh-oh, an error occurred!
-                        print("ERROR AQUI: \(error.localizedDescription)")
-                        
-                        return ()
-                        
-                    } else { //Hubo exito
-                        print("Hubo exito al bajar la imagen 1")
-                        
-                        imagenLogo = UIImage(data: data!)!
-                        
-                        let referenceImage2 = Storage.storage().reference().child("\(restaurante)/menuFondo.png")
-                        
-                        referenceImage2.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
-                            
-                            if let error = error {
-                                // Uh-oh, an error occurred!
-                                print("ERROR AQUI: \(error.localizedDescription)")
-                                
-                                return ()
-                                
-                            } else { //Hubo exito
-                                print("Hubo exito al bajar la imagen 2")
-                                
-                                DispatchQueue.main.async {
-                                    imagenFondo = UIImage(data: data!)
-                                    
-                                    let datosMenu = cellCollectionDatosMenu(imagenRestauranteFondo: imagenFondo!, textoRestaurante: restaurante, imagenLogo: imagenLogo!, descripcionRestaurante: descpRest!)
-                                    
-                                    self.restaurantesMenu.append(datosMenu)
-                                    print(self.restaurantesMenu.count)
-                                    
-                                    self.collectionViewRestaurantes.reloadData()
-                                }
-                                
-                                
-                                
-                            }
-                            
-                        }
-                        
-                    }
-                    
-                }
-                
-            }else{
-                
-                print("El restaurante: \(restaurante) no será mostrado, por no haber pagado")
-                
-            }
-            
-        }*/
-        
-        
-    
     Database.database().reference().child("restaurantes").child("categorias").child(recibirCategoria!).observe(.childAdded) { (snapshot) in
         
         SVProgressHUD.show()
@@ -276,6 +173,9 @@ class Prueba2VC: UIViewController {
     func configNavBar(){
         
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.03137254902, alpha: 1)
+        
+        
+        
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
         } else {

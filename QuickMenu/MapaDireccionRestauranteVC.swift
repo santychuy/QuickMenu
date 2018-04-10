@@ -34,6 +34,8 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
         empezarConfigLocalizacion()
         configLocalizacionRestaurante()
         
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,6 +62,8 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
+        
+        locationManager.requestWhenInUseAuthorization()
         
         mapaRestaurante.isZoomEnabled = true
         mapaRestaurante.isPitchEnabled = true

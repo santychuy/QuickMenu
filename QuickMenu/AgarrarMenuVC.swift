@@ -199,11 +199,11 @@ extension AgarrarMenuVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? LocalizarRestauranteVC {
-            destination.textFieldRestaurante.text = restaurantesMenu[(tableViewMenu.indexPathForSelectedRow?.row)!].textoRest
+            /*destination.textFieldRestaurante.text = restaurantesMenu[(tableViewMenu.indexPathForSelectedRow?.row)!].textoRest*/
         }
-    }
+    }*/
     
     
     

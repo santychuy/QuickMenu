@@ -86,6 +86,21 @@ class cellCategoriasDatos{
     
 }
 
+class cellRecomResDatos{
+    var imagenRes:UIImage?
+    var nombreRes:String?
+    var nombreCategoria:String?
+    var distancia:String?
+    
+    init(imagenRes:UIImage, nombreRes:String, nombreCategoria:String, distancia:String) {
+        self.imagenRes = imagenRes
+        self.nombreRes = nombreRes
+        self.nombreCategoria = nombreCategoria
+        self.distancia = distancia
+    }
+}
+
+
 
 class datosVistoRecientemente{
     

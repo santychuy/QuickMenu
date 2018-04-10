@@ -167,6 +167,8 @@ class BuscarRestauranteVC: UIViewController, GADBannerViewDelegate {
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Heavy", size: 36)!,
                                                                             NSAttributedStringKey.foregroundColor:UIColor.white]
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 21)!,
+                                                                            NSAttributedStringKey.foregroundColor:UIColor.white]
         } else {
             // Fallback on earlier versions
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font:UIFont.init(name: "Avenir-Medium", size: 21)!,

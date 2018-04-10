@@ -8,7 +8,6 @@ target 'QuickMenu' do
   # Pods for QuickMenu
 
 	pod 'Firebase/Core'
-	pod 'TextFieldEffects'
 	pod 'Firebase/Database'
 	pod 'Firebase/Messaging'
 	pod 'Firebase/Storage'
@@ -18,5 +17,7 @@ target 'QuickMenu' do
 	pod 'Auk', '~> 8.0'
 	pod 'paper-onboarding'
 	pod 'Google-Mobile-Ads-SDK'
+	pod 'Fabric', '~> 1.7.2'
+	pod 'Crashlytics', '~> 3.9.3'
 
 end
