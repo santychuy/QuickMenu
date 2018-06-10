@@ -1,52 +1,39 @@
 PODS:
   - Auk (8.0.2):
     - moa
-  - Crashlytics (3.9.3):
-    - Fabric (~> 1.7.2)
-  - Fabric (1.7.6)
-  - Firebase/Core (4.11.0):
-    - FirebaseAnalytics (= 4.1.0)
-    - FirebaseCore (= 4.0.18)
-  - Firebase/Database (4.11.0):
-    - Firebase/Core
-    - FirebaseDatabase (= 4.1.5)
-  - Firebase/Messaging (4.11.0):
-    - Firebase/Core
-    - FirebaseMessaging (= 2.1.1)
-  - Firebase/Storage (4.11.0):
-    - Firebase/Core
-    - FirebaseStorage (= 2.1.3)
-  - FirebaseAnalytics (4.1.0):
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - DynamicBlurView (2.0.2)
+  - Firebase/Core (5.2.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.1)
+  - Firebase/CoreOnly (5.2.0):
+    - FirebaseCore (= 5.0.3)
+  - Firebase/Database (5.2.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (= 5.0.1)
+  - Firebase/Storage (5.2.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (= 3.0.0)
+  - FirebaseAnalytics (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.18):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseDatabase (4.1.5):
-    - FirebaseAnalytics (~> 4.1)
-    - FirebaseCore (~> 4.0)
+  - FirebaseCore (5.0.3):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseDatabase (5.0.1):
+    - FirebaseCore (~> 5.0)
     - leveldb-library (~> 1.18)
-  - FirebaseInstanceID (2.0.10):
-    - FirebaseCore (~> 4.0)
-  - FirebaseMessaging (2.1.1):
-    - FirebaseAnalytics (~> 4.1)
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/Logger (~> 2.1)
-    - Protobuf (~> 3.5)
-  - FirebaseStorage (2.1.3):
-    - FirebaseAnalytics (~> 4.1)
-    - FirebaseCore (~> 4.0)
+  - FirebaseInstanceID (3.1.0):
+    - FirebaseCore (~> 5.0)
+  - FirebaseStorage (3.0.0):
+    - FirebaseCore (~> 5.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - Google-Mobile-Ads-SDK (7.30.0)
-  - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/Logger (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - GTMSessionFetcher/Core (1.1.14)
-  - IQKeyboardManagerSwift (5.0.8)
+  - Google-Mobile-Ads-SDK (7.31.0)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - GTMSessionFetcher/Core (1.1.15)
+  - IQKeyboardManagerSwift (6.0.3)
   - leveldb-library (1.20)
   - moa (9.0.2)
   - nanopb (0.3.8):
@@ -54,46 +41,68 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - paper-onboarding (4.0.2)
-  - Protobuf (3.5.0)
+  - paper-onboarding (4.1.0)
+  - PopupDialog (0.7.1):
+    - DynamicBlurView (~> 2.0)
+  - PushNotifications (0.10.7)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Auk (~> 8.0)
-  - Crashlytics (~> 3.9.3)
-  - Fabric (~> 1.7.2)
   - Firebase/Core
   - Firebase/Database
-  - Firebase/Messaging
   - Firebase/Storage
   - Google-Mobile-Ads-SDK
   - IQKeyboardManagerSwift
   - moa (~> 9.0)
   - paper-onboarding
+  - PopupDialog (~> 0.7)
+  - PushNotifications
   - SVProgressHUD
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Auk
+    - DynamicBlurView
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseDatabase
+    - FirebaseInstanceID
+    - FirebaseStorage
+    - Google-Mobile-Ads-SDK
+    - GoogleToolboxForMac
+    - GTMSessionFetcher
+    - IQKeyboardManagerSwift
+    - leveldb-library
+    - moa
+    - nanopb
+    - paper-onboarding
+    - PopupDialog
+    - PushNotifications
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Auk: 82be62a2cf650437fe745c81b12ac2440a0f682c
-  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
-  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
-  Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
-  FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
-  FirebaseCore: b981f47e5254cbcfdeb483355300d743f6fcab2c
-  FirebaseDatabase: 5f0bc6134c5c237cf55f9e1249d406770a75eafd
-  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
-  FirebaseMessaging: db0e01c52ef7e1f42846431273558107d084ede4
-  FirebaseStorage: 9a863a2bb96c406958eeff7c2f1dfa9f44c44a13
-  Google-Mobile-Ads-SDK: 7404f68120ae8682afeb5af001fbf4aad731c78e
-  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
-  GTMSessionFetcher: 390ea358e5a0d0133153806f744662dad933d06b
-  IQKeyboardManagerSwift: 2e7dc7f98c111458c1ea2b373f893e8cf95e2b97
+  DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
+  Firebase: 25ed0412036d7d008568d1fb4d2e9d81ea8a0a2c
+  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
+  FirebaseCore: a3c87242451633fff8490183898075ce77d168d2
+  FirebaseDatabase: 482bad9c2abd422bb2321194fb8c937e67426a89
+  FirebaseInstanceID: 05d779cbb97bd5bd5c51a38a903fc9cfe1b2454a
+  FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
+  Google-Mobile-Ads-SDK: 6e529e748b45507a2ca904e0b5a52669ba3920c4
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   moa: b73dc5e0efa1fad00711c4608e41b197f4d15b12
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  paper-onboarding: e6e2778c4e8de8db1d798bb7e3b4922e91fb7f99
-  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  paper-onboarding: 344780cbb0bfc229cd1862f5b9bba446b23c5185
+  PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
+  PushNotifications: 2e3df1e301e19ae2a100267f8387da5fc471ecc7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 037bd2a32fe2d02ea545b02e578803d16897adba
+PODFILE CHECKSUM: dda5d819611fc779ebe5b6387771f7db03b08fa6
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

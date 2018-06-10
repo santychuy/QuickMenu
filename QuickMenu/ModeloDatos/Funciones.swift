@@ -75,6 +75,7 @@ class Funciones{
         
     }
     
+    
     func tenerHoraDelDia() -> String? {
         let date = Date()
         let calendar = Calendar.current

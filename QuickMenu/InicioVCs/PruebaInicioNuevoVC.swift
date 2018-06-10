@@ -11,6 +11,7 @@ import Auk
 import Firebase
 import SVProgressHUD
 import CoreLocation
+import PopupDialog
 
 
 class searchResultss{
@@ -115,6 +116,7 @@ class PruebaInicioNuevoVC: UIViewController, CLLocationManagerDelegate{
                 view.removeFromSuperview()
             }
         }
+        
     }
     
     func configNavBar(){
@@ -300,8 +302,10 @@ class PruebaInicioNuevoVC: UIViewController, CLLocationManagerDelegate{
             let nombre = dicDatosRecom!["nombre"] as? String
             
             let coordenadasRestaurante = CLLocation(latitude: latitud!, longitude: longitud!)
-            let coordenadasUsuario = self.userLocation()
-            let distancia = coordenadasRestaurante.distance(from: coordenadasUsuario!)
+          
+            guard let locUser:CLLocationCoordinate2D = self.locationManager.location?.coordinate else {return}
+            let userCoords:CLLocation = CLLocation(latitude: locUser.latitude, longitude: locUser.longitude)
+            let distancia = coordenadasRestaurante.distance(from: userCoords)
             let distanciaKM = distancia/1000
             let distanceString:String = String(format:"%.02f", distanciaKM)
             
@@ -335,7 +339,7 @@ class PruebaInicioNuevoVC: UIViewController, CLLocationManagerDelegate{
         let userLongitud = locationManager.location?.coordinate.longitude
         let userLatitud = locationManager.location?.coordinate.latitude
         
-        let userCoordinates = CLLocation(latitude: userLatitud!, longitude: userLongitud!)
+        let userCoordinates = CLLocation(latitude: userLatitud!, longitude: userLongitud!) //Buscar otra manera de tener las coordenadas, hacerlo luego
         return userCoordinates
         
         
@@ -343,23 +347,46 @@ class PruebaInicioNuevoVC: UIViewController, CLLocationManagerDelegate{
     
     
     func configUserLocation(){
-        locationManager.requestWhenInUseAuthorization()
+        //locationManager.requestWhenInUseAuthorization()
         
         let status = CLLocationManager.authorizationStatus()
         
-        locationManager.startUpdatingLocation()
-        
         if status == .authorizedWhenInUse{
+            locationManager.startUpdatingLocation()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            
             fetchRecomRes()
+        }else{
+            mensajeActivarLoc()
         }
         
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    func mensajeActivarLoc(){
+        let titulo = "Localización no está activado"
+        let mensaje = "Para tener disponible las funciones de QuickMenu utilizando tu localización, debes darnos permiso para continuar"
+        
+        let popup = PopupDialog(title: titulo, message: mensaje)
+        let button1 = DefaultButton(title: "Aceptar") {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        
+        let button2 = CancelButton(title: "Más tarde") {
+            print("Aun no da permiso")
+        }
+        
+        popup.addButtons([button1, button2])
+        
+        self.present(popup, animated: true, completion: nil)
+        
+    }
+    
+    /*func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse{
             fetchRecomRes()
         }
-    }
+    }*/
     
     //-----------------------------------------------------------------
     

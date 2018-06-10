@@ -102,7 +102,7 @@ class cellRecomResDatos{
 
 
 
-class datosVistoRecientemente{
+/*class datosVistoRecientemente{
     
     var categoria:String?
     var restaurante:String?
@@ -114,7 +114,7 @@ class datosVistoRecientemente{
         self.restaurante = restaurante
     }
     
-}
+}*/
 
 
 

@@ -9,15 +9,14 @@ target 'QuickMenu' do
 
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
-	pod 'Firebase/Messaging'
 	pod 'Firebase/Storage'
 	pod 'IQKeyboardManagerSwift'
 	pod 'SVProgressHUD'
 	pod 'moa', '~> 9.0'
 	pod 'Auk', '~> 8.0'
 	pod 'paper-onboarding'
+	pod 'PushNotifications'
 	pod 'Google-Mobile-Ads-SDK'
-	pod 'Fabric', '~> 1.7.2'
-	pod 'Crashlytics', '~> 3.9.3'
+	pod 'PopupDialog', '~> 0.7'
 
 end

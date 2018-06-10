@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import Auk
+import PopupDialog
 
 
-class SeccionesVC: UIViewController, UIScrollViewDelegate {
+class SeccionesVC: UIViewController{
     
     @IBOutlet weak var tableViewSecciones: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -27,10 +28,6 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageLogoRestaurante: UIImageView!
     
-    @IBOutlet var viewPromocionRestaurante: UIView!
-    @IBOutlet weak var visualEffectView: UIVisualEffectView!
-    @IBOutlet weak var scrollviewPromos: UIScrollView!
-    @IBOutlet weak var imagenFondoPromo: UIImageView!
     
     let funcionesUtiles = Funciones()
     
@@ -38,9 +35,9 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     
     var datosSeccion = DatosSeccion()
     
-    lazy var array = [cellDatos]()
+    /*lazy var array = [cellDatos]()
     
-    var seccionRegresar:cellDatos?
+    var seccionRegresar:cellDatos?*/
     
     var urlImagen:String?
     
@@ -51,7 +48,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     
     var validarCategoria:String?
     
-    var vistoRecientes:datosVistoRecientemente?
+    //var vistoRecientes:datosVistoRecientemente?
     
     
     override func viewDidLoad() {
@@ -60,10 +57,10 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         configNavBar()
         
         //Config. PromoView
-        effect = visualEffectView.effect
+        /*effect = visualEffectView.effect
         visualEffectView.effect = nil
         viewPromocionRestaurante.layer.cornerRadius = 5
-        imagenFondoPromo.layer.cornerRadius = 5
+        imagenFondoPromo.layer.cornerRadius = 5*/
         
         //-------------------------------------------
         
@@ -85,16 +82,20 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         fetchHorario(validarCategoria!, restauranteSeleccionado!)
         
         //Delay para la aparicion de las promociones
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
-            self.setupAnimacionPromocion()
-        })
+        /*DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+            self.aparecerPromocion()
+            
+            //self.setupAnimacionPromocion()
+        })*/
+        
+        self.aparecerPromocion()
         
         //guardarVistoRecientemente()
         
         
     }
     
-    func guardarVistoRecientemente(){
+    /*func guardarVistoRecientemente(){
         
         let restauranteVisto = restauranteSeleccionado
         let categoriaVisto = validarCategoria
@@ -135,7 +136,7 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
             
         }
         
-    }
+    }*/
     
     
     func queryDatosSeccion(_ categoriaSeleccionada:String, _ restauranteSeleccinado:String) {
@@ -168,21 +169,19 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
                         
                     } else { //Hubo exito
                         
-                        DispatchQueue.main.async {
-                            let imagen = UIImage(data: data!)
-                            
-                            let seccionn = cellDatos(textoSeccion: key, imagenSeccion: imagen!)
-                            
-                            //self.datosSeccion.arrayCellData.append(seccion)
-                            self.datosSeccion.arrayCellData.append(seccionn)
-                            //self.array?.append(seccionn)
-                            
-                            print(seccionn.textoSeccion!)
-                            print(seccionn.imagenSeccion!)
-                            print(self.datosSeccion.arrayCellData.count)
-                            
-                            self.tableViewSecciones.reloadData()
-                        }
+                        let imagen = UIImage(data: data!)
+                        
+                        let seccionn = cellDatos(textoSeccion: key, imagenSeccion: imagen!)
+                        
+                        //self.datosSeccion.arrayCellData.append(seccion)
+                        self.datosSeccion.arrayCellData.append(seccionn)
+                        //self.array?.append(seccionn)
+                        
+                        print(seccionn.textoSeccion!)
+                        print(seccionn.imagenSeccion!)
+                        print(self.datosSeccion.arrayCellData.count)
+                        
+                        self.tableViewSecciones.reloadData()
                         
                         
                     }
@@ -569,14 +568,15 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
     
     //Config. Animaciones de la vista de promociones
     
-    func setupAnimacionPromocion(){
+    /*func setupAnimacionPromocion(){
         
         let diaActual = funcionesUtiles.tenerDiaDeLaSemana()
         scrollviewPromos.auk.settings.contentMode = .scaleAspectFill
         scrollviewPromos.auk.settings.pageControl.visible = false
         scrollviewPromos.isUserInteractionEnabled = false //AQUI DESACTIVAR LUEGO
         scrollviewPromos.auk.settings.placeholderImage = #imageLiteral(resourceName: "Logo Empty")
-        let referenceImagePromo1 = Storage.storage().reference().child("\(restauranteSeleccionado!)/Promociones/\(diaActual!)/1.jpg")
+        
+        let referenceImagePromo1 = Storage.storage().reference().child("\(restauranteSeleccionado!)/Promociones/\(diaActual!)/1.jpg") //Posible error, descargar las fotos por base de datos, no por la referencia, hacerlo luego
         
         referenceImagePromo1.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
             
@@ -632,10 +632,62 @@ class SeccionesVC: UIViewController, UIScrollViewDelegate {
         
         setupAnimacionPromocionOut()
         
-    }
+    }*/
     
     //-----------------------------------------------------------------------------------------------------------
     
+    
+    //NUEVO cuadro para anunciar promociones
+    
+    func aparienciaPromo(){
+        
+        let pv = PopupDialogDefaultView.appearance()
+        pv.titleFont = UIFont(name: "Avenir-Medium", size: 22)!
+        pv.messageFont = UIFont(name: "Avenir-Roman", size: 17)!
+        
+        let db = DefaultButton.appearance()
+        db.titleFont = UIFont(name: "Avenir-Medium", size: 18)!
+        
+    }
+    
+    func aparecerPromocion(){
+        
+        let dia = funcionesUtiles.tenerDiaDeLaSemana()
+        
+        let titulo = "Promociones del día de hoy \(dia ?? "")"
+        let mensaje = "Tenemos promociones el día de hoy muy buenas"
+        let button1 = DefaultButton(title: "Ok") {
+            print("Salir de promocion")
+        }
+        
+        aparienciaPromo()
+        
+        let refImagenPromocion = Storage.storage().reference().child("\(restauranteSeleccionado!)/Promociones/\(funcionesUtiles.tenerDiaDeLaSemana() ?? "")/1.jpg")
+        
+        refImagenPromocion.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+            
+            if let error = error{
+                print("Error aquí: \(error.localizedDescription)")
+                return()
+            }else{
+                
+                let imagen = UIImage(data: data!)
+                
+                let popup = PopupDialog(title: titulo, message: mensaje, image: imagen)
+                
+                popup.addButton(button1)
+                
+                self.present(popup, animated: true, completion: nil)
+                
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    //------------------------------------------------------------------------------
 
 }
 

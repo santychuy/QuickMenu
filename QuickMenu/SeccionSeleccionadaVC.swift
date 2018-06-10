@@ -68,21 +68,20 @@ class SeccionSeleccionadaVC: UIViewController {
                         
                     } else { //Hubo exito
                         
-                        DispatchQueue.main.async {
-                            let imagen = UIImage(data: data!)
-                            
-                            let seccionn = cellDatos(textoSeccion: key, imagenSeccion: imagen!)
-                            
-                            //self.datosSeccion.arrayCellData.append(seccion)
-                            self.datosSeccion.arrayCellData.append(seccionn)
-                            //self.array?.append(seccionn)
-                            
-                            print(seccionn.textoSeccion!)
-                            print(seccionn.imagenSeccion!)
-                            print(self.datosSeccion.arrayCellData.count)
-                            
-                            self.tableViewSeccionSeleccionada.reloadData()
-                        }
+                        
+                        let imagen = UIImage(data: data!)
+                        
+                        let seccionn = cellDatos(textoSeccion: key, imagenSeccion: imagen!)
+                        
+                        //self.datosSeccion.arrayCellData.append(seccion)
+                        self.datosSeccion.arrayCellData.append(seccionn)
+                        //self.array?.append(seccionn)
+                        
+                        print(seccionn.textoSeccion!)
+                        print(seccionn.imagenSeccion!)
+                        print(self.datosSeccion.arrayCellData.count)
+                        
+                        self.tableViewSeccionSeleccionada.reloadData()
                         
                         
                     }

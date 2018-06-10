@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import Auk
+import GoogleMobileAds
 
 
 private let headerHeight:CGFloat = 265

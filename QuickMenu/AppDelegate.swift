@@ -11,25 +11,26 @@ import Firebase
 import IQKeyboardManagerSwift
 import SVProgressHUD
 import UserNotifications
-import Fabric
+import PushNotifications
+import GoogleMobileAds
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
 
     var window: UIWindow?
 
-
+    let pushNotifications = PushNotifications.shared
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        Fabric.sharedSDK().debug = true
         
         //Llevar cuenta para lanzar feedback de la gente
         let funcionReview = storeKitFunc()
         funcionReview.incrementAppRuns()
         
         //Config. Ventana Principal
-        window = UIWindow(frame: UIScreen.main.bounds)
+        /*window = UIWindow(frame: UIScreen.main.bounds)
         let sb = UIStoryboard(name: "Main", bundle: nil)
         var initialVC = sb.instantiateViewController(withIdentifier: "OnBoarding")
         
@@ -42,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         window?.rootViewController = initialVC
-        window?.makeKeyAndVisible()
+        window?.makeKeyAndVisible()*/
         
         
         //Config. Firebase
@@ -52,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         GADMobileAds.configure(withApplicationID: "ca-app-pub-7391736686492116~5717081292")
         
         //Config. Teclado
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         
         //Config. SVProgressHUD
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
@@ -64,8 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UINavigationBar.appearance().tintColor = UIColor.white
         
         
-        //Config. Push Notification
-        if #available(iOS 10.0, *) {
+        //Config. Push Notification FCM
+        /*if #available(iOS 10.0, *) {
             
             UNUserNotificationCenter.current().delegate = self
             Messaging.messaging().delegate = self
@@ -90,7 +91,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         application.registerForRemoteNotifications()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notification:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notification:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)*/
+        
+        //PushNotifications
+        self.pushNotifications.start(instanceId: "ac68c8b1-6ab7-49da-b9e9-c626b14a5f69")
+        self.pushNotifications.registerForRemoteNotifications()
         
         return true
         
@@ -105,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
        
-        Messaging.messaging().shouldEstablishDirectChannel = false
+        //Messaging.messaging().shouldEstablishDirectChannel = false
         
         application.applicationIconBadgeNumber = 0
         
@@ -121,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        FirebaseHandler()
+        //FirebaseHandler()
         
     }
 
@@ -130,7 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     
-    func FirebaseHandler(){
+    /*func FirebaseHandler(){
         Messaging.messaging().shouldEstablishDirectChannel = true
     }
     
@@ -143,9 +148,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
+    }*/
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        self.pushNotifications.registerDeviceToken(deviceToken) {
+            try? self.pushNotifications.subscribe(interest: "hello")
+        }
     }
-    
-    
     
 
 }

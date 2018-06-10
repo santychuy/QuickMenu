@@ -9,6 +9,7 @@
 import UIKit
 import paper_onboarding
 import AVFoundation
+import CoreLocation
 
 
 class TutorialVC: UIViewController {
@@ -21,6 +22,8 @@ class TutorialVC: UIViewController {
     
     var player: AVPlayer!
     var playerLayer: AVPlayerLayer!
+    
+    let locationManager = CLLocationManager()
 
     
     override func viewDidLoad() {
@@ -31,13 +34,11 @@ class TutorialVC: UIViewController {
         
         configVideoFondo()
         
-        UIApplication.shared.isStatusBarHidden = true
-
         // Do any additional setup after loading the view.
     
         print("HOY ES: \(funciones.tenerDiaDeLaSemana()!)")
         
-        
+        locationManager.requestWhenInUseAuthorization()
        
         
     }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1C8B2EC22AE16ACA7A8413B6 /* Pods_QuickMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA52FD6711E9949700475C8 /* Pods_QuickMenu.framework */; };
 		C41D6514206DDDB600B02086 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C41D6513206DDDB600B02086 /* GoogleService-Info.plist */; };
-		C41FBE802057544C00D33F1E /* VideoIntro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C41FBE7F2057544C00D33F1E /* VideoIntro.mp4 */; };
 		C420E1D2203267DB00914AF5 /* CreditosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420E1D1203267DB00914AF5 /* CreditosTVC.swift */; };
 		C4244897204365F70089A31C /* MenusTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4244896204365F70089A31C /* MenusTVCell.swift */; };
 		C427BB922048C6020054EFD8 /* InfoQuickMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C427BB912048C6020054EFD8 /* InfoQuickMenuVC.swift */; };
@@ -20,7 +19,6 @@
 		C457D38420154BDE000D8C1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C457D38320154BDE000D8C1F /* Assets.xcassets */; };
 		C457D38720154BDE000D8C1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C457D38520154BDE000D8C1F /* LaunchScreen.storyboard */; };
 		C45E342C202D0B2000263FA1 /* TutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45E342B202D0B2000263FA1 /* TutorialVC.swift */; };
-		C465EE7C2060F49C003E2F4A /* BuscarRestauranteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C465EE7B2060F49C003E2F4A /* BuscarRestauranteVC.swift */; };
 		C46B0CFD2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B0CFC2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift */; };
 		C475E2F2206F119C003C029D /* PruebaCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C475E2F1206F119C003C029D /* PruebaCVCell.swift */; };
 		C476C934202948B00003074C /* SeccionSeleccionadaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476C933202948B00003074C /* SeccionSeleccionadaVC.swift */; };
@@ -32,18 +30,14 @@
 		C494237B204A17860065A654 /* RestauranteCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494237A204A17860065A654 /* RestauranteCVCell.swift */; };
 		C494F903205A427400F36920 /* VistosRecientementeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494F902205A427400F36920 /* VistosRecientementeCVCell.swift */; };
 		C494F905205A428200F36920 /* CategoriasCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494F904205A428200F36920 /* CategoriasCVCell.swift */; };
-		C49969722043641C0057326F /* AgarrarMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49969712043641C0057326F /* AgarrarMenuVC.swift */; };
 		C49DA80C206480E6008EE018 /* SearchResultsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49DA80A206480E6008EE018 /* SearchResultsTVCell.swift */; };
 		C49DA80D206480E6008EE018 /* SearchResultsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C49DA80B206480E6008EE018 /* SearchResultsTVCell.xib */; };
 		C4AB28D420239A7D00F0CCCB /* DatosSeccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */; };
 		C4BA9E1E206F4AA900D4B1D1 /* PruebaInicioNuevoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BA9E1D206F4AA900D4B1D1 /* PruebaInicioNuevoVC.swift */; };
 		C4D6ED8B2072A74D008DB1D8 /* RecomrestaurantesCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D6ED8A2072A74D008DB1D8 /* RecomrestaurantesCVCell.swift */; };
 		C4DC97C9204D2742007182D4 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC97C8204D2742007182D4 /* UIColorExtension.swift */; };
-		C4EE0E5E201A81B0009CDB7C /* DBReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EE0E5D201A81B0009CDB7C /* DBReference.swift */; };
-		C4EE0E60201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EE0E5F201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift */; };
 		C4EED4E42020F22700E53139 /* SeccionesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EED4E32020F22700E53139 /* SeccionesVC.swift */; };
 		C4EED4E72020F2A500E53139 /* SeccionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EED4E52020F2A500E53139 /* SeccionTVCell.swift */; };
-		C4F62F35201E785200900C78 /* LocalizarRestaurantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F62F34201E785200900C78 /* LocalizarRestaurantes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +45,6 @@
 		57EFC24B9684A0413CC94B7E /* Pods-QuickMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu.release.xcconfig"; sourceTree = "<group>"; };
 		A89FB60C5093CED1CF58C4DE /* Pods-QuickMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu.debug.xcconfig"; sourceTree = "<group>"; };
 		C41D6513206DDDB600B02086 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C41FBE7F2057544C00D33F1E /* VideoIntro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = VideoIntro.mp4; path = ../../../../../VideoIntro.mp4; sourceTree = "<group>"; };
 		C420E1D1203267DB00914AF5 /* CreditosTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditosTVC.swift; sourceTree = "<group>"; };
 		C4244896204365F70089A31C /* MenusTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusTVCell.swift; sourceTree = "<group>"; };
 		C427BB912048C6020054EFD8 /* InfoQuickMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoQuickMenuVC.swift; sourceTree = "<group>"; };
@@ -64,7 +57,6 @@
 		C457D38620154BDE000D8C1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C457D38820154BDE000D8C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C45E342B202D0B2000263FA1 /* TutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialVC.swift; sourceTree = "<group>"; };
-		C465EE7B2060F49C003E2F4A /* BuscarRestauranteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscarRestauranteVC.swift; sourceTree = "<group>"; };
 		C46B0CFC2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaDireccionRestauranteVC.swift; sourceTree = "<group>"; };
 		C475E2F1206F119C003C029D /* PruebaCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaCVCell.swift; sourceTree = "<group>"; };
 		C476C933202948B00003074C /* SeccionSeleccionadaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeccionSeleccionadaVC.swift; sourceTree = "<group>"; };
@@ -76,7 +68,6 @@
 		C494237A204A17860065A654 /* RestauranteCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestauranteCVCell.swift; sourceTree = "<group>"; };
 		C494F902205A427400F36920 /* VistosRecientementeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistosRecientementeCVCell.swift; sourceTree = "<group>"; };
 		C494F904205A428200F36920 /* CategoriasCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriasCVCell.swift; sourceTree = "<group>"; };
-		C49969712043641C0057326F /* AgarrarMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgarrarMenuVC.swift; sourceTree = "<group>"; };
 		C49DA80A206480E6008EE018 /* SearchResultsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTVCell.swift; sourceTree = "<group>"; };
 		C49DA80B206480E6008EE018 /* SearchResultsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsTVCell.xib; sourceTree = "<group>"; };
 		C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosSeccion.swift; sourceTree = "<group>"; };
@@ -84,11 +75,8 @@
 		C4BA9E1D206F4AA900D4B1D1 /* PruebaInicioNuevoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PruebaInicioNuevoVC.swift; sourceTree = "<group>"; };
 		C4D6ED8A2072A74D008DB1D8 /* RecomrestaurantesCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomrestaurantesCVCell.swift; sourceTree = "<group>"; };
 		C4DC97C8204D2742007182D4 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		C4EE0E5D201A81B0009CDB7C /* DBReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBReference.swift; sourceTree = "<group>"; };
-		C4EE0E5F201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosLocalizarRestaurante.swift; sourceTree = "<group>"; };
 		C4EED4E32020F22700E53139 /* SeccionesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeccionesVC.swift; sourceTree = "<group>"; };
 		C4EED4E52020F2A500E53139 /* SeccionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeccionTVCell.swift; sourceTree = "<group>"; };
-		C4F62F34201E785200900C78 /* LocalizarRestaurantes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizarRestaurantes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +133,6 @@
 				C457D37C20154BDE000D8C1F /* AppDelegate.swift */,
 				C45E342B202D0B2000263FA1 /* TutorialVC.swift */,
 				C475E2EE206EE32C003C029D /* InicioVCs */,
-				C465EE7B2060F49C003E2F4A /* BuscarRestauranteVC.swift */,
 				C4942378204A0DFD0065A654 /* Prueba2VC.swift */,
 				C4EED4E32020F22700E53139 /* SeccionesVC.swift */,
 				C46B0CFC2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift */,
@@ -153,7 +140,6 @@
 				C47EB9672029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift */,
 				C420E1D1203267DB00914AF5 /* CreditosTVC.swift */,
 				C427BB912048C6020054EFD8 /* InfoQuickMenuVC.swift */,
-				C49969712043641C0057326F /* AgarrarMenuVC.swift */,
 				C4877226204F63310039D20A /* Funciones */,
 				C4DC97C7204D2729007182D4 /* Extension */,
 				C4EE0E5C201A5EDB009CDB7C /* ModeloDatos */,
@@ -164,7 +150,6 @@
 				C457D38520154BDE000D8C1F /* LaunchScreen.storyboard */,
 				C41D6513206DDDB600B02086 /* GoogleService-Info.plist */,
 				C457D38820154BDE000D8C1F /* Info.plist */,
-				C41FBE7F2057544C00D33F1E /* VideoIntro.mp4 */,
 			);
 			path = QuickMenu;
 			sourceTree = "<group>";
@@ -232,9 +217,6 @@
 			children = (
 				C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */,
 				C47EB96520295F1A00BF9B2D /* Funciones.swift */,
-				C4EE0E5D201A81B0009CDB7C /* DBReference.swift */,
-				C4EE0E5F201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift */,
-				C4F62F34201E785200900C78 /* LocalizarRestaurantes.swift */,
 			);
 			path = ModeloDatos;
 			sourceTree = "<group>";
@@ -251,7 +233,6 @@
 				C457D37620154BDE000D8C1F /* Frameworks */,
 				C457D37720154BDE000D8C1F /* Resources */,
 				24DD3BAE2C5443BA7C5A7E45 /* [CP] Embed Pods Frameworks */,
-				399CF34BBA95D9CCA62F8A7C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -311,7 +292,6 @@
 			files = (
 				C49DA80D206480E6008EE018 /* SearchResultsTVCell.xib in Resources */,
 				C457D38720154BDE000D8C1F /* LaunchScreen.storyboard in Resources */,
-				C41FBE802057544C00D33F1E /* VideoIntro.mp4 in Resources */,
 				C457D38420154BDE000D8C1F /* Assets.xcassets in Resources */,
 				C457D38220154BDE000D8C1F /* Main.storyboard in Resources */,
 				C41D6514206DDDB600B02086 /* GoogleService-Info.plist in Resources */,
@@ -329,10 +309,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Auk/Auk.framework",
+				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/PushNotifications/PushNotifications.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/moa/moa.framework",
@@ -342,10 +324,12 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Auk.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PushNotifications.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moa.framework",
@@ -355,21 +339,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		399CF34BBA95D9CCA62F8A7C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		46AB4AE1A36F260542299B80 /* [CP] Check Pods Manifest.lock */ = {
@@ -397,12 +366,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4F62F35201E785200900C78 /* LocalizarRestaurantes.swift in Sources */,
 				C4EED4E42020F22700E53139 /* SeccionesVC.swift in Sources */,
 				C476C934202948B00003074C /* SeccionSeleccionadaVC.swift in Sources */,
 				C47EB96620295F1A00BF9B2D /* Funciones.swift in Sources */,
 				C46B0CFD2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift in Sources */,
-				C4EE0E60201AAD1F009CDB7C /* DatosLocalizarRestaurante.swift in Sources */,
 				C4564F2C20774F7600D8E4A6 /* TodasCategoriasCVCell.swift in Sources */,
 				C475E2F2206F119C003C029D /* PruebaCVCell.swift in Sources */,
 				C4EED4E72020F2A500E53139 /* SeccionTVCell.swift in Sources */,
@@ -411,7 +378,6 @@
 				C494237B204A17860065A654 /* RestauranteCVCell.swift in Sources */,
 				C427BB922048C6020054EFD8 /* InfoQuickMenuVC.swift in Sources */,
 				C45E342C202D0B2000263FA1 /* TutorialVC.swift in Sources */,
-				C4EE0E5E201A81B0009CDB7C /* DBReference.swift in Sources */,
 				C476C93620294FC50003074C /* SeccionSeleccionadaTVCell.swift in Sources */,
 				C4564F2A20774F0300D8E4A6 /* TodasCategoriasVC.swift in Sources */,
 				C4244897204365F70089A31C /* MenusTVCell.swift in Sources */,
@@ -425,8 +391,6 @@
 				C457D37D20154BDE000D8C1F /* AppDelegate.swift in Sources */,
 				C494F903205A427400F36920 /* VistosRecientementeCVCell.swift in Sources */,
 				C4AB28D420239A7D00F0CCCB /* DatosSeccion.swift in Sources */,
-				C465EE7C2060F49C003E2F4A /* BuscarRestauranteVC.swift in Sources */,
-				C49969722043641C0057326F /* AgarrarMenuVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
