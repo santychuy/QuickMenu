@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "21D7387B766512E0D68AFB737AA6FE9B"
+               BlueprintIdentifier = "FCB4C93774E8A28F86ED1FE5DC240878"
                BlueprintName = "PushNotifications"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "PushNotifications.framework">

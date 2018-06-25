@@ -16,10 +16,10 @@ PODS:
   - FirebaseAnalytics (5.0.1):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
   - FirebaseCore (5.0.3):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseDatabase (5.0.1):
     - FirebaseCore (~> 5.0)
     - leveldb-library (~> 1.18)
@@ -30,7 +30,7 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.1)
   - Google-Mobile-Ads-SDK (7.31.0)
   - GoogleToolboxForMac/Defines (2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+  - GoogleToolboxForMac/NSData+zlib (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
   - IQKeyboardManagerSwift (6.0.3)
@@ -46,6 +46,7 @@ PODS:
     - DynamicBlurView (~> 2.0)
   - PushNotifications (0.10.7)
   - SVProgressHUD (2.2.5)
+  - TextFieldEffects (1.4.0)
 
 DEPENDENCIES:
   - Auk (~> 8.0)
@@ -59,28 +60,7 @@ DEPENDENCIES:
   - PopupDialog (~> 0.7)
   - PushNotifications
   - SVProgressHUD
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Auk
-    - DynamicBlurView
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseCore
-    - FirebaseDatabase
-    - FirebaseInstanceID
-    - FirebaseStorage
-    - Google-Mobile-Ads-SDK
-    - GoogleToolboxForMac
-    - GTMSessionFetcher
-    - IQKeyboardManagerSwift
-    - leveldb-library
-    - moa
-    - nanopb
-    - paper-onboarding
-    - PopupDialog
-    - PushNotifications
-    - SVProgressHUD
+  - TextFieldEffects
 
 SPEC CHECKSUMS:
   Auk: 82be62a2cf650437fe745c81b12ac2440a0f682c
@@ -102,7 +82,8 @@ SPEC CHECKSUMS:
   PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
   PushNotifications: 2e3df1e301e19ae2a100267f8387da5fc471ecc7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: dda5d819611fc779ebe5b6387771f7db03b08fa6
+PODFILE CHECKSUM: eaad969970e9274969076595e0a20eb6ffd0cc2e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0

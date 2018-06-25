@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C8B2EC22AE16ACA7A8413B6 /* Pods_QuickMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA52FD6711E9949700475C8 /* Pods_QuickMenu.framework */; };
+		C413800620CDFC620003E7C2 /* RegistrarseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C413800520CDFC620003E7C2 /* RegistrarseVC.swift */; };
 		C41D6514206DDDB600B02086 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C41D6513206DDDB600B02086 /* GoogleService-Info.plist */; };
 		C420E1D2203267DB00914AF5 /* CreditosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420E1D1203267DB00914AF5 /* CreditosTVC.swift */; };
 		C4244897204365F70089A31C /* MenusTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4244896204365F70089A31C /* MenusTVCell.swift */; };
@@ -33,6 +34,7 @@
 		C49DA80C206480E6008EE018 /* SearchResultsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49DA80A206480E6008EE018 /* SearchResultsTVCell.swift */; };
 		C49DA80D206480E6008EE018 /* SearchResultsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C49DA80B206480E6008EE018 /* SearchResultsTVCell.xib */; };
 		C4AB28D420239A7D00F0CCCB /* DatosSeccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */; };
+		C4B02B7E20CDCAA700677270 /* EntrarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B02B7D20CDCAA700677270 /* EntrarVC.swift */; };
 		C4BA9E1E206F4AA900D4B1D1 /* PruebaInicioNuevoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BA9E1D206F4AA900D4B1D1 /* PruebaInicioNuevoVC.swift */; };
 		C4D6ED8B2072A74D008DB1D8 /* RecomrestaurantesCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D6ED8A2072A74D008DB1D8 /* RecomrestaurantesCVCell.swift */; };
 		C4DC97C9204D2742007182D4 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC97C8204D2742007182D4 /* UIColorExtension.swift */; };
@@ -44,6 +46,7 @@
 		0AA52FD6711E9949700475C8 /* Pods_QuickMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57EFC24B9684A0413CC94B7E /* Pods-QuickMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu.release.xcconfig"; sourceTree = "<group>"; };
 		A89FB60C5093CED1CF58C4DE /* Pods-QuickMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu.debug.xcconfig"; sourceTree = "<group>"; };
+		C413800520CDFC620003E7C2 /* RegistrarseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarseVC.swift; sourceTree = "<group>"; };
 		C41D6513206DDDB600B02086 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C420E1D1203267DB00914AF5 /* CreditosTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditosTVC.swift; sourceTree = "<group>"; };
 		C4244896204365F70089A31C /* MenusTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusTVCell.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		C49DA80B206480E6008EE018 /* SearchResultsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsTVCell.xib; sourceTree = "<group>"; };
 		C4AB28D320239A7D00F0CCCB /* DatosSeccion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosSeccion.swift; sourceTree = "<group>"; };
 		C4ACB82A205C7A12003902DD /* QuickMenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickMenu.entitlements; sourceTree = "<group>"; };
+		C4B02B7D20CDCAA700677270 /* EntrarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrarVC.swift; sourceTree = "<group>"; };
 		C4BA9E1D206F4AA900D4B1D1 /* PruebaInicioNuevoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PruebaInicioNuevoVC.swift; sourceTree = "<group>"; };
 		C4D6ED8A2072A74D008DB1D8 /* RecomrestaurantesCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomrestaurantesCVCell.swift; sourceTree = "<group>"; };
 		C4DC97C8204D2742007182D4 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				C4EE0E5C201A5EDB009CDB7C /* ModeloDatos */,
 				C4EE0E59201A5CE3009CDB7C /* Cells */,
 				C45E342D202D0DF400263FA1 /* XIB Files */,
+				C4B02B7D20CDCAA700677270 /* EntrarVC.swift */,
+				C413800520CDFC620003E7C2 /* RegistrarseVC.swift */,
 				C457D38020154BDE000D8C1F /* Main.storyboard */,
 				C457D38320154BDE000D8C1F /* Assets.xcassets */,
 				C457D38520154BDE000D8C1F /* LaunchScreen.storyboard */,
@@ -233,6 +239,7 @@
 				C457D37620154BDE000D8C1F /* Frameworks */,
 				C457D37720154BDE000D8C1F /* Resources */,
 				24DD3BAE2C5443BA7C5A7E45 /* [CP] Embed Pods Frameworks */,
+				AD5FA9C44E05CBEA1011AEF5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -316,6 +323,7 @@
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/PushNotifications/PushNotifications.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/moa/moa.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -331,6 +339,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PushNotifications.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -359,6 +368,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AD5FA9C44E05CBEA1011AEF5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -376,6 +400,7 @@
 				C494F905205A428200F36920 /* CategoriasCVCell.swift in Sources */,
 				C4877228204F63540039D20A /* CustomFunciones.swift in Sources */,
 				C494237B204A17860065A654 /* RestauranteCVCell.swift in Sources */,
+				C4B02B7E20CDCAA700677270 /* EntrarVC.swift in Sources */,
 				C427BB922048C6020054EFD8 /* InfoQuickMenuVC.swift in Sources */,
 				C45E342C202D0B2000263FA1 /* TutorialVC.swift in Sources */,
 				C476C93620294FC50003074C /* SeccionSeleccionadaTVCell.swift in Sources */,
@@ -387,6 +412,7 @@
 				C420E1D2203267DB00914AF5 /* CreditosTVC.swift in Sources */,
 				C4DC97C9204D2742007182D4 /* UIColorExtension.swift in Sources */,
 				C4942379204A0DFD0065A654 /* Prueba2VC.swift in Sources */,
+				C413800620CDFC620003E7C2 /* RegistrarseVC.swift in Sources */,
 				C47EB9682029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift in Sources */,
 				C457D37D20154BDE000D8C1F /* AppDelegate.swift in Sources */,
 				C494F903205A427400F36920 /* VistosRecientementeCVCell.swift in Sources */,

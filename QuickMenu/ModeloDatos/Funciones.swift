@@ -44,7 +44,7 @@ class Funciones{
     
     
     
-    func tenerDiaDeLaSemana() -> String? {
+    func tenerDiaDeLaSemana() -> String {
         
         let date = Date()
         let dateFormatter = DateFormatter()
@@ -69,7 +69,7 @@ class Funciones{
         case "Sunday":
             return "Domingo"
         default:
-            return nil
+            return ""
         }
         
         

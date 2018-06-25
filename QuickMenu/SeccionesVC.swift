@@ -653,8 +653,9 @@ class SeccionesVC: UIViewController{
     func aparecerPromocion(){
         
         let dia = funcionesUtiles.tenerDiaDeLaSemana()
+        print("DIA EN LA PROMO ES: \(dia)")
         
-        let titulo = "Promociones del día de hoy \(dia ?? "")"
+        let titulo = "Promociones del día de hoy"
         let mensaje = "Tenemos promociones el día de hoy muy buenas"
         let button1 = DefaultButton(title: "Ok") {
             print("Salir de promocion")
@@ -662,7 +663,7 @@ class SeccionesVC: UIViewController{
         
         aparienciaPromo()
         
-        let refImagenPromocion = Storage.storage().reference().child("\(restauranteSeleccionado!)/Promociones/\(funcionesUtiles.tenerDiaDeLaSemana() ?? "")/1.jpg")
+        let refImagenPromocion = Storage.storage().reference().child("\(restauranteSeleccionado!)/Promociones/\(dia)/1.jpg")
         
         refImagenPromocion.getData(maxSize: 1 * 2048 * 2048) { (data, error) in
             

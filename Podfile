@@ -18,5 +18,6 @@ target 'QuickMenu' do
 	pod 'PushNotifications'
 	pod 'Google-Mobile-Ads-SDK'
 	pod 'PopupDialog', '~> 0.7'
+	pod 'TextFieldEffects'
 
 end

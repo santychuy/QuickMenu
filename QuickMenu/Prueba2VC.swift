@@ -103,9 +103,8 @@ class Prueba2VC: UIViewController {
         referenceImage1.getData(maxSize: 1 * 2048 * 2048, completion: { (data, error) in
             if let error = error{
                 print("ERROR AQUI: \(error.localizedDescription)")
-                self.performSegue(withIdentifier: "unwindSegueRestaurante-Buscar", sender: self)
                 SVProgressHUD.showInfo(withStatus: "Restaurantes proximamente")
-                return ()
+                self.performSegue(withIdentifier: "unwindSegue-Principio", sender: self)
             }else{
                 
                 descpRest = dic!["descpRestaurante"] as? String

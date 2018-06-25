@@ -36,7 +36,7 @@ class TutorialVC: UIViewController {
         
         // Do any additional setup after loading the view.
     
-        print("HOY ES: \(funciones.tenerDiaDeLaSemana()!)")
+        print("HOY ES: \(funciones.tenerDiaDeLaSemana())")
         
         locationManager.requestWhenInUseAuthorization()
        
