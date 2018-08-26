@@ -10,6 +10,7 @@
 		1C8B2EC22AE16ACA7A8413B6 /* Pods_QuickMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA52FD6711E9949700475C8 /* Pods_QuickMenu.framework */; };
 		C413800620CDFC620003E7C2 /* RegistrarseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C413800520CDFC620003E7C2 /* RegistrarseVC.swift */; };
 		C41D6514206DDDB600B02086 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C41D6513206DDDB600B02086 /* GoogleService-Info.plist */; };
+		C420C258212619A400EA63F9 /* RecuperarContraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420C257212619A400EA63F9 /* RecuperarContraVC.swift */; };
 		C420E1D2203267DB00914AF5 /* CreditosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420E1D1203267DB00914AF5 /* CreditosTVC.swift */; };
 		C4244897204365F70089A31C /* MenusTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4244896204365F70089A31C /* MenusTVCell.swift */; };
 		C427BB922048C6020054EFD8 /* InfoQuickMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C427BB912048C6020054EFD8 /* InfoQuickMenuVC.swift */; };
@@ -21,6 +22,7 @@
 		C457D38720154BDE000D8C1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C457D38520154BDE000D8C1F /* LaunchScreen.storyboard */; };
 		C45E342C202D0B2000263FA1 /* TutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45E342B202D0B2000263FA1 /* TutorialVC.swift */; };
 		C46B0CFD2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B0CFC2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift */; };
+		C4723DC520E198070066881D /* VideoIntro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C4723DC420E198070066881D /* VideoIntro.mp4 */; };
 		C475E2F2206F119C003C029D /* PruebaCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C475E2F1206F119C003C029D /* PruebaCVCell.swift */; };
 		C476C934202948B00003074C /* SeccionSeleccionadaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476C933202948B00003074C /* SeccionSeleccionadaVC.swift */; };
 		C476C93620294FC50003074C /* SeccionSeleccionadaTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476C93520294FC50003074C /* SeccionSeleccionadaTVCell.swift */; };
@@ -48,6 +50,7 @@
 		A89FB60C5093CED1CF58C4DE /* Pods-QuickMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu.debug.xcconfig"; sourceTree = "<group>"; };
 		C413800520CDFC620003E7C2 /* RegistrarseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarseVC.swift; sourceTree = "<group>"; };
 		C41D6513206DDDB600B02086 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C420C257212619A400EA63F9 /* RecuperarContraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperarContraVC.swift; sourceTree = "<group>"; };
 		C420E1D1203267DB00914AF5 /* CreditosTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditosTVC.swift; sourceTree = "<group>"; };
 		C4244896204365F70089A31C /* MenusTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusTVCell.swift; sourceTree = "<group>"; };
 		C427BB912048C6020054EFD8 /* InfoQuickMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoQuickMenuVC.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		C457D38820154BDE000D8C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C45E342B202D0B2000263FA1 /* TutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialVC.swift; sourceTree = "<group>"; };
 		C46B0CFC2040FD7600D1EDB6 /* MapaDireccionRestauranteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaDireccionRestauranteVC.swift; sourceTree = "<group>"; };
+		C4723DC420E198070066881D /* VideoIntro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = VideoIntro.mp4; path = ../../../../../../Downloads/VideoIntro.mp4; sourceTree = "<group>"; };
 		C475E2F1206F119C003C029D /* PruebaCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaCVCell.swift; sourceTree = "<group>"; };
 		C476C933202948B00003074C /* SeccionSeleccionadaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeccionSeleccionadaVC.swift; sourceTree = "<group>"; };
 		C476C93520294FC50003074C /* SeccionSeleccionadaTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeccionSeleccionadaTVCell.swift; sourceTree = "<group>"; };
@@ -112,6 +116,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C420C2562126194D00EA63F9 /* Iniciar_Registrarse */ = {
+			isa = PBXGroup;
+			children = (
+				C4B02B7D20CDCAA700677270 /* EntrarVC.swift */,
+				C413800520CDFC620003E7C2 /* RegistrarseVC.swift */,
+				C420C257212619A400EA63F9 /* RecuperarContraVC.swift */,
+			);
+			path = Iniciar_Registrarse;
+			sourceTree = "<group>";
+		};
 		C457D37020154BDE000D8C1F = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +150,7 @@
 				C4ACB82A205C7A12003902DD /* QuickMenu.entitlements */,
 				C457D37C20154BDE000D8C1F /* AppDelegate.swift */,
 				C45E342B202D0B2000263FA1 /* TutorialVC.swift */,
+				C420C2562126194D00EA63F9 /* Iniciar_Registrarse */,
 				C475E2EE206EE32C003C029D /* InicioVCs */,
 				C4942378204A0DFD0065A654 /* Prueba2VC.swift */,
 				C4EED4E32020F22700E53139 /* SeccionesVC.swift */,
@@ -149,13 +164,12 @@
 				C4EE0E5C201A5EDB009CDB7C /* ModeloDatos */,
 				C4EE0E59201A5CE3009CDB7C /* Cells */,
 				C45E342D202D0DF400263FA1 /* XIB Files */,
-				C4B02B7D20CDCAA700677270 /* EntrarVC.swift */,
-				C413800520CDFC620003E7C2 /* RegistrarseVC.swift */,
 				C457D38020154BDE000D8C1F /* Main.storyboard */,
 				C457D38320154BDE000D8C1F /* Assets.xcassets */,
 				C457D38520154BDE000D8C1F /* LaunchScreen.storyboard */,
 				C41D6513206DDDB600B02086 /* GoogleService-Info.plist */,
 				C457D38820154BDE000D8C1F /* Info.plist */,
+				C4723DC420E198070066881D /* VideoIntro.mp4 */,
 			);
 			path = QuickMenu;
 			sourceTree = "<group>";
@@ -301,6 +315,7 @@
 				C457D38720154BDE000D8C1F /* LaunchScreen.storyboard in Resources */,
 				C457D38420154BDE000D8C1F /* Assets.xcassets in Resources */,
 				C457D38220154BDE000D8C1F /* Main.storyboard in Resources */,
+				C4723DC520E198070066881D /* VideoIntro.mp4 in Resources */,
 				C41D6514206DDDB600B02086 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,13 +331,23 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-QuickMenu/Pods-QuickMenu-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Auk/Auk.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/PushNotifications/PushNotifications.framework",
+				"${BUILT_PRODUCTS_DIR}/PusherSwift/PusherSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/TaskQueue/TaskQueue.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/moa/moa.framework",
@@ -332,13 +357,23 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Auk.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PushNotifications.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PusherSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TaskQueue.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moa.framework",
@@ -413,6 +448,7 @@
 				C4DC97C9204D2742007182D4 /* UIColorExtension.swift in Sources */,
 				C4942379204A0DFD0065A654 /* Prueba2VC.swift in Sources */,
 				C413800620CDFC620003E7C2 /* RegistrarseVC.swift in Sources */,
+				C420C258212619A400EA63F9 /* RecuperarContraVC.swift in Sources */,
 				C47EB9682029653D00BF9B2D /* PlatilloSeleccionadoTVC.swift in Sources */,
 				C457D37D20154BDE000D8C1F /* AppDelegate.swift in Sources */,
 				C494F903205A427400F36920 /* VistosRecientementeCVCell.swift in Sources */,

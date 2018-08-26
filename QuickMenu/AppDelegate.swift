@@ -13,6 +13,7 @@ import SVProgressHUD
 import UserNotifications
 import PushNotifications
 import GoogleMobileAds
+import PusherSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
@@ -30,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         funcionReview.incrementAppRuns()
         
         //Config. Ventana Principal
-        /*window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         let sb = UIStoryboard(name: "Main", bundle: nil)
         var initialVC = sb.instantiateViewController(withIdentifier: "OnBoarding")
         
@@ -43,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         window?.rootViewController = initialVC
-        window?.makeKeyAndVisible()*/
+        window?.makeKeyAndVisible()
         
         
         //Config. Firebase
@@ -94,8 +95,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notification:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)*/
         
         //PushNotifications
-        self.pushNotifications.start(instanceId: "ac68c8b1-6ab7-49da-b9e9-c626b14a5f69")
+        self.pushNotifications.start(instanceId: "ac68c8b1-6ab7-49da-b9e9-c626b14a5f69") //Antigua: ac68c8b1-6ab7-49da-b9e9-c626b14a5f69
         self.pushNotifications.registerForRemoteNotifications()
+       
+        let options = PusherClientOptions(
+            host: .cluster("us2")
+        )
+        
+        let pusher = Pusher(
+            key: "a84fea0c57bca18e3639",
+            options: options
+        )
+        
+        // subscribe to channel and bind to event
+        let channel = pusher.subscribe("my-channel")
+        
+        let _ = channel.bind(eventName: "my-event", callback: { (data: Any?) -> Void in
+            if let data = data as? [String : AnyObject] {
+                if let message = data["message"] as? String {
+                    print(message)
+                }
+            }
+        })
+        
+        pusher.connect()
         
         return true
         
@@ -152,9 +175,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         self.pushNotifications.registerDeviceToken(deviceToken) {
-            try? self.pushNotifications.subscribe(interest: "hello")
+            try? self.pushNotifications.subscribe(interest: "prueba")
         }
     }
+    
+    
     
 
 }

@@ -11,6 +11,7 @@ import Firebase
 import SVProgressHUD
 import Auk
 import PopupDialog
+import PushNotifications
 
 
 class SeccionesVC: UIViewController{
@@ -48,11 +49,15 @@ class SeccionesVC: UIViewController{
     
     var validarCategoria:String?
     
+    let pushNotifications = PushNotifications.shared
+    
     //var vistoRecientes:datosVistoRecientemente?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mandarAnaliticos()
         
         configNavBar()
         
@@ -93,6 +98,13 @@ class SeccionesVC: UIViewController{
         //guardarVistoRecientemente()
         
         
+    }
+    
+    func mandarAnaliticos(){
+        guard let sinEspaciosRestaurante = restauranteSeleccionado?.replacingOccurrences(of: " ", with: "") else {return}
+        print("RESTAURANTE SIN ESPACIO: \(sinEspaciosRestaurante)")
+        
+        Analytics.logEvent("visitado_\(sinEspaciosRestaurante)", parameters: nil)
     }
     
     /*func guardarVistoRecientemente(){
@@ -339,26 +351,62 @@ class SeccionesVC: UIViewController{
         horarioBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let horarioBarBtn = UIBarButtonItem(customView: horarioBtn)
         
+        let favBtn:UIButton = UIButton.init(type: .custom)
+        favBtn.setImage(#imageLiteral(resourceName: "Fav1"), for: .normal)
+        favBtn.addTarget(self, action: #selector(restauranteFavorito), for: .touchUpInside)
+        favBtn.frame = CGRect(x: 0, y: 0, width: 27, height: 27)
+        let favBarBtn = UIBarButtonItem(customView: favBtn)
+        
+        let fav2Btn:UIButton = UIButton.init(type: .custom)
+        fav2Btn.setImage(#imageLiteral(resourceName: "Fav2"), for: .normal)
+        fav2Btn.addTarget(self, action: #selector(quitarRestauranteFavorito), for: .touchUpInside)
+        fav2Btn.frame = CGRect(x: 0, y: 0, width: 27, height: 27)
+        let fav2BarBtn = UIBarButtonItem(customView: fav2Btn)
+        
         let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
-        fixedSpace.width = 20.0
+        fixedSpace.width = 18.0
         
         let fixedSpace2:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
-        fixedSpace2.width = 17.0
+        fixedSpace2.width = 14.0
         
         Database.database().reference().child("restaurantes").child("categorias").child(validarCategoria!).child(restauranteSeleccionado!).child("numeroTelefonico").observeSingleEvent(of: .value) { (snapshot) in
             
+            //Agarrar restaurantes favoritos y filtrar si está de favorito el seleccionado
+            guard let sinEspaciosRestaurante = self.restauranteSeleccionado?.replacingOccurrences(of: " ", with: "") else {return}
+            
+            print("PUSH NOTIFICATION SUBCRIPCIONES: \(String(describing: self.pushNotifications.getInterests()))")
+            let subscripciones = self.pushNotifications.getInterests()
+            var filtered = subscripciones?.filter { $0.contains(sinEspaciosRestaurante) }
+            
+            
+            //--------------------------------------------------------------
+            
             if let telefono = snapshot.value as? String {
                 
-                print("Telefono: \(telefono)")
-                
-                self.navigationItem.setRightBarButtonItems([compartirBtnBar, fixedSpace, llamarBtnBar, fixedSpace2, horarioBarBtn], animated: false)
-                
-                self.telefonoRestaurante = telefono
-                
+                if let restauranteSubscrito = filtered?.popLast() {
+                    print("Telefono: \(telefono)")
+                    print("RESTAURANTE SÍ SUSCRITO: \(restauranteSubscrito)")
+                    self.navigationItem.setRightBarButtonItems([compartirBtnBar, fixedSpace, llamarBtnBar, fixedSpace2, horarioBarBtn, fav2BarBtn], animated: false)
+                    
+                    self.telefonoRestaurante = telefono
+                }else{
+                    print("Telefono: \(telefono)")
+                    print("NO SUBSCRITO AL RESTAURANTE: \(sinEspaciosRestaurante)")
+                    self.navigationItem.setRightBarButtonItems([compartirBtnBar, fixedSpace, llamarBtnBar, fixedSpace2, horarioBarBtn, favBarBtn], animated: false)
+                    
+                    self.telefonoRestaurante = telefono
+                }
+            
             }else{
                 
-                self.navigationItem.setRightBarButtonItems([compartirBtnBar, fixedSpace, horarioBarBtn], animated: false)
-                
+                if let restauranteSubscrito = filtered?.popLast() {
+                    print("RESTAURANTE SÍ SUSCRITO: \(restauranteSubscrito)")
+                    self.navigationItem.setRightBarButtonItems([compartirBtnBar, fixedSpace, horarioBarBtn, fav2BarBtn], animated: false)
+                }else{
+                    print("NO SUBSCRITO AL RESTAURANTE: \(sinEspaciosRestaurante)")
+                    self.navigationItem.setRightBarButtonItems([compartirBtnBar, fixedSpace, horarioBarBtn, favBarBtn], animated: false)
+                }
+        
             }
             
         }
@@ -427,6 +475,52 @@ class SeccionesVC: UIViewController{
         
         alertController.addAction(okey)
         self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    @objc func restauranteFavorito(){
+        
+        guard let sinEspaciosRestaurante = restauranteSeleccionado?.replacingOccurrences(of: " ", with: "") else {return}
+        
+        do {
+            try self.pushNotifications.subscribe(interest: sinEspaciosRestaurante)
+            self.navigationItem.rightBarButtonItems?.removeLast()
+            
+            let fav2Btn:UIButton = UIButton.init(type: .custom)
+            fav2Btn.setImage(#imageLiteral(resourceName: "Fav2"), for: .normal)
+            fav2Btn.addTarget(self, action: #selector(quitarRestauranteFavorito), for: .touchUpInside)
+            fav2Btn.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+            let fav2BarBtn = UIBarButtonItem(customView: fav2Btn)
+            
+            self.navigationItem.rightBarButtonItems?.append(fav2BarBtn)
+            
+            SVProgressHUD.showSuccess(withStatus: "Suscrito a: \(restauranteSeleccionado!)")
+        } catch let errorSuscribe {
+            print(errorSuscribe.localizedDescription)
+        }
+        
+    }
+    
+    @objc func quitarRestauranteFavorito(){
+        
+        guard let sinEspaciosRestaurante = restauranteSeleccionado?.replacingOccurrences(of: " ", with: "") else {return}
+        
+        do {
+            try self.pushNotifications.unsubscribe(interest: sinEspaciosRestaurante)
+            self.navigationItem.rightBarButtonItems?.removeLast()
+            
+            let favBtn:UIButton = UIButton.init(type: .custom)
+            favBtn.setImage(#imageLiteral(resourceName: "Fav1"), for: .normal)
+            favBtn.addTarget(self, action: #selector(restauranteFavorito), for: .touchUpInside)
+            favBtn.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+            let favBarBtn = UIBarButtonItem(customView: favBtn)
+            
+            self.navigationItem.rightBarButtonItems?.append(favBarBtn)
+            
+            SVProgressHUD.showInfo(withStatus: "Subscripción anulada")
+        } catch let errorUnsuscribe {
+            print(errorUnsuscribe.localizedDescription)
+        }
         
     }
     

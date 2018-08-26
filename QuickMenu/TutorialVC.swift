@@ -9,7 +9,6 @@
 import UIKit
 import paper_onboarding
 import AVFoundation
-import CoreLocation
 
 
 class TutorialVC: UIViewController {
@@ -18,13 +17,9 @@ class TutorialVC: UIViewController {
     @IBOutlet weak var btnEmpezar: UIButton!
     
     
-    let funciones = Funciones()
-    
     var player: AVPlayer!
     var playerLayer: AVPlayerLayer!
     
-    let locationManager = CLLocationManager()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +28,6 @@ class TutorialVC: UIViewController {
         viewOnBoarding.delegate = self
         
         configVideoFondo()
-        
-        // Do any additional setup after loading the view.
-    
-        print("HOY ES: \(funciones.tenerDiaDeLaSemana())")
-        
-        locationManager.requestWhenInUseAuthorization()
-       
         
     }
 
@@ -117,7 +105,7 @@ extension TutorialVC: PaperOnboardingDelegate, PaperOnboardingDataSource {
                 
                 OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "LogoLaunch"),
                                    title: "Restaurantes actualizado",
-                                   description: "Consulta tu restaurante para saber más de ellos e ir a visitarlos",
+                                   description: "Recibe sus últimas actualizaciones de cada día.",
                                    pageIcon: UIImage(),
                                    color: backGroundTransparent,
                                    titleColor: UIColor.white,
