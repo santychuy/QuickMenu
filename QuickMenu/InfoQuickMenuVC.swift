@@ -47,7 +47,7 @@ class InfoQuickMenuVC: UIViewController, MFMailComposeViewControllerDelegate {
         } else {
             // Fallback on earlier versions
         }
-        setInfoBtn()
+        //setInfoBtn()
         
     }
     

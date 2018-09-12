@@ -14,6 +14,7 @@ import UserNotifications
 import PushNotifications
 import GoogleMobileAds
 import PusherSwift
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
@@ -49,6 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         //Config. Firebase
         FirebaseApp.configure()
+        
+        //Facebook LogIn Config.
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         //Config. AdMob
         GADMobileAds.configure(withApplicationID: "ca-app-pub-7391736686492116~5717081292")
@@ -103,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         )
         
         let pusher = Pusher(
-            key: "a84fea0c57bca18e3639",
+            key: "d93192db4133cd10be10",
             options: options
         )
         
@@ -121,6 +125,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         pusher.connect()
         
         return true
+        
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        //Facebook Config.
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
+        return handled
         
     }
 
@@ -175,7 +188,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         self.pushNotifications.registerDeviceToken(deviceToken) {
-            try? self.pushNotifications.subscribe(interest: "prueba")
+            try? self.pushNotifications.subscribe(interest: "universal")
         }
     }
     

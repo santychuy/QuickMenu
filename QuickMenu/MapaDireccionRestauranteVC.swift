@@ -20,6 +20,8 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
     
     var restauranteLocalizacion = CLLocationCoordinate2D()
     let pinRestaurante = MKPointAnnotation()
+    var restauranteLocalizacion2 = CLLocationCoordinate2D()
+    let pinRestaurante2 = MKPointAnnotation()
     
     var restauranteSeleccionado:String?
     var categoriaSeleccionada:String?
@@ -102,6 +104,9 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
                 self.longitudRest = dicCoords["Longitud"] as? Double
                 print(self.longitudRest!)
                 
+                //guard let latitudRest2 = dicCoords["Latitud2"] as? Double else {return}
+                //guard let longitudRest2 = dicCoords["Longitud2"] as? Double else {return}
+                
                 self.restauranteLocalizacion.latitude = self.latitudRest!
                 self.restauranteLocalizacion.longitude = self.longitudRest!
                 
@@ -113,6 +118,18 @@ class MapaDireccionRestauranteVC: UIViewController, CLLocationManagerDelegate, M
                 self.pinRestaurante.coordinate = self.restauranteLocalizacion
                 self.pinRestaurante.title = self.restauranteSeleccionado!
                 self.mapaRestaurante.addAnnotation(self.pinRestaurante)
+                
+                //Pin 2
+                
+                if let latitudRest2 = dicCoords["Latitud2"] as? Double, let longitudRest2 = dicCoords["Longitud2"] as? Double {
+                    self.restauranteLocalizacion2.latitude = latitudRest2
+                    self.restauranteLocalizacion2.longitude = longitudRest2
+                    
+                    self.pinRestaurante2.coordinate = self.restauranteLocalizacion2
+                    self.pinRestaurante2.title = self.restauranteSeleccionado!
+                    self.mapaRestaurante.addAnnotation(self.pinRestaurante2)
+                }
+                
                 //---------------------------
                 
             }
